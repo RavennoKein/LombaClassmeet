@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kalender Akademik - SMK Negeri 2 Mojokerto</title>
+  <meta name="description" content="Kalender akademik SMK Negeri 2 Mojokerto yang memuat jadwal kegiatan penting selama tahun pelajaran." />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            emerald: {
+              600: '#059669',
+              700: '#047857',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    .container-page { max-width: 1120px; margin-left: auto; margin-right: auto; }
+    .shadow-soft { box-shadow: 0 18px 45px rgba(15,23,42,0.06); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased">
+  <!-- Top bar -->
+  <div class="bg-slate-900 text-slate-100 text-xs">
+    <div class="container-page px-4 flex flex-col sm:flex-row gap-2 sm:gap-4 py-2 sm:items-center sm:justify-between">
+      <p class="font-medium tracking-wide">SMK NEGERI 2 MOJOKERTO</p>
+      <div class="flex flex-wrap gap-4">
+        <span>📍 Jl. Contoh Alamat No. 123, Kota Mojokerto</span>
+        <span>☎ (000) 0000 000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="bg-white/90 backdrop-blur border-b border-slate-200 sticky top-0 z-40">
+    <div class="container-page px-4 flex items-center justify-between py-3">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-lg bg-primary-600 text-white flex items-center justify-center text-xs font-bold shadow-soft">
+          SMK
+        </div>
+        <div>
+          <p class="text-sm font-semibold leading-tight">SMK Negeri 2 Mojokerto</p>
+          <p class="text-[11px] text-slate-500 leading-tight">Portal Informasi Sekolah</p>
+        </div>
+      </div>
+
+      <button id="nav-toggle" class="sm:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-slate-200">
+        <span class="sr-only">Toggle menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+
+      <nav id="nav-menu" class="hidden sm:flex items-center gap-6 text-xs font-medium text-slate-600">
+        <a href="index.html" class="nav-link hover:text-primary-600" data-route="home">Beranda</a>
+        <a href="kalender.html" class="nav-link hover:text-primary-600" data-route="kalender">Kalender</a>
+        <a href="berita.html" class="nav-link hover:text-primary-600" data-route="berita">Berita</a>
+        <a href="prestasi.html" class="nav-link hover:text-primary-600" data-route="prestasi">Prestasi</a>
+        <a href="fasilitas.html" class="nav-link hover:text-primary-600" data-route="fasilitas">Fasilitas</a>
+        <a href="#kontak" class="nav-link hover:text-primary-600" data-route="kontak">Kontak</a>
+      </nav>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="nav-menu-mobile" class="sm:hidden hidden border-t border-slate-200 bg-white">
+      <div class="container-page px-4 py-3 flex flex-col gap-2 text-sm text-slate-700">
+        <a href="index.html" class="nav-link-mobile" data-route="home">Beranda</a>
+        <a href="kalender.html" class="nav-link-mobile" data-route="kalender">Kalender</a>
+        <a href="berita.html" class="nav-link-mobile" data-route="berita">Berita</a>
+        <a href="prestasi.html" class="nav-link-mobile" data-route="prestasi">Prestasi</a>
+        <a href="fasilitas.html" class="nav-link-mobile" data-route="fasilitas">Fasilitas</a>
+        <a href="#kontak" class="nav-link-mobile" data-route="kontak">Kontak</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 mt-4">
+    <!-- Header -->
+    <section class="py-8 md:py-10 bg-slate-50 border-b border-slate-200">
+      <div class="container-page px-4 space-y-2">
+        <p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-primary-600">
+          Kalender Akademik
+        </p>
+        <h1 class="text-2xl md:text-3xl font-bold">Kalender Akademik SMK Negeri 2 Mojokerto.</h1>
+        <p class="text-xs md:text-sm text-slate-700 max-w-2xl">
+          Halaman ini menampilkan kalender interaktif berisi jadwal kegiatan akademik utama, lengkap dengan daftar acara yang tersinkron di bawahnya.
+        </p>
+      </div>
+    </section>
+
+    <!-- Kalender interaktif + list acara -->
+    <section class="py-8 md:py-12 bg-white border-b border-slate-200">
+      <div class="container-page px-4 space-y-6">
+        <!-- Controls tahun & bulan -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div>
+              <p class="text-xs text-slate-600 mb-1">Tahun pelajaran:</p>
+              <select id="kalender-tahun"
+                      class="border border-slate-300 rounded-lg px-2 py-1 text-xs md:text-sm bg-white">
+                <!-- opsi tahun akan diisi dinamis dari data yang tersedia -->
+              </select>
+            </div>
+            <div class="space-y-1">
+              <p class="text-xs text-slate-600">Bulan:</p>
+              <div class="inline-flex items-center gap-2">
+                <button id="kalender-prev-bulan"
+                        class="inline-flex items-center justify-center w-7 h-7 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100">
+                  &lt;
+                </button>
+                <p id="kalender-label-bulan"
+                   class="text-xs md:text-sm font-semibold text-slate-800 min-w-[120px] text-center">
+                   <!-- diisi JS -->
+                </p>
+                <button id="kalender-next-bulan"
+                        class="inline-flex items-center justify-center w-7 h-7 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100">
+                  &gt;
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-[11px] md:text-xs text-slate-500 max-w-md">
+            <p>Gunakan tombol panah untuk melihat bulan lain. Arahkan kursor ke blok hijau pada kalender untuk melihat detail singkat kegiatan, dan klik untuk melompat ke daftar acara di bawah kalender.</p>
+          </div>
+        </div>
+
+        <!-- Grid kalender -->
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3 md:p-4 space-y-3 overflow-x-auto">
+          <div class="grid grid-cols-7 text-[11px] md:text-xs font-semibold text-slate-500">
+            <div class="text-center pb-1">Minggu</div>
+            <div class="text-center pb-1">Senin</div>
+            <div class="text-center pb-1">Selasa</div>
+            <div class="text-center pb-1">Rabu</div>
+            <div class="text-center pb-1">Kamis</div>
+            <div class="text-center pb-1">Jumat</div>
+            <div class="text-center pb-1">Sabtu</div>
+          </div>
+          <div id="kalender-grid"
+               class="grid grid-cols-7 gap-[2px] text-[10px] md:text-xs">
+            <!-- sel kalender akan dirender oleh JS -->
+          </div>
+          <p class="text-[10px] text-slate-500">
+            Catatan: blok hijau menunjukkan rentang tanggal kegiatan. Beberapa kegiatan dapat saling tumpang tindih pada hari yang sama.
+          </p>
+        </div>
+
+        <!-- Daftar acara -->
+        <div class="space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-xs md:text-sm font-semibold text-slate-800">
+              Daftar kegiatan pada tahun pelajaran terpilih
+            </p>
+            <p id="kalender-count"
+               class="text-[11px] text-slate-500">
+              <!-- diisi JS -->
+            </p>
+          </div>
+          <div id="kalender-event-list"
+               class="space-y-2 text-xs md:text-sm">
+            <!-- list acara dirender JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak ringkas di bawah -->
+    <section id="kontak" class="py-10 md:py-14 bg-white">
+      <div class="container-page px-4 grid md:grid-cols-2 gap-8">
+        <div class="space-y-3">
+          <p class="text-[11px] font-semibold tracking-[0.2em] uppercase text-primary-600">
+            Kontak
+          </p>
+          <h2 class="text-xl md:text-2xl font-bold mt-1">Informasi lebih lanjut.</h2>
+          <p class="text-xs md:text-sm text-slate-700 max-w-xl">
+            Untuk konfirmasi jadwal kegiatan atau informasi lainnya, silakan hubungi pihak sekolah melalui kontak berikut.
+          </p>
+        </div>
+        <div class="rounded-2xl bg-slate-50 border border-slate-200 p-4 space-y-2 text-xs md:text-sm">
+          <p><span class="font-semibold">Alamat:</span> Jl. Contoh Alamat No. 123, Kota Mojokerto</p>
+          <p><span class="font-semibold">Telepon:</span> (000) 0000 000</p>
+          <p><span class="font-semibold">Email:</span> humas@smkn2mojokerto.sch.id</p>
+        </div>
+      </div>
+    </section>
+  </main>
+<!-- Footer -->
+<footer class="bg-slate-900 text-slate-200 text-xs mt-12">
+  <div class="container-page px-4 py-8 grid gap-8 md:grid-cols-3">
+    <div class="space-y-2">
+      <p class="text-sm font-semibold text-white">SMK Negeri 2 Mojokerto</p>
+      <p class="text-[11px] text-slate-300">
+        Sekolah menengah kejuruan yang berkomitmen pada pembelajaran berbasis keahlian,
+        karakter, dan penguatan budaya industri serta lingkungan.
+      </p>
+      <p class="text-[11px] text-slate-400">
+        Portal ini menyajikan informasi resmi sekolah: berita, kalender, prestasi, dan dokumentasi kegiatan.
+      </p>
+    </div>
+
+    <div class="space-y-2">
+      <p class="text-sm font-semibold text-white">Tautan Cepat</p>
+      <div class="grid grid-cols-2 gap-y-1 gap-x-4 text-[11px] text-slate-300">
+        <a href="index.html" class="hover:text-white">Beranda</a>
+        <a href="kalender.html" class="hover:text-white">Kalender Akademik</a>
+        <a href="berita.html" class="hover:text-white">Berita Sekolah</a>
+        <a href="prestasi.html" class="hover:text-white">Prestasi Siswa</a>
+        <a href="fasilitas.html" class="hover:text-white">Fasilitas</a>
+        <a href="#kontak" class="hover:text-white">Kontak</a>
+      </div>
+    </div>
+
+    <div class="space-y-2">
+      <p class="text-sm font-semibold text-white">Kontak</p>
+      <p class="text-[11px] text-slate-300">
+        Jl. Contoh Alamat No. 123<br />
+        Kota Mojokerto, Jawa Timur
+      </p>
+      <p class="text-[11px] text-slate-300">
+        Telp. (000) 0000 000<br />
+        Email: humas@smkn2mojokerto.sch.id
+      </p>
+      <p class="text-[11px] text-slate-400">
+        Jam layanan: Senin–Jumat 07.00–15.30 WIB
+      </p>
+    </div>
+  </div>
+
+  <div class="border-t border-slate-800">
+    <div class="container-page px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-2">
+      <p class="text-[11px] text-slate-400">
+        &copy; <span id="footer-year"></span> SMK Negeri 2 Mojokerto. Semua hak dilindungi.
+      </p>
+      <p class="text-[11px] text-slate-500">
+        Dibangun untuk lomba RPL dengan HTML, Tailwind CSS, JavaScript, dan Supabase.
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <!-- Forum floating widget (sama seperti halaman lain) -->
+  <div class="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+    <div id="forum-panel"
+         class="hidden w-80 max-w-[90vw] bg-white rounded-2xl shadow-soft border border-slate-200 overflow-hidden">
+      <div class="px-3 py-2 border-b border-slate-200 flex items-center justify-between">
+        <div>
+          <p class="text-[11px] font-semibold text-slate-800">Forum Anonim</p>
+          <p class="text-[10px] text-slate-500">Sampaikan saran dengan santun.</p>
+        </div>
+        <button id="forum-panel-close"
+                class="w-6 h-6 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500 text-sm">
+          &times;
+        </button>
+      </div>
+      <div id="forum-list" class="max-h-64 overflow-y-auto px-3 py-2 space-y-2 text-[11px]"></div>
+      <form id="forum-form" class="border-t border-slate-200 px-3 py-2 space-y-1">
+        <textarea id="forum-input"
+                  rows="2"
+                  class="w-full text-[11px] border border-slate-300 rounded-lg px-2 py-1 outline-none focus:ring-2 focus:ring-primary-600"
+                  placeholder="Tulis saran/pendapat dengan sopan..."></textarea>
+        <div class="flex items-center justify-between gap-2">
+          <p id="forum-warning" class="text-[10px] text-red-500 hidden">
+            Teks mengandung kata yang tidak pantas.
+          </p>
+          <button type="submit"
+                  class="ml-auto inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-[11px] font-medium hover:bg-emerald-700">
+            Kirim
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <button id="forum-toggle"
+              class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-emerald-600 text-white shadow-lg flex items-center justify-center hover:bg-emerald-700 active:scale-95 transition"
+              aria-label="Buka forum">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M7 8h7M7 12h4m2 5l-2.5-2H9A4 4 0 015 11V9a4 4 0 014-4h6a4 4 0 014 4v2a4 4 0 01-4 4h-1.5L13 17z" />
+        </svg>
+      </button>
+
+      <button id="chatbot-toggle"
+              class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-primary-600 text-white shadow-lg flex items-center justify-center hover:bg-primary-700 active:scale-95 transition"
+              aria-label="Buka chatbot">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                d="M7 8h10M7 12h6m-1 8l-3-3H9A4 4 0 015 13V9a4 4 0 014-4h6a4 4 0 014 4v4a4 4 0 01-4 4h-1l-3 3z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Supabase JS -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <!-- App scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/forum.js"></script>
+  <script src="js/api-kalender.js"></script>
+  <script src="js/kalender-page.js"></script>
+</body>
+</html>
