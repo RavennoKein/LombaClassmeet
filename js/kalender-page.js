@@ -116,9 +116,8 @@ function renderKalenderGrid() {
 
   grid.innerHTML = "";
 
-  // total sel: minimal 5 minggu (35), maksimal 6 minggu (42)
-  const totalCells = Math.ceil((startWeekday + daysInMonth) / 7) * 7;
-
+  const numWeeks = Math.ceil((startWeekday + daysInMonth) / 7);
+  const totalCells = numWeeks * 7;
   grid.style.gridTemplateRows = `repeat(${numWeeks}, minmax(90px, 1fr))`;
   grid.style.gap = '8px';
 
