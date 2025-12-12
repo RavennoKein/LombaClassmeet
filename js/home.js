@@ -30,11 +30,16 @@ async function renderHomeBerita() {
 
     const imageDiv = document.createElement("div");
     imageDiv.className = "w-full h-40 bg-slate-200 overflow-hidden";
+    const imgSrc = getImageUrl(item.thumbnail_path) || "";
     imageDiv.innerHTML = `
-      <div class="flex items-center justify-center w-full h-full text-slate-500 text-sm">
-        [IMG ${item.id}]
-      </div>
-      `;
+      <img
+        src="${imgSrc}"
+        alt="${(item.judul || "Gambar").replace(/"/g, "&quot;")}"
+        class="w-full h-full object-cover"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://via.placeholder.com/800x450?text=No+Image';"
+      />
+    `;
     imageLink.appendChild(imageDiv);
 
     const contentDiv = document.createElement("div");
@@ -42,7 +47,8 @@ async function renderHomeBerita() {
 
     // Tag/Kategori (Contoh statis, bisa disesuaikan jika data Supabase ada)
     const tag = document.createElement("span");
-    tag.className = "text-xs font-bold text-primary-600 tracking-wider uppercase";
+    tag.className =
+      "text-xs font-bold text-primary-600 tracking-wider uppercase";
     tag.textContent = item.kategori || "#Umum";
 
     const title = document.createElement("h3");
@@ -57,13 +63,19 @@ async function renderHomeBerita() {
 
     const ringkasan = document.createElement("p");
     ringkasan.className = "text-sm text-slate-600 line-clamp-2";
-    ringkasan.textContent = item.ringkasan || "Klik untuk membaca selengkapnya...";
+    ringkasan.textContent =
+      item.ringkasan || "Klik untuk membaca selengkapnya...";
 
     const metaDiv = document.createElement("div");
-    metaDiv.className = "text-xs text-slate-500 border-t border-slate-100 pt-3 flex items-center justify-between";
+    metaDiv.className =
+      "text-xs text-slate-500 border-t border-slate-100 pt-3 flex items-center justify-between";
     metaDiv.innerHTML = `
-        <p><span class="font-semibold">Dipublikasi:</span> ${formatDateIndo(item.tanggal)}</p>
-        <p>Oleh <span class="font-semibold">${item.penulis || "Admin"}</span></p>
+        <p><span class="font-semibold">Dipublikasi:</span> ${formatDateIndo(
+          item.tanggal
+        )}</p>
+        <p>Oleh <span class="font-semibold">${
+          item.penulis || "Admin"
+        }</span></p>
     `;
 
     contentDiv.append(tag, title, ringkasan, metaDiv);
@@ -117,11 +129,14 @@ async function renderHomePrestasi() {
 
     const name = document.createElement("p");
     name.className = "text-sm font-bold text-primary-700 mt-0.5";
-    name.textContent = `${item.nama_siswa || 'Siswa/Tim'}`;
+    name.textContent = `${item.nama_siswa || "Siswa/Tim"}`;
 
     const description = document.createElement("p");
     description.className = "text-sm text-slate-600 mt-1";
-    description.textContent = item.juara || item.deskripsi_singkat || "Pencapaian luar biasa di tingkat " + item.tingkat;
+    description.textContent =
+      item.juara ||
+      item.deskripsi_singkat ||
+      "Pencapaian luar biasa di tingkat " + item.tingkat;
 
     const chips = document.createElement("div");
     chips.className = "flex flex-wrap gap-2 pt-3 text-xs";

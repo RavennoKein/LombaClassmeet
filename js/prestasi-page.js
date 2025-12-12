@@ -1,27 +1,20 @@
 // js/prestasi-page.js
-// Logika halaman daftar prestasi
+// Logika halaman daftar prestasi + search
 
-async function renderPrestasiPage() {
-  const listContainer = document.getElementById("prestasi-list-container");
-  const totalEl = document.getElementById("prestasi-total");
-  if (!listContainer || !totalEl) return;
+function normalizeText(str) {
+  return (str || "").toString().toLowerCase().trim();
+}
 
-  listContainer.innerHTML =
-    '<p class="col-span-2 text-xs text-slate-500">Memuat prestasi...</p>';
+function renderPrestasiList(listContainer, items) {
+  listContainer.innerHTML = "";
 
-  const { list, count } = await fetchPrestasiList(50);
-
-  totalEl.textContent = count;
-
-  if (!list.length) {
+  if (!items.length) {
     listContainer.innerHTML =
-      '<p class="col-span-2 text-xs text-slate-500">Belum ada data prestasi.</p>';
+      '<p class="col-span-2 text-xs text-slate-500">Tidak ada prestasi yang cocok.</p>';
     return;
   }
 
-  listContainer.innerHTML = "";
-
-  list.forEach((item) => {
+  items.forEach((item) => {
     const card = document.createElement("article");
     card.className =
       "bg-white rounded-xl border border-slate-200 p-4 flex gap-3 items-start";
@@ -63,7 +56,7 @@ async function renderPrestasiPage() {
 
     const name = document.createElement("p");
     name.className = "font-semibold text-slate-900 text-xs md:text-sm";
-    name.textContent = item.nama_siswa;
+    name.textContent = item.nama_siswa || "-";
 
     const meta1 = document.createElement("p");
     meta1.className = "text-[11px] text-slate-500";
@@ -71,7 +64,7 @@ async function renderPrestasiPage() {
 
     const meta2 = document.createElement("p");
     meta2.className = "text-[11px] text-slate-700";
-    meta2.textContent = `${item.lomba} – ${item.juara || "-"}`;
+    meta2.textContent = `${item.lomba || "-"} – ${item.juara || "-"}`;
 
     const date = document.createElement("p");
     date.className = "text-[10px] text-slate-500";
@@ -89,6 +82,92 @@ async function renderPrestasiPage() {
     card.append(mediaWrapper, body);
     listContainer.appendChild(card);
   });
+}
+
+async function renderPrestasiPage() {
+  const listContainer = document.getElementById("prestasi-list-container");
+  const totalEl = document.getElementById("prestasi-total");
+  const totalInfoEl = document.getElementById("prestasi-total-info");
+
+  const searchInput = document.getElementById("prestasi-search");
+  const searchClear = document.getElementById("prestasi-search-clear");
+  const searchMeta = document.getElementById("prestasi-search-meta");
+
+  if (!listContainer || !totalEl) return;
+
+  listContainer.innerHTML =
+    '<p class="col-span-2 text-xs text-slate-500">Memuat prestasi...</p>';
+
+  const { list, count } = await fetchPrestasiList(50);
+  const all = list || [];
+  const total = count ?? all.length;
+
+  // helper apply filter + render
+  const apply = () => {
+    const q = normalizeText(searchInput ? searchInput.value : "");
+
+    if (searchClear) searchClear.classList.toggle("hidden", !q);
+
+    const filtered = !q
+      ? all
+      : all.filter((item) => {
+          const hay = [
+            item.nama_siswa,
+            item.kelas,
+            item.tingkat,
+            item.lomba,
+            item.juara,
+            item.deskripsi,
+          ]
+            .map(normalizeText)
+            .join(" ");
+          return hay.includes(q);
+        });
+
+    // total display: hasil / total
+    totalEl.textContent = filtered.length;
+
+    if (totalInfoEl) {
+      totalInfoEl.textContent = q ? ` / ${total}` : "";
+    }
+
+    if (searchMeta) {
+      searchMeta.textContent = q
+        ? `Menampilkan ${filtered.length} hasil dari ${total} prestasi.`
+        : "";
+    }
+
+    renderPrestasiList(listContainer, filtered);
+  };
+
+  // initial
+  if (!all.length) {
+    totalEl.textContent = 0;
+    if (totalInfoEl) totalInfoEl.textContent = "";
+    listContainer.innerHTML =
+      '<p class="col-span-2 text-xs text-slate-500">Belum ada data prestasi.</p>';
+    return;
+  }
+
+  apply();
+
+  // bind search
+  if (searchInput && !searchInput.dataset.bound) {
+    searchInput.addEventListener("input", apply);
+    searchInput.dataset.bound = "1";
+  }
+
+  if (searchClear && searchInput && !searchClear.dataset.bound) {
+    searchClear.addEventListener("click", () => {
+      searchInput.value = "";
+      searchInput.focus();
+      if (searchMeta) searchMeta.textContent = "";
+      if (totalInfoEl) totalInfoEl.textContent = "";
+      searchClear.classList.add("hidden");
+      apply();
+    });
+    searchClear.dataset.bound = "1";
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

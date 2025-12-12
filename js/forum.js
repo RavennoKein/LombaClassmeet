@@ -1,12 +1,7 @@
 // js/forum.js
 // Forum anonim global sebagai widget mengambang di semua halaman
 
-const FORUM_BANNED_WORDS = [
-  "bodoh",
-  "goblok",
-  "anjing",
-  "bangsat"
-];
+const FORUM_BANNED_WORDS = ["bodoh", "goblok", "anjing", "bangsat"];
 
 function forumContainsBannedWord(text) {
   const lower = text.toLowerCase();
@@ -18,7 +13,7 @@ async function fetchForumPosts(limit = 20) {
     .from("forum_posts")
     .select("*")
     .eq("is_flagged", false)
-    .order("created_at", { ascending: false })
+    .order("created_at", { ascending: true })
     .limit(limit);
 
   if (error) {
@@ -32,8 +27,7 @@ async function renderForumWidget() {
   const list = document.getElementById("forum-list");
   if (!list) return;
 
-  list.innerHTML =
-    '<p class="text-[11px] text-slate-500">Memuat forum...</p>';
+  list.innerHTML = '<p class="text-[11px] text-slate-500">Memuat forum...</p>';
 
   const posts = await fetchForumPosts();
 
@@ -62,7 +56,7 @@ async function renderForumWidget() {
     meta.className = "mt-1 text-[10px] text-slate-500";
     const waktu = new Date(post.created_at).toLocaleString("id-ID", {
       dateStyle: "short",
-      timeStyle: "short"
+      timeStyle: "short",
     });
     meta.textContent = `Anonim • ${waktu}`;
 

@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SMK Negeri 2 Mojokerto - Beranda</title>
+  <link rel="icon" type="image/x-icon" href="/assets/logo.webp" />
   <meta name="description"
     content="Website sekolah dengan informasi akademik, berita, prestasi, dokumentasi kegiatan, dan forum anonim warga sekolah." />
 
@@ -101,10 +102,7 @@
     <div class="glass border-b border-white/20">
       <div class="container-page px-4 flex items-center justify-between py-3">
         <div class="flex items-center gap-3">
-          <div
-            class="w-10 h-10 rounded-xl bg-primary-600 text-white flex items-center justify-center text-sm font-extrabold shadow-lg">
-            SMK
-          </div>
+          <img src="/assets/logo.webp" alt="Logo" class="w-10 h-10 rounded-xl shadow-lg object-cover" />
           <div>
             <p class="text-base font-bold leading-tight">SMK Negeri 2 Mojokerto</p>
             <p class="text-[12px] text-slate-500 leading-tight">Portal Informasi Sekolah</p>
@@ -354,25 +352,43 @@
           </div>
         </div>
 
-        <div class="relative rounded-4xl overflow-hidden shadow-soft border border-slate-200">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.076987178877!2d112.45781611477673!3d-7.568448994541334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7874983050b1d3%3A0x6b801a2f64606132!2sSMK%20Negeri%202%20Mojokerto!5e0!3m2!1sid!2sid!4v1638288000000!5m2!1sid!2sid"
-            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" class="rounded-4xl"
-            aria-label="Peta lokasi SMK Negeri 2 Mojokerto">
-          </iframe>
-          <div class="absolute bottom-4 left-4">
-            <a href="https://maps.app.goo.gl/ContohMapsLink" target="_blank"
-              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 transition">
+        <div class="relative rounded-4xl overflow-hidden shadow-soft border border-slate-200 bg-white">
+          <!-- Map 16:9 -->
+          <div class="relative aspect-[16/9] bg-slate-100">
+            <iframe title="Peta Lokasi SMK Negeri 2 Mojokerto"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.8466962905754!2d112.42188529695389!3d-7.464618024699994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78120b57f1e203%3A0x65ef2d4ecdeb1643!2sSMK%20Negeri%202%20Kota%20Mojokerto!5e1!3m2!1sid!2sid!4v1759473143039!5m2!1sid!2sid"
+              class="absolute inset-0 w-full h-full" style="border:0;" loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade" aria-label="Peta lokasi SMK Negeri 2 Mojokerto">
+            </iframe>
+          </div>
+
+          <!-- Info + CTA -->
+          <div class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div class="min-w-0">
+              <p class="text-[18px] sm:text-[20px] font-extrabold text-slate-900 leading-tight">
+                SMK Negeri 2 Mojokerto
+              </p>
+              <p class="mt-1 text-[14.5px] sm:text-[15.5px] text-slate-700 leading-7">
+                Jl. Raya Pulorejo, Mergelo, Pulorejo — Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325
+              </p>
+            </div>
+
+            <a href="https://www.google.com/maps/dir/?api=1&destination=-7.464472,112.423297" target="_blank"
+              rel="noopener"
+              class="shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 active:scale-[0.98] transition">
+
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
-              Buka di Google Maps
+
+              Petunjuk Arah
             </a>
+
           </div>
         </div>
+
       </div>
     </section>
   </main>

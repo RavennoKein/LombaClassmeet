@@ -29,12 +29,23 @@ async function fetchKalenderByTahun(tahun) {
     .select("*")
     .order("tanggal_mulai", { ascending: true });
 
-  const { data, error } = tahun
-    ? await query.eq("tahun", tahun)
-    : await query;
+  const { data, error } = tahun ? await query.eq("tahun", tahun) : await query;
 
   if (error) {
     console.error("Kalender error:", error);
+    return [];
+  }
+  return data || [];
+}
+
+async function fetchKalenderAll() {
+  const { data, error } = await supabaseClient
+    .from("kalender_akademik")
+    .select("*")
+    .order("tanggal_mulai", { ascending: false });
+
+  if (error) {
+    console.error("Kalender all error:", error);
     return [];
   }
   return data || [];
