@@ -1,6 +1,3 @@
-// js/kalender-page.js
-// Logika halaman kalender akademik interaktif (grid bulanan + daftar acara)
-
 let KALENDER_DATA_CACHE = {
   tahun: null,
   events: [],
@@ -9,9 +6,36 @@ let KALENDER_DATA_CACHE = {
 };
 
 const NAMA_BULAN_ID = [
-  "Januari", "Februari", "Maret", "April", "Mei", "Juni",
-  "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+  "Januari",
+  "Februari",
+  "Maret",
+  "April",
+  "Mei",
+  "Juni",
+  "Juli",
+  "Agustus",
+  "September",
+  "Oktober",
+  "November",
+  "Desember",
 ];
+
+function parseDateOnly(dateStr) {
+  if (!dateStr) return null;
+  const parts = dateStr.split("-");
+  if (parts.length !== 3) return new Date(dateStr);
+  const y = parseInt(parts[0], 10);
+  const m = parseInt(parts[1], 10);
+  const d = parseInt(parts[2], 10);
+  return new Date(y, m - 1, d);
+}
+
+function dateKey(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
 
 function getMonthStart(year, month) {
   // month: 0-11
@@ -22,24 +46,30 @@ function getDaysInMonth(year, month) {
   return new Date(year, month + 1, 0).getDate();
 }
 
+/**
+ * Filter event yang intersect dengan bulan tertentu
+ */
 function filterEventsForMonth(events, year, month) {
   const startMonth = new Date(year, month, 1);
   const endMonth = new Date(year, month + 1, 0);
   return events.filter((ev) => {
-    const start = new Date(ev.tanggal_mulai);
-    const end = ev.tanggal_selesai ? new Date(ev.tanggal_selesai) : start;
+    const start = parseDateOnly(ev.tanggal_mulai);
+    const end = ev.tanggal_selesai ? parseDateOnly(ev.tanggal_selesai) : start;
     return end >= startMonth && start <= endMonth;
   });
 }
 
+/**
+ * Build map: key tanggal (YYYY-MM-DD) -> array events
+ */
 function buildEventMap(events) {
   const map = {};
   events.forEach((ev) => {
-    const start = new Date(ev.tanggal_mulai);
-    const end = ev.tanggal_selesai ? new Date(ev.tanggal_selesai) : start;
+    const start = parseDateOnly(ev.tanggal_mulai);
+    const end = ev.tanggal_selesai ? parseDateOnly(ev.tanggal_selesai) : start;
     const cur = new Date(start);
     while (cur <= end) {
-      const key = cur.toISOString().slice(0, 10);
+      const key = dateKey(cur);
       if (!map[key]) map[key] = [];
       map[key].push(ev);
       cur.setDate(cur.getDate() + 1);
@@ -68,10 +98,11 @@ function renderKalenderGrid() {
 
   const firstDay = getMonthStart(year, month);
   const daysInMonth = getDaysInMonth(year, month);
-  const startWeekday = (firstDay.getDay() + 7) % 7;
+  const startWeekday = (firstDay.getDay() + 7) % 7; // 0=Sunday
 
   grid.innerHTML = "";
 
+  // total sel: minimal 5 minggu (35), maksimal 6 minggu (42)
   const totalCells = Math.ceil((startWeekday + daysInMonth) / 7) * 7;
 
   for (let cellIndex = 0; cellIndex < totalCells; cellIndex++) {
@@ -86,7 +117,7 @@ function renderKalenderGrid() {
       continue;
     }
 
-    const dateObj = new Date(year, month, dayNumber);
+    const dateObj = new Date(year, month, dayNumber + 1);
     const key = dateObj.toISOString().slice(0, 10);
     const dayHeader = document.createElement("div");
     dayHeader.className =
@@ -109,9 +140,11 @@ function renderKalenderGrid() {
         "w-full text-left rounded-full bg-emerald-500 hover:bg-emerald-600 text-white px-2 py-[2px] text-[9px] md:text-[10px] truncate shadow-sm";
       pill.textContent = ev.nama || "Kegiatan";
 
-      // tooltip  pakai title
+      // tooltip sederhana: pakai title
       const start = formatDateIndo(ev.tanggal_mulai);
-      const end = ev.tanggal_selesai ? formatDateIndo(ev.tanggal_selesai) : null;
+      const end = ev.tanggal_selesai
+        ? formatDateIndo(ev.tanggal_selesai)
+        : null;
       const range = end ? `${start} – ${end}` : start;
       pill.title = `${ev.nama}\n${range}\n${ev.kategori || ""}`.trim();
 
@@ -162,8 +195,7 @@ function renderEventList() {
     card.id = `event-${ev.id}`;
 
     const badge = document.createElement("div");
-    badge.className =
-      "mt-0.5 w-1 rounded-full bg-emerald-500 flex-shrink-0";
+    badge.className = "mt-0.5 w-1 rounded-full bg-emerald-500 flex-shrink-0";
     card.appendChild(badge);
 
     const body = document.createElement("div");
@@ -243,8 +275,9 @@ async function renderKalenderPage() {
     const list = document.getElementById("kalender-event-list");
     const countEl = document.getElementById("kalender-count");
     if (grid) grid.innerHTML = "";
-    if (list) list.innerHTML =
-      '<p class="text-xs text-slate-500">Belum ada data kalender.</p>';
+    if (list)
+      list.innerHTML =
+        '<p class="text-xs text-slate-500">Belum ada data kalender.</p>';
     if (countEl) countEl.textContent = "";
     return;
   }

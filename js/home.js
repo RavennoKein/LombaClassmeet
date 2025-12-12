@@ -1,3 +1,6 @@
+// js/home.js
+// Logika khusus beranda: ringkasan & beberapa data singkat
+
 async function renderHomeBerita() {
   const container = document.getElementById("home-berita-container");
   const statBeritaEl = document.getElementById("stat-berita-count");
@@ -103,6 +106,7 @@ async function renderHomePrestasi() {
 }
 
 async function renderHomeStatsTambahan() {
+  // Pengumuman & kalender bisa dihitung dari tabel
   const statPengEl = document.getElementById("stat-pengumuman-count");
   const statKalenderEl = document.getElementById("stat-kalender-tahun");
 
@@ -116,6 +120,8 @@ async function renderHomeStatsTambahan() {
       statPengEl.textContent = count ?? "-";
     }
   }
+
+  // Tahun ajaran (ambil distinct tahun terbaru dari kalender_akademik)
   if (statKalenderEl) {
     const { data, error } = await supabaseClient
       .from("kalender_akademik")

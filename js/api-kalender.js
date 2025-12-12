@@ -1,3 +1,6 @@
+// js/api-kalender.js
+// Mengambil data kalender akademik dari Supabase
+
 async function fetchKalenderTahunList() {
   const { data, error } = await supabaseClient
     .from("kalender_akademik")

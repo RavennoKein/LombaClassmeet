@@ -1,3 +1,6 @@
+// js/api-prestasi.js
+// Data prestasi siswa
+
 async function fetchPrestasiList(limit = 50) {
   const { data, error, count } = await supabaseClient
     .from("prestasi")

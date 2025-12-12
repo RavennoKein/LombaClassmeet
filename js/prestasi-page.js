@@ -1,3 +1,5 @@
+// js/prestasi-page.js
+// Logika halaman daftar prestasi
 
 async function renderPrestasiPage() {
   const listContainer = document.getElementById("prestasi-list-container");
@@ -18,22 +20,43 @@ async function renderPrestasiPage() {
   }
 
   listContainer.innerHTML = "";
+
   list.forEach((item) => {
     const card = document.createElement("article");
     card.className =
       "bg-white rounded-xl border border-slate-200 p-4 flex gap-3 items-start";
 
-    const avatar = document.createElement("div");
-    avatar.className =
-      "w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-200 flex items-center justify-center text-[11px] font-semibold text-slate-700 flex-shrink-0";
-    const initials =
-      (item.nama_siswa || "")
-        .split(" ")
-        .map((w) => w[0])
-        .join("")
-        .substring(0, 2)
-        .toUpperCase() || "?";
-    avatar.textContent = initials;
+    // kiri: foto jika ada, fallback ke avatar inisial
+    let mediaWrapper;
+
+    if (item.foto_path) {
+      const imgUrl = getImageUrl(item.foto_path);
+      mediaWrapper = document.createElement("div");
+      mediaWrapper.className =
+        "w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden bg-slate-200 flex-shrink-0";
+
+      const img = document.createElement("img");
+      img.src = imgUrl;
+      img.alt = item.nama_siswa || "Foto prestasi";
+      img.loading = "lazy";
+      img.className = "w-full h-full object-cover";
+
+      mediaWrapper.appendChild(img);
+    } else {
+      mediaWrapper = document.createElement("div");
+      mediaWrapper.className =
+        "w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-200 flex items-center justify-center text-[11px] font-semibold text-slate-700 flex-shrink-0";
+
+      const initials =
+        (item.nama_siswa || "")
+          .split(" ")
+          .map((w) => w[0])
+          .join("")
+          .substring(0, 2)
+          .toUpperCase() || "?";
+
+      mediaWrapper.textContent = initials;
+    }
 
     const body = document.createElement("div");
     body.className = "space-y-1";
@@ -54,8 +77,16 @@ async function renderPrestasiPage() {
     date.className = "text-[10px] text-slate-500";
     date.textContent = formatDateIndo(item.tanggal);
 
-    body.append(name, meta1, meta2, date);
-    card.append(avatar, body);
+    if (item.deskripsi) {
+      const desc = document.createElement("p");
+      desc.className = "text-[11px] text-slate-700";
+      desc.textContent = item.deskripsi;
+      body.append(name, meta1, meta2, date, desc);
+    } else {
+      body.append(name, meta1, meta2, date);
+    }
+
+    card.append(mediaWrapper, body);
     listContainer.appendChild(card);
   });
 }

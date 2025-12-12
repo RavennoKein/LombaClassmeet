@@ -1,3 +1,6 @@
+// js/api-berita.js
+// Berita: list, populer, detail, dan increment views
+
 async function fetchBeritaList(limit = 50) {
   const { data, error, count } = await supabaseClient
     .from("berita")
@@ -20,10 +23,10 @@ async function fetchBeritaById(id) {
     .maybeSingle();
 
   if (error) {
-    console.error("Detail berita error:", error);
+    console.error("Berita detail error:", error);
     return null;
   }
-  return data;
+  return data || null;
 }
 
 async function fetchBeritaPopuler(limit = 5) {
@@ -31,6 +34,7 @@ async function fetchBeritaPopuler(limit = 5) {
     .from("berita")
     .select("*")
     .order("views", { ascending: false })
+    .order("tanggal", { ascending: false })
     .limit(limit);
 
   if (error) {

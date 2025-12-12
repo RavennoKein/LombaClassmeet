@@ -1,3 +1,6 @@
+// js/forum.js
+// Forum anonim global sebagai widget mengambang di semua halaman
+
 const FORUM_BANNED_WORDS = [
   "bodoh",
   "goblok",

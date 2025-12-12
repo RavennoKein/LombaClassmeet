@@ -33,6 +33,7 @@ async function renderBeritaPage() {
   } else {
     const [featured, ...others] = list;
 
+    // ----- Berita utama -----
     featuredContainer.innerHTML = "";
     const wrapper = document.createElement("a");
     wrapper.href = `berita-detail.html?id=${featured.id}`;
@@ -72,6 +73,7 @@ async function renderBeritaPage() {
     wrapper.append(imageWrapper, overlay, content);
     featuredContainer.appendChild(wrapper);
 
+    // ----- Daftar berita terbaru (lainnya) -----
     listContainer.innerHTML = "";
     if (!others.length) {
       listContainer.innerHTML =
@@ -120,6 +122,7 @@ async function renderBeritaPage() {
     }
   }
 
+  // ----- Berita Terpopuler di sidebar -----
   popularContainer.innerHTML =
     '<p class="text-[11px] text-slate-500">Memuat data...</p>';
 

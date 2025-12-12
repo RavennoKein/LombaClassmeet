@@ -1,3 +1,5 @@
+// js/layout.js
+// Navigasi, smooth scroll internal di halaman, footer, floating buttons
 
 function initNavbar(activeRoute) {
   const navToggle = document.getElementById("nav-toggle");
