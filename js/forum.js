@@ -1,11 +1,137 @@
 // js/forum.js
 // Forum anonim global sebagai widget mengambang di semua halaman
 
-const FORUM_BANNED_WORDS = ["bodoh", "goblok", "anjing", "bangsat"];
+/**
+ * 1) Normalisasi teks untuk deteksi kata kasar:
+ *    - lower-case
+ *    - ubah leetspeak umum (4->a, 1->i, 0->o, 3->e, 5->s, 7->t, @->a, $->s)
+ *    - hapus diakritik (kalau ada)
+ *    - simpan versi "compact" tanpa spasi/simbol untuk mendeteksi "b a n g s a t"
+ */
+function normalizeForFilter(input) {
+  let s = (input || "").toString().toLowerCase();
 
+  // leetspeak & simbol umum
+  const map = {
+    4: "a",
+    "@": "a",
+    1: "i",
+    "!": "i",
+    "|": "i",
+    0: "o",
+    3: "e",
+    5: "s",
+    $: "s",
+    7: "t",
+  };
+
+  s = s.replace(/[4@1!\|03\$57]/g, (ch) => map[ch] || ch);
+
+  // hilangkan diakritik (aman untuk id-ID)
+  try {
+    s = s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+  } catch (_) {}
+
+  // versi asli (spasi tetap) + compact (hapus non-huruf/angka)
+  const compact = s.replace(/[^a-z0-9]+/g, "");
+  return { raw: s, compact };
+}
+
+/**
+ * 2) Buat regex yang tahan "huruf dipanjangin":
+ *    contoh: goblok -> goooobloook
+ */
+function stretchy(word) {
+  // goblok -> g+o+b+l+o+k+
+  return word
+    .split("")
+    .map((ch) => ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "+")
+    .join("");
+}
+
+/**
+ * 3) Daftar kata/akar kata kasar & tidak pantas (Indonesia).
+ *    Ini sengaja pakai "akar" agar lebih tahan variasi, tapi tetap hati-hati.
+ *
+ *    Kamu boleh tambah lagi sesuai kebutuhan sekolah.
+ */
+const FORUM_BANNED_BASE = [
+  // hinaan umum
+  "bodoh",
+  "bdh",
+  "Bdh",
+  "BDh",
+  "bDH",
+  "bdH",
+  "bodoh",
+  "goblok",
+  "goooblk",
+  "goblooook",
+  "g0bl0k",
+  "tolol",
+  "idiot",
+  "dongo",
+  "bego",
+  "bangsat",
+  "anjing",
+  "bajingan",
+  "sialan",
+  "brengsek",
+  "kampret",
+  "keparat",
+  "sialan",
+  "kurangajar",
+  "kurangajar", // (double aman)
+  "bacot",
+  "bawelbanget", // opsional
+
+  // kata umpatan yang sering muncul
+  "kontol",
+  "memek",
+  "ngentot",
+  "anjrit",
+  "jancuk",
+  "asu",
+  "tai",
+  "tolol",
+  "gila", // catatan: bisa false positive, kalau keberatan hapus
+];
+
+/**
+ * 4) Kompilasi regex:
+ *    - deteksi di raw (pakai boundary sederhana)
+ *    - deteksi di compact (untuk yang diselingi spasi/titik/simbol)
+ *
+ *    NB: kita tidak pakai word boundary ketat karena bahasa Indo sering gabung kata,
+ *    tapi tetap kasih pembatas "non-letter" di raw agar lebih aman.
+ */
+const FORUM_BANNED_REGEX = (() => {
+  const parts = FORUM_BANNED_BASE.map((w) => stretchy(w));
+  // raw: cari pola dengan pembatas non-huruf di kiri/kanan (atau awal/akhir)
+  const rawPattern = `(?:^|[^a-z0-9])(?:${parts.join("|")})(?:$|[^a-z0-9])`;
+  return new RegExp(rawPattern, "i");
+})();
+
+const FORUM_BANNED_COMPACT_REGEX = (() => {
+  const parts = FORUM_BANNED_BASE.map((w) => stretchy(w));
+  // compact: karena sudah hanya [a-z0-9], cukup cari substring
+  const compactPattern = `(?:${parts.join("|")})`;
+  return new RegExp(compactPattern, "i");
+})();
+
+/**
+ * 5) Fungsi utama deteksi kata kasar
+ */
 function forumContainsBannedWord(text) {
-  const lower = text.toLowerCase();
-  return FORUM_BANNED_WORDS.some((w) => lower.includes(w));
+  const { raw, compact } = normalizeForFilter(text);
+
+  // cek raw (lebih aman untuk boundary)
+  if (FORUM_BANNED_REGEX.test(` ${raw} `)) return true;
+
+  // cek compact (untuk "b a n g s a t" / "b@ngs@t" / dll)
+  if (FORUM_BANNED_COMPACT_REGEX.test(compact)) return true;
+
+  return false;
 }
 
 async function fetchForumPosts(limit = 20) {
@@ -32,9 +158,7 @@ async function renderForumWidget() {
   const posts = await fetchForumPosts();
 
   const statForumEl = document.getElementById("stat-forum-count");
-  if (statForumEl) {
-    statForumEl.textContent = posts.length;
-  }
+  if (statForumEl) statForumEl.textContent = posts.length;
 
   if (!posts.length) {
     list.innerHTML =
@@ -85,10 +209,8 @@ function initForumWidget() {
   const warning = document.getElementById("forum-warning");
   const closeBtn = document.getElementById("forum-panel-close");
 
-  if (closeBtn) {
+  if (closeBtn)
     closeBtn.addEventListener("click", () => toggleForumPanel(false));
-  }
-
   if (!form || !input) return;
 
   form.addEventListener("submit", async (e) => {
