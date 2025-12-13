@@ -17,24 +17,23 @@
         extend: {
           colors: {
             primary: {
-              50: '#f0f7ff',
-              100: '#dbefff',
-              300: '#7fb9ff',
-              500: '#2b8cff',
-              600: '#1e6dd8',
-              700: '#1557b3'
+              50: '#f0f4f7',
+              100: '#e1eaf0',
+              300: '#8ca6bd',
+              500: '#0b2e66',
+              600: '#09295a',
+              700: '#07214c'
             },
-            sky: {
-              100: '#e6f6ff',
-              300: '#a9ddff'
-            },
-            emerald: {
-              600: '#059669',
-              700: '#047857',
+            accent: {
+              100: '#fbf4e2',
+              300: '#f6dc9c',
+              500: '#f1c848',
+              600: '#e0b53c',
+              700: '#c29c2d'
             },
             dark: {
-              800: '#1e293b',
-              900: '#0f172a'
+              800: '#1f2937',
+              900: '#111827'
             }
           },
           borderRadius: {
@@ -77,38 +76,52 @@
     }
 
     .hero-gradient {
-      background: linear-gradient(145deg, #2b8cff 0%, #a9ddff 100%);
+      background: linear-gradient(145deg, #0b2e66 0%, #8ca6bd 100%);
     }
 
     .heading-tracked {
       letter-spacing: 0.05em;
     }
+
+    .prestasi-badge-gold {
+      background: linear-gradient(145deg, #FFD700 0%, #FFC400 100%);
+      color: #7c5900;
+    }
+
+    .prestasi-badge-silver {
+      background: linear-gradient(145deg, #C0C0C0 0%, #A0A0A0 100%);
+      color: #4a4a4a;
+    }
+
+    .prestasi-badge-bronze {
+      background: linear-gradient(145deg, #CD7F32 0%, #B87333 100%);
+      color: #5a2d0c;
+    }
   </style>
 </head>
 
-<body class="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
-  <!-- TOP BAR (SAMA) -->
+<body class="min-h-screen flex flex-col bg-white text-dark-900 antialiased">
   <div class="bg-dark-900 text-slate-100 text-xs">
     <div class="container-page px-4 flex flex-col sm:flex-row gap-2 sm:gap-4 py-2 sm:items-center sm:justify-between">
-      <p class="font-semibold tracking-wider uppercase text-primary-300">SMK NEGERI 2 MOJOKERTO</p>
+      <p class="font-semibold tracking-wider uppercase text-accent-300">SMK NEGERI 2 MOJOKERTO</p>
       <div class="flex flex-wrap gap-4 text-[13px] text-slate-400">
-        <span class="flex items-center gap-2">📍 <span class="hover:text-white transition">Jl. Contoh Alamat No. 123,
-            Kota
-            Mojokerto</span></span>
-        <span class="flex items-center gap-2">☎ <span class="hover:text-white transition">(000) 0000 000</span></span>
+        <span class="flex items-center gap-2">📍 <span class="hover:text-white transition">Jl. Raya Pulorejo,
+            Prajuritkulon Mojokerto 61325 Jawa Timur, Indonesia</span></span>
+        <span class="flex items-center gap-2">☎ <span class="hover:text-white transition">0321 387356</span></span>
       </div>
     </div>
   </div>
 
-  <!-- NAVBAR (SAMA) -->
   <header class="sticky top-0 z-40">
     <div class="glass border-b border-white/20">
       <div class="container-page px-4 flex items-center justify-between py-3">
         <div class="flex items-center gap-3">
-          <img src="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/public/logo.webp"
-            alt="Logo" class="w-10 h-10 rounded-xl shadow-lg object-cover" />
           <div>
-            <p class="text-base font-bold leading-tight">SMK Negeri 2 Mojokerto</p>
+            <img src="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/public/logo.webp" alt="Logo"
+              class="w-10 h-10 rounded-xl shadow-lg object-cover" />
+          </div>
+          <div>
+            <p class="text-base font-bold leading-tight text-dark-900">SMK Negeri 2 Mojokerto</p>
             <p class="text-[12px] text-slate-500 leading-tight">Portal Informasi Sekolah</p>
           </div>
         </div>
@@ -160,60 +173,163 @@
   </header>
 
   <main class="flex-1">
-    <!-- HEADER HALAMAN (DISERAGAMKAN STYLE) -->
-    <section class="py-12 md:py-18 bg-primary-50 border-b border-slate-100">
-      <div class="container-page px-4 space-y-3">
-        <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">PRESTASI SISWA</p>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight text-slate-900">
-          Daftar prestasi siswa SMK Negeri 2 Mojokerto.
-        </h1>
-        <p class="text-base md:text-lg text-slate-700 max-w-3xl leading-7">
-          Halaman ini menampilkan prestasi siswa pada berbagai lomba dan kegiatan, sebagai bentuk apresiasi terhadap
-          usaha mereka.
-        </p>
+    <section class="relative overflow-hidden pt-12 md:pt-18 bg-primary-50">
+      <div class="absolute inset-0 hero-gradient"></div>
+      <div class="container-page px-4 pb-16 relative z-10">
+        <div class="max-w-3xl">
+          <p
+            class="inline-flex items-center gap-2 text-sm font-semibold bg-white/20 px-4 py-1.5 rounded-full border border-white/20 glass text-white/95 mb-4">
+            Kebanggaan Sekolah
+          </p>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg tracking-tight text-white">
+            Prestasi <span class="text-accent-100/90">Siswa</span> Unggulan
+          </h1>
+          <p class="text-lg md:text-xl text-white/90 mt-4 font-light max-w-2xl">
+            Apresiasi atas pencapaian siswa dalam berbagai lomba dan kejuaraan tingkat lokal, regional, dan nasional.
+            Setiap prestasi adalah bukti dedikasi dan kerja keras.
+          </p>
+        </div>
+      </div>
+      <div class="pointer-events-none">
+        <svg viewBox="0 0 1440 80" class="w-full" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#FFFFFF"
+            d="M0,32L80,37.3C160,43,320,53,480,58.7C640,64,800,64,960,53.3C1120,43,1280,21,1360,10.7L1440,0L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z">
+          </path>
+        </svg>
       </div>
     </section>
 
-    <!-- KONTEN PRESTASI -->
     <section class="py-16 md:py-24 bg-white">
-      <div class="container-page px-4 space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <p class="text-sm text-slate-600">
-            Total prestasi tercatat:
-            <span id="prestasi-total" class="font-bold text-primary-700">-</span>
-            <span id="prestasi-total-info" class="text-slate-500"></span>
-          </p>
+      <div class="container-page px-4 space-y-10">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">PRESTASI SISWA
+            </p>
+            <h2 class="text-3xl font-extrabold mt-1 leading-tight text-dark-900">Koleksi Prestasi Siswa</h2>
+          </div>
 
-          <!-- SEARCH PRESTASI -->
-          <div class="w-full md:w-[520px]">
-            <label class="sr-only" for="prestasi-search">Cari prestasi</label>
-            <div class="relative">
-              <input id="prestasi-search" type="search" autocomplete="off"
-                placeholder="Cari nama siswa, kelas, lomba, juara, tingkat..."
-                class="w-full rounded-2xl border border-slate-200 bg-white px-10 py-3 text-sm text-slate-800 shadow-sm outline-none focus:ring-2 focus:ring-primary-600 focus:border-primary-300 transition" />
-
-              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
-                </svg>
-              </span>
-
-              <button id="prestasi-search-clear" type="button"
-                class="hidden absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl hover:bg-slate-100 text-slate-500 transition"
-                aria-label="Hapus pencarian">
-                <span class="text-xl leading-none">&times;</span>
-              </button>
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div class="text-center">
+              <p class="text-4xl font-extrabold text-accent-600" id="prestasi-total">-</p>
+              <p class="text-sm text-slate-600">Total Prestasi</p>
             </div>
-
-            <p id="prestasi-search-meta" class="mt-2 text-[11px] text-slate-500"></p>
+            <div class="h-12 w-px bg-slate-200 hidden sm:block"></div>
+            <div class="text-center">
+              <p class="text-4xl font-extrabold text-primary-600" id="prestasi-tahun-ini">-</p>
+              <p class="text-sm text-slate-600">Tahun Ini</p>
+            </div>
           </div>
         </div>
 
+        <!-- SEARCH PRESTASI -->
+        <div class="relative">
+          <input id="prestasi-search" type="search" autocomplete="off"
+            placeholder="Cari nama siswa, kelas, lomba, juara, tingkat..."
+            class="w-full rounded-2xl border border-slate-200 bg-white px-10 py-3 text-sm text-slate-800 shadow-sm outline-none focus:ring-2 focus:ring-primary-600 focus:border-primary-300 transition" />
 
-        <div id="prestasi-list-container" class="grid md:grid-cols-2 gap-6 text-sm">
-          <!-- Diisi JS -->
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
+            </svg>
+          </span>
+
+          <button id="prestasi-search-clear" type="button"
+            class="hidden absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl hover:bg-slate-100 text-slate-500 transition"
+            aria-label="Hapus pencarian">
+            <span class="text-xl leading-none">&times;</span>
+          </button>
+        </div>
+
+        <div class="flex flex-wrap gap-6 text-sm">
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 rounded prestasi-badge-gold"></div>
+            <span class="text-slate-700">Juara 1</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 rounded prestasi-badge-silver"></div>
+            <span class="text-slate-700">Juara 2</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 rounded prestasi-badge-bronze"></div>
+            <span class="text-slate-700">Juara 3</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-4 h-4 rounded bg-[#8ca6bd]"></div>
+            <span class="text-slate-700">Harapan / Penghargaan Lain</span>
+          </div>
+        </div>
+
+        <div id="prestasi-list-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rounded-3xl border border-slate-200 p-6 space-y-4 bg-white shadow-soft animate-pulse">
+            <div class="h-6 bg-slate-200 rounded"></div>
+            <div class="h-4 bg-slate-100 rounded"></div>
+            <div class="h-20 bg-slate-100 rounded"></div>
+            <div class="h-8 bg-slate-200 rounded-xl"></div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 p-6 space-y-4 bg-white shadow-soft animate-pulse">
+            <div class="h-6 bg-slate-200 rounded"></div>
+            <div class="h-4 bg-slate-100 rounded"></div>
+            <div class="h-20 bg-slate-100 rounded"></div>
+            <div class="h-8 bg-slate-200 rounded-xl"></div>
+          </div>
+          <div class="rounded-3xl border border-slate-200 p-6 space-y-4 bg-white shadow-soft animate-pulse">
+            <div class="h-6 bg-slate-200 rounded"></div>
+            <div class="h-4 bg-slate-100 rounded"></div>
+            <div class="h-20 bg-slate-100 rounded"></div>
+            <div class="h-8 bg-slate-200 rounded-xl"></div>
+          </div>
+        </div>
+
+        <div id="prestasi-empty" class="hidden text-center py-16 rounded-3xl border border-slate-200 bg-slate-50">
+          <div class="max-w-md mx-auto space-y-4">
+            <div class="w-16 h-16 mx-auto rounded-full bg-primary-100 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <p class="text-xl font-bold text-dark-900">Belum ada prestasi</p>
+            <p class="text-slate-600">Prestasi akan ditampilkan di sini ketika tersedia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-slate-50 border-t border-slate-100">
+      <div class="container-page px-4">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">STATISTIK</p>
+          <h2 class="text-3xl font-extrabold mt-1 leading-tight text-dark-900">Prestasi Berdasarkan Tahun</h2>
+          <p class="text-lg text-slate-700 mt-4">
+            Grafik perkembangan prestasi siswa SMK Negeri 2 Mojokerto dari tahun ke tahun.
+          </p>
+        </div>
+
+        <div class="rounded-3xl bg-white border border-slate-200 p-6 shadow-soft">
+          <div class="h-64 flex items-center justify-center">
+            <p class="text-slate-500 text-center">Grafik statistik akan ditampilkan di sini</p>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <div class="text-center p-4 rounded-xl bg-primary-50">
+              <p class="text-3xl font-extrabold text-primary-600" id="stat-nasional">-</p>
+              <p class="text-sm text-slate-700">Prestasi Nasional</p>
+            </div>
+            <div class="text-center p-4 rounded-xl bg-accent-50">
+              <p class="text-3xl font-extrabold text-accent-600" id="stat-regional">-</p>
+              <p class="text-sm text-slate-700">Prestasi Regional</p>
+            </div>
+            <div class="text-center p-4 rounded-xl bg-slate-100">
+              <p class="text-3xl font-extrabold text-slate-600" id="stat-kota">-</p>
+              <p class="text-sm text-slate-700">Prestasi Kota</p>
+            </div>
+            <div class="text-center p-4 rounded-xl bg-primary-50">
+              <p class="text-3xl font-extrabold text-primary-600" id="stat-tahun-berprestasi">-</p>
+              <p class="text-sm text-slate-700">Tahun Berprestasi</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -243,7 +359,8 @@
               </div>
               <div>
                 <p class="text-sm font-bold text-slate-800">Alamat Fisik</p>
-                <p class="text-base text-slate-600">Jl. Contoh Alamat No. 123, Kota Mojokerto</p>
+                <p class="text-base text-slate-600">Jl. Raya Pulorejo,
+                Prajuritkulon Mojokerto 61325 Jawa Timur, Indonesia</p>
               </div>
             </div>
 
@@ -258,7 +375,7 @@
               </div>
               <div>
                 <p class="text-sm font-bold text-slate-800">Telepon & Email</p>
-                <p class="text-base text-slate-600">(000) 0000 000</p>
+                <p class="text-base text-slate-600">0321 387356</p>
                 <p class="text-base text-slate-600">humas@smkn2mojokerto.sch.id</p>
               </div>
             </div>
@@ -301,7 +418,6 @@
     </section>
   </main>
 
-  <!-- FOOTER (SAMA) -->
   <footer class="bg-dark-900 text-slate-200 text-sm pt-16">
     <div class="container-page px-4 pb-10 grid gap-10 md:grid-cols-4">
       <div class="space-y-4 md:col-span-2">
@@ -315,23 +431,23 @@
       <div class="space-y-4">
         <p class="text-base font-bold text-white">Tautan Cepat</p>
         <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-slate-400">
-          <a href="index.html" class="hover:text-primary-300 transition">Beranda</a>
-          <a href="kalender.html" class="hover:text-primary-300 transition">Kalender Akademik</a>
-          <a href="berita.html" class="hover:text-primary-300 transition">Berita Sekolah</a>
-          <a href="prestasi.html" class="hover:text-primary-300 transition">Prestasi Siswa</a>
-          <a href="fasilitas.html" class="hover:text-primary-300 transition">Fasilitas</a>
-          <a href="#kontak" class="hover:text-primary-300 transition">Kontak</a>
+          <a href="index.html" class="hover:text-accent-300 transition">Beranda</a>
+          <a href="kalender.html" class="hover:text-accent-300 transition">Kalender Akademik</a>
+          <a href="berita.html" class="hover:text-accent-300 transition">Berita Sekolah</a>
+          <a href="prestasi.html" class="hover:text-accent-300 transition">Prestasi Siswa</a>
+          <a href="fasilitas.html" class="hover:text-accent-300 transition">Fasilitas</a>
+          <a href="#kontak" class="hover:text-accent-300 transition">Kontak</a>
         </div>
       </div>
 
       <div class="space-y-4">
         <p class="text-base font-bold text-white">Hubungi Kami</p>
         <p class="text-slate-400">
-          Jl. Contoh Alamat No. 123<br />
-          Kota Mojokerto, Jawa Timur
+          Jl. Raya Pulorejo, Prajuritkulon<br />
+          Kota Mojokerto 61325 Jawa Timur, Indonesia
         </p>
         <p class="text-slate-400">
-          Telp. (000) 0000 000<br />
+          Telp. 0321 387356<br />
           Email: humas@smkn2mojokerto.sch.id
         </p>
         <p class="text-xs text-slate-500">
@@ -352,7 +468,6 @@
     </div>
   </footer>
 
-  <!-- FLOATING WIDGET (SAMA) -->
   <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
     <div id="forum-panel"
       class="hidden w-88 max-w-[90vw] bg-white rounded-3xl shadow-soft border border-slate-200 overflow-hidden">
@@ -373,7 +488,7 @@
           <p id="forum-warning" class="text-[12px] text-red-500 hidden font-medium">Teks mengandung kata yang tidak
             pantas.</p>
           <button type="submit"
-            class="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition">
+            class="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-600 text-dark-900 text-sm font-semibold hover:bg-accent-700 transition">
             Kirim
           </button>
         </div>
@@ -382,7 +497,7 @@
 
     <div class="flex flex-col gap-3">
       <button id="forum-toggle"
-        class="w-14 h-14 rounded-full bg-emerald-600 text-white shadow-soft shadow-emerald-600/30 flex items-center justify-center hover:bg-emerald-700 active:scale-95 transition-all duration-150"
+        class="w-14 h-14 rounded-full bg-accent-600 text-dark-900 shadow-soft shadow-accent-600/30 flex items-center justify-center hover:bg-accent-700 active:scale-95 transition-all duration-150"
         aria-label="Buka forum">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
           stroke-width="2">
@@ -407,10 +522,8 @@
   <script src="js/config.js"></script>
   <script src="js/layout.js"></script>
   <script src="js/forum.js"></script>
-
   <script src="js/api-prestasi.js"></script>
   <script src="js/prestasi-page.js"></script>
-
   <script>
     document.getElementById('footer-year').textContent = new Date().getFullYear();
   </script>

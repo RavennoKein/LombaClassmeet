@@ -17,24 +17,23 @@
         extend: {
           colors: {
             primary: {
-              50: '#f0f7ff',
-              100: '#dbefff',
-              300: '#7fb9ff',
-              500: '#2b8cff',
-              600: '#1e6dd8',
-              700: '#1557b3'
+              50: '#f0f4f7',
+              100: '#e1eaf0',
+              300: '#8ca6bd',
+              500: '#0b2e66',
+              600: '#09295a',
+              700: '#07214c'
             },
-            sky: {
-              100: '#e6f6ff',
-              300: '#a9ddff'
-            },
-            emerald: {
-              600: '#059669',
-              700: '#047857',
+            accent: {
+              100: '#fbf4e2',
+              300: '#f6dc9c',
+              500: '#f1c848',
+              600: '#e0b53c',
+              700: '#c29c2d'
             },
             dark: {
-              800: '#1e293b',
-              900: '#0f172a'
+              800: '#1f2937',
+              900: '#111827'
             }
           },
           borderRadius: {
@@ -77,24 +76,54 @@
     }
 
     .hero-gradient {
-      background: linear-gradient(145deg, #2b8cff 0%, #a9ddff 100%);
+      background: linear-gradient(145deg, rgba(11, 46, 102, 0.85) 0%, rgba(140, 166, 189, 0.85) 100%);
     }
 
     .heading-tracked {
       letter-spacing: 0.05em;
     }
+
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .hero-slide {
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .hero-slide:not(.active) {
+      opacity: 0;
+      z-index: 0;
+    }
+
+    .hero-bg-overlay {
+      background: linear-gradient(135deg, rgba(11, 46, 102, 0.85) 0%, rgba(11, 46, 102, 0.3) 100%);
+    }
+
+    .card-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+    }
   </style>
 </head>
 
-<body class="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
+<body class="min-h-screen flex flex-col bg-white text-dark-900 antialiased">
   <div class="bg-dark-900 text-slate-100 text-xs">
     <div class="container-page px-4 flex flex-col sm:flex-row gap-2 sm:gap-4 py-2 sm:items-center sm:justify-between">
-      <p class="font-semibold tracking-wider uppercase text-primary-300">SMK NEGERI 2 MOJOKERTO</p>
+      <p class="font-semibold tracking-wider uppercase text-accent-300">SMK NEGERI 2 MOJOKERTO</p>
       <div class="flex flex-wrap gap-4 text-[13px] text-slate-400">
-        <span class="flex items-center gap-2">📍 <span class="hover:text-white transition">Jl. Contoh Alamat No. 123,
-            Kota
-            Mojokerto</span></span>
-        <span class="flex items-center gap-2">☎ <span class="hover:text-white transition">(000) 0000 000</span></span>
+        <span class="flex items-center gap-2">📍 <span class="hover:text-white transition">Jl. Raya Pulorejo,
+            Prajuritkulon Mojokerto 61325 Jawa Timur, Indonesia</span></span>
+        <span class="flex items-center gap-2">☎ <span class="hover:text-white transition">0321 387356</span></span>
       </div>
     </div>
   </div>
@@ -106,7 +135,7 @@
           <img src="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/public/logo.webp"
             alt="Logo" class="w-10 h-10 rounded-xl shadow-lg object-cover" />
           <div>
-            <p class="text-base font-bold leading-tight">SMK Negeri 2 Mojokerto</p>
+            <p class="text-base font-bold leading-tight text-dark-900">SMK Negeri 2 Mojokerto</p>
             <p class="text-[12px] text-slate-500 leading-tight">Portal Informasi Sekolah</p>
           </div>
         </div>
@@ -158,114 +187,294 @@
   </header>
 
   <main class="flex-1">
-    <section class="relative overflow-hidden pt-12 md:pt-18 bg-primary-50">
-      <div class="absolute inset-0 hero-gradient"></div>
-      <div class="container-page px-4 pb-16 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-10 items-center">
-          <div class="space-y-6 text-white lg:order-1">
-            <p
-              class="inline-flex items-center gap-2 text-sm font-semibold bg-white/20 px-4 py-1.5 rounded-full border border-white/20 glass text-white/95">
-              Portal Informasi Resmi Sekolah
-            </p>
+    <!-- Hero Section Carousel -->
+    <section class="relative overflow-hidden h-[600px] md:h-[700px]">
+      <!-- Hero Slides -->
+      <div class="absolute inset-0">
+        <!-- Slide 1 -->
+        <div class="hero-slide active absolute inset-0">
+          <div class="absolute inset-0 hero-bg-overlay"></div>
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop"
+            alt="Sekolah SMK Negeri 2 Mojokerto" class="w-full h-full object-cover" />
+        </div>
 
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg tracking-tight">
-              Membangun Generasi <span class="text-sky-100/90">Kompeten</span> &amp; <span
-                class="text-sky-100/90">Berkarakter</span>
-            </h1>
+        <!-- Slide 2 -->
+        <div class="hero-slide absolute inset-0">
+          <div class="absolute inset-0 hero-bg-overlay"></div>
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=2022&auto=format&fit=crop"
+            alt="Proses Belajar Mengajar" class="w-full h-full object-cover" />
+        </div>
 
-            <p class="text-base md:text-xl text-white/90 max-w-xl font-light">
-              Informasi akademik, kegiatan, prestasi, dan ruang aspirasi warga sekolah — semua tersaji rapi dan mudah
-              diakses.
-            </p>
+        <!-- Slide 3 -->
+        <div class="hero-slide absolute inset-0">
+          <div class="absolute inset-0 hero-bg-overlay"></div>
+          <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?q=80&w=2071&auto=format&fit=crop"
+            alt="Kegiatan Siswa" class="w-full h-full object-cover" />
+        </div>
 
-            <div class="flex flex-wrap gap-4 pt-2">
-              <a href="berita.html"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 text-white font-bold shadow-xl shadow-emerald-600/30 hover:bg-emerald-700 hover:scale-[1.03] transition-all duration-300">
-                Lihat Berita Sekolah
-              </a>
-              <a href="prestasi.html"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/40 text-white font-medium hover:bg-white/15 transition-all duration-300">
-                Prestasi Siswa
-              </a>
-            </div>
+        <!-- Slide 4 -->
+        <div class="hero-slide absolute inset-0">
+          <div class="absolute inset-0 hero-bg-overlay"></div>
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
+            alt="Fasilitas Sekolah" class="w-full h-full object-cover" />
+        </div>
+      </div>
 
-            <div class="flex items-center gap-6 text-sm text-white/90 pt-6">
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-emerald-300 shadow-lg"></span>
-                Data dinamis dari Supabase
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-primary-100 shadow-lg"></span>
-                Forum anonim dengan filter kata
-              </div>
-            </div>
-          </div>
+      <!-- Hero Content -->
+      <div class="relative z-10 h-full flex items-center">
+        <div class="container-page px-4">
+          <div class="max-w-2xl">
+            <div class="space-y-6 text-white">
+              <p
+                class="inline-flex items-center gap-2 text-sm font-semibold bg-white/20 px-4 py-1.5 rounded-full border border-white/20 glass text-white/95">
+                Portal Informasi Resmi Sekolah
+              </p>
 
-          <div class="relative mt-8 lg:mt-0 lg:order-2">
-            <div class="rounded-3xl bg-white/70 glass p-8 shadow-soft border border-white/30">
-              <div class="flex items-center justify-center mb-6">
-                <svg width="320" height="220" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden>
-                  <rect x="10" y="60" width="240" height="120" rx="12" fill="#E9F6FF" />
-                  <path d="M40 80h160v6H40z" fill="#D6EEFF" />
-                  <circle cx="200" cy="40" r="30" fill="#CFE9FF" />
-                  <rect x="80" y="100" width="40" height="50" rx="6" fill="#2B8CFF" />
-                  <rect x="140" y="100" width="40" height="50" rx="6" fill="#7FB9FF" />
-                  <path d="M20 180c30-18 80-10 116 0 36-10 86-18 116 0v8H20v-8z" fill="#D6EEFF" />
-                  <g transform="translate(10,0)" fill="#1557B3" opacity="0.9">
-                    <path d="M46 72c1-6 6-11 12-11h34c6 0 11 5 12 11" />
-                  </g>
-                </svg>
-              </div>
+              <h1 class="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg tracking-tight">
+                Membangun Generasi <span class="text-accent-300">Kompeten</span> & <span
+                  class="text-accent-300">Berkarakter</span>
+              </h1>
 
-              <p class="text-sm font-bold text-slate-800 tracking-wide heading-tracked">RINGKASAN DATA SEKOLAH</p>
-              <p class="text-xs text-slate-500 mb-5">Statistik singkat waktu nyata dari sistem.</p>
+              <p class="text-base md:text-xl text-white/90 max-w-xl font-light">
+                Informasi akademik, kegiatan, prestasi, dan ruang aspirasi warga sekolah — semua tersaji rapi dan mudah
+                diakses.
+              </p>
 
-              <div class="grid grid-cols-3 gap-4 text-[13px]">
-                <div class="rounded-xl bg-white p-4 border border-slate-100 shadow-sm">
-                  <p class="text-slate-500 text-[12px] font-medium">Berita Aktif</p>
-                  <p id="stat-berita-count" class="text-2xl font-extrabold text-primary-700">-</p>
-                </div>
-                <div class="rounded-xl bg-white p-4 border border-slate-100 shadow-sm">
-                  <p class="text-slate-500 text-[12px] font-medium">Prestasi</p>
-                  <p id="stat-prestasi-count" class="text-2xl font-extrabold text-emerald-600">-</p>
-                </div>
-                <div class="rounded-xl bg-white p-4 border border-slate-100 shadow-sm">
-                  <p class="text-slate-500 text-[12px] font-medium">Forum Hari Ini</p>
-                  <p id="stat-forum-count" class="text-2xl font-extrabold text-slate-700">-</p>
-                </div>
-              </div>
-
-              <div class="border-t border-slate-200 pt-4 mt-4 text-sm font-medium">
-                <div class="flex items-center justify-between">
-                  <p class="text-slate-600">Pengumuman Aktif</p>
-                  <p id="stat-pengumuman-count" class="font-bold text-primary-700">-</p>
-                </div>
-                <div class="flex items-center justify-between mt-2">
-                  <p class="text-slate-600">Tahun Ajaran</p>
-                  <p id="stat-kalender-tahun" class="font-bold text-slate-800">-</p>
-                </div>
+              <div class="flex flex-wrap gap-4 pt-2">
+                <a href="berita.html"
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-600 text-dark-900 font-bold shadow-xl shadow-accent-600/30 hover:bg-accent-700 hover:scale-[1.03] transition-all duration-300">
+                  Lihat Berita Sekolah
+                </a>
+                <a href="prestasi.html"
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/40 text-white font-medium hover:bg-white/15 transition-all duration-300">
+                  Prestasi Siswa
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="pointer-events-none">
+
+      <!-- Carousel Controls -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
+        <button
+          class="hero-prev w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white flex items-center justify-center hover:bg-white/30 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <!-- Carousel Dots -->
+        <div class="flex items-center gap-2">
+          <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-index="0"></button>
+          <button class="hero-dot w-3 h-3 rounded-full bg-white/30 hover:bg-white transition" data-index="1"></button>
+          <button class="hero-dot w-3 h-3 rounded-full bg-white/30 hover:bg-white transition" data-index="2"></button>
+          <button class="hero-dot w-3 h-3 rounded-full bg-white/30 hover:bg-white transition" data-index="3"></button>
+        </div>
+
+        <button
+          class="hero-next w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white flex items-center justify-center hover:bg-white/30 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Wave Divider (Hilangkan border dengan opacity 0) -->
+      <div class="absolute bottom-0 w-full z-10">
         <svg viewBox="0 0 1440 80" class="w-full" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#FFFFFF"
+          <path fill="#FFFFFF" fill-opacity="0"
             d="M0,32L80,37.3C160,43,320,53,480,58.7C640,64,800,64,960,53.3C1120,43,1280,21,1360,10.7L1440,0L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z">
           </path>
         </svg>
       </div>
     </section>
 
+    <!-- Jurusan Section - Cards with Images -->
     <section class="py-16 md:py-24 bg-white">
+      <div class="container-page px-4">
+        <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">
+            PROGRAM KEAHLIAN
+          </p>
+          <h2 class="text-3xl md:text-4xl font-extrabold mt-2 leading-tight text-dark-900">
+            Jurusan Unggulan <span class="text-primary-600">SMK Negeri 2 Mojokerto</span>
+          </h2>
+          <p class="mt-4 text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
+            Pilih program keahlian yang sesuai dengan minat dan bakat Anda untuk mempersiapkan karir di dunia industri
+            yang
+            kompetitif.
+          </p>
+        </div>
+
+        <!-- Jurusan Cards with Images -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <!-- Jurusan 1: RPL -->
+          <div
+            class="group bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=2070&auto=format&fit=crop"
+                alt="Rekayasa Perangkat Lunak"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 card-overlay"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <span
+                  class="inline-block text-xs font-semibold text-white bg-primary-600 px-3 py-1 rounded-full">TEKNOLOGI</span>
+                <h3 class="text-lg font-bold text-white mt-2">Rekayasa Perangkat Lunak</h3>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-sm text-slate-600 mb-4 line-clamp-2">Pengembangan software, aplikasi web & mobile, dan
+                pemrograman berbasis industri.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-500">3 Tahun</span>
+                <a href="#"
+                  class="text-primary-600 font-semibold hover:text-primary-700 text-sm flex items-center gap-1">
+                  Detail
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jurusan 2: DKV -->
+          <div
+            class="group bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1581023769153-f72535b67a4e?q=80&w=2070&auto=format&fit=crop"
+                alt="Desain Komunikasi Visual"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 card-overlay"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <span
+                  class="inline-block text-xs font-semibold text-white bg-purple-600 px-3 py-1 rounded-full">DESAIN</span>
+                <h3 class="text-lg font-bold text-white mt-2">Desain Komunikasi Visual</h3>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-sm text-slate-600 mb-4 line-clamp-2">Desain grafis, animasi, multimedia, dan fotografi
+                untuk industri kreatif.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-500">3 Tahun</span>
+                <a href="#"
+                  class="text-primary-600 font-semibold hover:text-primary-700 text-sm flex items-center gap-1">
+                  Detail
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jurusan 3: LPS -->
+          <div
+            class="group bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop"
+                alt="Layanan Perbankan Syariah"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 card-overlay"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <span
+                  class="inline-block text-xs font-semibold text-white bg-emerald-600 px-3 py-1 rounded-full">KEUANGAN</span>
+                <h3 class="text-lg font-bold text-white mt-2">Layanan Perbankan Syariah</h3>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-sm text-slate-600 mb-4 line-clamp-2">Perbankan syariah, produk keuangan Islam, dan
+                administrasi perbankan modern.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-500">3 Tahun</span>
+                <a href="#"
+                  class="text-primary-600 font-semibold hover:text-primary-700 text-sm flex items-center gap-1">
+                  Detail
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jurusan 4: KULINER -->
+          <div
+            class="group bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1546592209-6617a9425553?q=80&w=1974&auto=format&fit=crop"
+                alt="Tata Boga"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 card-overlay"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <span
+                  class="inline-block text-xs font-semibold text-white bg-rose-600 px-3 py-1 rounded-full">KULINER</span>
+                <h3 class="text-lg font-bold text-white mt-2">Tata Boga</h3>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-sm text-slate-600 mb-4 line-clamp-2">Seni kuliner, manajemen dapur, dan pengolahan makanan
+                internasional.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-500">3 Tahun</span>
+                <a href="#"
+                  class="text-primary-600 font-semibold hover:text-primary-700 text-sm flex items-center gap-1">
+                  Detail
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jurusan 5: APHP -->
+          <div
+            class="group bg-white rounded-2xl shadow-soft border border-slate-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+            <div class="relative h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1627916962293-f14d9b627685?q=80&w=2070&auto=format&fit=crop"
+                alt="Agribisnis Pengolahan Hasil Pertanian"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 card-overlay"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <span
+                  class="inline-block text-xs font-semibold text-white bg-amber-600 px-3 py-1 rounded-full">AGRINDUSTRI</span>
+                <h3 class="text-lg font-bold text-white mt-2">Agribisnis Pengolahan Hasil Pertanian</h3>
+              </div>
+            </div>
+            <div class="p-5">
+              <p class="text-sm text-slate-600 mb-4 line-clamp-2">Teknologi pengolahan hasil pertanian modern dan
+                agribisnis berkelanjutan.</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-500">3 Tahun</span>
+                <a href="#"
+                  class="text-primary-600 font-semibold hover:text-primary-700 text-sm flex items-center gap-1">
+                  Detail
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="py-16 md:py-24 bg-slate-50">
       <div class="container-page px-4">
         <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10">
           <div class="max-w-xl">
             <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">BERITA TERKINI
             </p>
-            <h2 class="text-3xl font-extrabold mt-1 leading-tight text-slate-900">Kabar terbaru dan pengumuman resmi
+            <h2 class="text-3xl font-extrabold mt-1 leading-tight text-dark-900">Kabar terbaru dan pengumuman resmi
               dari
               sekolah.</h2>
           </div>
@@ -284,13 +493,13 @@
       </div>
     </section>
 
-    <section class="py-16 md:py-24 bg-slate-50 border-t border-slate-100">
+    <section class="py-16 md:py-24 bg-white border-t border-slate-100">
       <div class="container-page px-4">
         <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10">
           <div class="max-w-xl">
             <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">PRESTASI SISWA
             </p>
-            <h2 class="text-3xl font-extrabold mt-1 leading-tight text-slate-900">Apresiasi pencapaian siswa dalam lomba
+            <h2 class="text-3xl font-extrabold mt-1 leading-tight text-dark-900">Apresiasi pencapaian siswa dalam lomba
               dan kejuaraan.</h2>
           </div>
           <a href="prestasi.html"
@@ -308,19 +517,19 @@
       </div>
     </section>
 
-    <section id="kontak" class="py-16 md:py-24 bg-white border-t border-slate-100">
+    <section id="kontak" class="py-16 md:py-24 bg-slate-50 border-t border-slate-100">
       <div class="container-page px-4 grid lg:grid-cols-2 gap-12 items-center">
         <div class="space-y-6">
           <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">HUBUNGI KAMI</p>
-          <h2 class="text-4xl md:text-5xl font-extrabold mt-1 leading-tight text-slate-900">
+          <h2 class="text-4xl md:text-5xl font-extrabold mt-1 leading-tight text-dark-900">
             Saluran Kontak Resmi dan Lokasi Sekolah.
           </h2>
-          <p class="text-lg text-slate-700 max-w-xl">
+          <p class="text-lg text-dark-800 max-w-xl">
             Informasi penting tentang PPDB, kesempatan kerjasama industri, atau pertanyaan umum dapat disampaikan
             melalui saluran resmi berikut.
           </p>
 
-          <div class="mt-8 rounded-3xl bg-slate-50 border border-slate-200 p-6 space-y-4 shadow-soft">
+          <div class="mt-8 rounded-3xl bg-white border border-slate-200 p-6 space-y-4 shadow-soft">
             <div class="flex items-start gap-4">
               <div
                 class="flex-shrink-0 w-10 h-10 rounded-xl bg-primary-100 text-primary-600 flex items-center justify-center">
@@ -331,8 +540,9 @@
                 </svg>
               </div>
               <div>
-                <p class="text-sm font-bold text-slate-800">Alamat Fisik</p>
-                <p class="text-base text-slate-600">Jl. Contoh Alamat No. 123, Kota Mojokerto</p>
+                <p class="text-sm font-bold text-dark-800">Alamat Fisik</p>
+                <p class="text-base text-slate-600">Jl. Raya Pulorejo, Prajuritkulon Mojokerto 61325 Jawa Timur,
+                  Indonesia</p>
               </div>
             </div>
 
@@ -346,8 +556,8 @@
                 </svg>
               </div>
               <div>
-                <p class="text-sm font-bold text-slate-800">Telepon & Email</p>
-                <p class="text-base text-slate-600">(000) 0000 000</p>
+                <p class="text-sm font-bold text-dark-800">Telepon & Email</p>
+                <p class="text-base text-slate-600">0321 387356</p>
                 <p class="text-base text-slate-600">humas@smkn2mojokerto.sch.id</p>
               </div>
             </div>
@@ -408,23 +618,23 @@
       <div class="space-y-4">
         <p class="text-base font-bold text-white">Tautan Cepat</p>
         <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-slate-400">
-          <a href="index.html" class="hover:text-primary-300 transition">Beranda</a>
-          <a href="kalender.html" class="hover:text-primary-300 transition">Kalender Akademik</a>
-          <a href="berita.html" class="hover:text-primary-300 transition">Berita Sekolah</a>
-          <a href="prestasi.html" class="hover:text-primary-300 transition">Prestasi Siswa</a>
-          <a href="fasilitas.html" class="hover:text-primary-300 transition">Fasilitas</a>
-          <a href="#kontak" class="hover:text-primary-300 transition">Kontak</a>
+          <a href="index.html" class="hover:text-accent-300 transition">Beranda</a>
+          <a href="kalender.html" class="hover:text-accent-300 transition">Kalender Akademik</a>
+          <a href="berita.html" class="hover:text-accent-300 transition">Berita Sekolah</a>
+          <a href="prestasi.html" class="hover:text-accent-300 transition">Prestasi Siswa</a>
+          <a href="fasilitas.html" class="hover:text-accent-300 transition">Fasilitas</a>
+          <a href="#kontak" class="hover:text-accent-300 transition">Kontak</a>
         </div>
       </div>
 
       <div class="space-y-4">
         <p class="text-base font-bold text-white">Hubungi Kami</p>
         <p class="text-slate-400">
-          Jl. Contoh Alamat No. 123<br />
-          Kota Mojokerto, Jawa Timur
+          Jl. Raya Pulorejo, Prajuritkulon<br />
+          Kota Mojokerto 61325 Jawa Timur, Indonesia
         </p>
         <p class="text-slate-400">
-          Telp. (000) 0000 000<br />
+          Telp. 0321 387356<br />
           Email: humas@smkn2mojokerto.sch.id
         </p>
         <p class="text-xs text-slate-500">
@@ -436,7 +646,7 @@
     <div class="border-t border-dark-800 mt-6">
       <div class="container-page px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3">
         <p class="text-sm text-slate-400">
-          &copy; <span id="footer-year"></span> SMK Negeri 2 Mojokerto. Semua hak dilindungi.
+          © <span id="footer-year"></span> SMK Negeri 2 Mojokerto. Semua hak dilindungi.
         </p>
         <p class="text-sm text-slate-500">
           Dibangun untuk lomba RPL dengan HTML, Tailwind CSS, JavaScript, dan Supabase.
@@ -450,11 +660,11 @@
       class="hidden w-88 max-w-[90vw] bg-white rounded-3xl shadow-soft border border-slate-200 overflow-hidden">
       <div class="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
         <div>
-          <p class="text-base font-bold text-slate-800">Forum Anonim</p>
+          <p class="text-base font-bold text-dark-800">Forum Anonim</p>
           <p class="text-xs text-slate-500">Sampaikan saran dengan sopan.</p>
         </div>
         <button id="forum-panel-close"
-          class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500 text-lg">&times;</button>
+          class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500 text-lg">×</button>
       </div>
       <div id="forum-list" class="max-h-64 overflow-y-auto px-4 py-3 space-y-2 text-sm">
       </div>
@@ -466,7 +676,7 @@
           <p id="forum-warning" class="text-[12px] text-red-500 hidden font-medium">Teks mengandung kata yang tidak
             pantas.</p>
           <button type="submit"
-            class="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition">
+            class="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-600 text-dark-900 text-sm font-semibold hover:bg-accent-700 transition">
             Kirim
           </button>
         </div>
@@ -475,7 +685,7 @@
 
     <div class="flex flex-col gap-3">
       <button id="forum-toggle"
-        class="w-14 h-14 rounded-full bg-emerald-600 text-white shadow-soft shadow-emerald-600/30 flex items-center justify-center hover:bg-emerald-700 active:scale-95 transition-all duration-150"
+        class="w-14 h-14 rounded-full bg-accent-600 text-dark-900 shadow-soft shadow-accent-600/30 flex items-center justify-center hover:bg-accent-700 active:scale-95 transition-all duration-150"
         aria-label="Buka forum">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
           stroke-width="2">

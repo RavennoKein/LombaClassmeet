@@ -71,11 +71,10 @@ async function renderHomeBerita() {
       "text-xs text-slate-500 border-t border-slate-100 pt-3 flex items-center justify-between";
     metaDiv.innerHTML = `
         <p><span class="font-semibold">Dipublikasi:</span> ${formatDateIndo(
-          item.tanggal
-        )}</p>
-        <p>Oleh <span class="font-semibold">${
-          item.penulis || "Admin"
-        }</span></p>
+      item.tanggal
+    )}</p>
+        <p>Oleh <span class="font-semibold">${item.penulis || "Admin"
+      }</span></p>
     `;
 
     contentDiv.append(tag, title, ringkasan, metaDiv);
@@ -111,14 +110,36 @@ async function renderHomePrestasi() {
     card.className =
       "flex items-start bg-white rounded-3xl p-6 shadow-soft border border-slate-100 hover:shadow-xl transition-all duration-300";
 
-    const iconDiv = document.createElement("div");
-    iconDiv.className =
-      "flex-shrink-0 w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mr-4 mt-1";
-    iconDiv.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.27a11.95 11.95 0 010 17.942C12.445 20.985 10 17.548 10 17.548V14.5a3 3 0 00-3-3H6.5c-1.104 0-2 .896-2 2v3.048c0 3.864 2.445 7.301 6.382 7.732a11.95 11.95 0 010-17.942z" />
-        </svg>
-    `;
+    let mediaWrapper;
+
+    if (item.foto_path) {
+      const imgUrl = getImageUrl(item.foto_path);
+      mediaWrapper = document.createElement("div");
+      mediaWrapper.className =
+        "w-14 h-14 md:w-16 md:h-16 rounded-lg overflow-hidden bg-slate-200 flex-shrink-0 mr-2";
+
+      const img = document.createElement("img");
+      img.src = imgUrl;
+      img.alt = item.nama_siswa || "Foto prestasi";
+      img.loading = "lazy";
+      img.className = "w-full h-full object-cover";
+
+      mediaWrapper.appendChild(img);
+    } else {
+      mediaWrapper = document.createElement("div");
+      mediaWrapper.className =
+        "w-12 h-12 md:w-14 md:h-14 rounded-full bg-slate-200 flex items-center justify-center text-[11px] font-semibold text-slate-700 flex-shrink-0";
+
+      const initials =
+        (item.nama_siswa || "")
+          .split(" ")
+          .map((w) => w[0])
+          .join("")
+          .substring(0, 2)
+          .toUpperCase() || "?";
+
+      mediaWrapper.textContent = initials;
+    }
 
     const body = document.createElement("div");
     body.className = "flex-1 space-y-1";
@@ -153,7 +174,7 @@ async function renderHomePrestasi() {
     `;
 
     body.append(title, name, description, chips);
-    card.append(iconDiv, body);
+    card.append(mediaWrapper, body);
     container.appendChild(card);
   });
 }
@@ -188,6 +209,87 @@ async function renderHomeStatsTambahan() {
     }
   }
 }
+
+class HeroCarousel {
+  constructor() {
+    this.slides = document.querySelectorAll('.hero-slide');
+    this.dots = document.querySelectorAll('.hero-dot');
+    this.prevBtn = document.querySelector('.hero-prev');
+    this.nextBtn = document.querySelector('.hero-next');
+    this.currentIndex = 0;
+    this.interval = null;
+    this.init();
+  }
+
+  init() {
+    this.startAutoSlide();
+    this.setupEventListeners();
+    this.updateDots();
+  }
+
+  startAutoSlide() {
+    this.interval = setInterval(() => {
+      this.nextSlide();
+    }, 5000);
+  }
+
+  resetAutoSlide() {
+    clearInterval(this.interval);
+    this.startAutoSlide();
+  }
+
+  setupEventListeners() {
+    this.prevBtn.addEventListener('click', () => {
+      this.prevSlide();
+      this.resetAutoSlide();
+    });
+
+    this.nextBtn.addEventListener('click', () => {
+      this.nextSlide();
+      this.resetAutoSlide();
+    });
+
+    this.dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        this.goToSlide(index);
+        this.resetAutoSlide();
+      });
+    });
+  }
+
+  updateDots() {
+    this.dots.forEach((dot, index) => {
+      if (index === this.currentIndex) {
+        dot.classList.remove('bg-white/30');
+        dot.classList.add('bg-white');
+      } else {
+        dot.classList.remove('bg-white');
+        dot.classList.add('bg-white/30');
+      }
+    });
+  }
+
+  goToSlide(index) {
+    this.slides.forEach(slide => slide.classList.remove('active'));
+    this.slides[index].classList.add('active');
+    this.currentIndex = index;
+    this.updateDots();
+  }
+
+  nextSlide() {
+    let nextIndex = (this.currentIndex + 1) % this.slides.length;
+    this.goToSlide(nextIndex);
+  }
+
+  prevSlide() {
+    let prevIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+    this.goToSlide(prevIndex);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  new HeroCarousel();
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavbar("home");
