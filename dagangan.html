@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dagangan Siswa - SMK Negeri 2 Mojokerto</title>
+    <title>Si Shop - SMK Negeri 2 Mojokerto</title>
     <link rel="icon" type="image/x-icon"
         href="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/public/logo.webp" />
-    <meta name="description" content="Dagangan siswa SMK Negeri 2 Mojokerto: jual hari ini, pre-order, dan etalase." />
+    <meta name="description" content="Si Shop SMK Negeri 2 Mojokerto: jual hari ini, pre-order, dan etalase." />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -73,6 +73,10 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45));
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(145deg, #0b2e66 0%, #8ca6bd 100%);
         }
 
         .heading-tracked {
@@ -408,69 +412,87 @@
     </header>
 
     <main class="flex-1">
-        <!-- Hero mini -->
-        <section class="bg-slate-50 border-b border-slate-100">
-            <div class="container-page px-4 py-12 md:py-16">
-                <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">DAGANGAN
-                    SISWA</p>
-                <h1 class="text-3xl md:text-4xl font-extrabold mt-2 leading-tight text-dark-900">
-                    Promosi Dagangan Harian, Pre-Order, dan Etalase.
-                </h1>
-                <p class="mt-4 text-base md:text-lg text-slate-600 max-w-2xl">
-                    Posting dagangan akan <span class="font-bold text-dark-900">dicek admin</span> terlebih dahulu
-                    sebelum tampil di website.
-                </p>
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden pt-12 md:pt-18 bg-primary-50">
+            <div class="absolute inset-0 hero-gradient"></div>
+            <div class="container-page px-4 pb-16 relative z-10">
+                <div class="max-w-3xl">
+                    <p
+                        class="inline-flex items-center gap-2 text-sm font-semibold bg-white/20 px-4 py-1.5 rounded-full border border-white/20 glass text-white/95 mb-4">
+                        Kewirausahaan Siswa
+                    </p>
+                    <h1
+                        class="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg tracking-tight text-white">
+                        <span class="text-accent-100/90">Dagangan</span> Siswa Unggulan
+                    </h1>
+                    <p class="text-lg md:text-xl text-white/90 mt-4 font-light max-w-2xl">
+                        Promosi dagangan harian, pre-order, dan etalase karya siswa SMK Negeri 2 Mojokerto.
+                        Semua postingan dicek admin terlebih dahulu sebelum tampil di website.
+                    </p>
 
-                <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                    <a href="dagangan-tambah.html"
-                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 active:scale-[0.98] transition">
-                        + Post Dagangan
-                    </a>
-                    <a href="#list"
-                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-bold hover:bg-primary-50 hover:text-primary-700 transition">
-                        Lihat Daftar
-                    </a>
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a href="dagangan-tambah.html"
+                            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent-600 text-dark-900 text-sm font-bold shadow-xl shadow-accent-600/30 hover:bg-accent-700 hover:scale-[1.03] transition-all duration-300">
+                            + Post Dagangan
+                        </a>
+                        <a href="#list"
+                            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-white/40 text-white text-sm font-bold hover:bg-white/15 transition-all duration-300">
+                            Lihat Daftar Dagangan
+                        </a>
+                    </div>
                 </div>
+            </div>
+            <div class="pointer-events-none">
+                <svg viewBox="0 0 1440 80" class="w-full" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#FFFFFF"
+                        d="M0,32L80,37.3C160,43,320,53,480,58.7C640,64,800,64,960,53.3C1120,43,1280,21,1360,10.7L1440,0L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z">
+                    </path>
+                </svg>
             </div>
         </section>
 
-        <!-- Filters -->
-        <section id="list" class="py-12 md:py-16 bg-white">
+        <!-- Filters & Dagangan List -->
+        <section id="list" class="py-16 md:py-24 bg-white">
             <div class="container-page px-4">
-                <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-5 md:p-6">
-                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <!-- Filter Section -->
+                <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 md:p-8 mb-10">
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-6">
                         <div class="max-w-xl">
                             <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">
-                                FILTER</p>
-                            <p class="mt-1 text-base font-extrabold text-dark-900">Cari dagangan yang kamu butuhkan.</p>
-                            <p class="mt-1 text-sm text-slate-600">Gunakan pencarian, tipe, dan kategori untuk
-                                mempersempit hasil.</p>
+                                FILTER DAGANGAN
+                            </p>
+                            <h2 class="text-2xl font-extrabold mt-2 leading-tight text-dark-900">
+                                Cari Dagangan yang Kamu Butuhkan
+                            </h2>
+                            <p class="mt-2 text-base text-slate-600">
+                                Gunakan pencarian, tipe, dan kategori untuk mempersempit hasil.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
-                            <label class="text-sm font-bold text-slate-700">Cari</label>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Cari Produk</label>
                             <input id="searchInput" type="text" placeholder="Cari produk / penjual / kelas..."
-                                class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition" />
+                                class="w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition" />
                         </div>
 
                         <div>
-                            <label class="text-sm font-bold text-slate-700">Tipe</label>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Tipe Dagangan</label>
                             <select id="filterTipe"
-                                class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition">
-                                <option value="all">Semua</option>
-                                <option value="hari_ini">Hari ini</option>
+                                class="w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition">
+                                <option value="all">Semua Tipe</option>
+                                <option value="hari_ini">Hari Ini</option>
                                 <option value="preorder">Pre-Order</option>
                                 <option value="etalase">Etalase</option>
                             </select>
                         </div>
 
                         <div>
-                            <label class="text-sm font-bold text-slate-700">Kategori</label>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Kategori</label>
                             <select id="filterKategori"
-                                class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition">
-                                <option value="all">Semua</option>
+                                class="w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition">
+                                <option value="all">Semua Kategori</option>
                                 <option value="makanan">Makanan</option>
                                 <option value="minuman">Minuman</option>
                                 <option value="jasa">Jasa</option>
@@ -481,21 +503,40 @@
                     </div>
                 </div>
 
-                <div id="daganganLoading"
-                    class="mt-8 rounded-3xl bg-slate-50 border border-slate-200 p-5 md:p-6 text-slate-700 shadow-soft">
-                    Memuat dagangan...
+                <!-- Loading State -->
+                <div id="daganganLoading" class="hidden">
+                    <div class="rounded-3xl bg-slate-50 border border-slate-200 p-8 text-center">
+                        <div
+                            class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-primary-500 border-t-transparent">
+                        </div>
+                        <p class="mt-4 text-slate-700 font-medium">Memuat dagangan...</p>
+                    </div>
                 </div>
 
+                <!-- Empty State -->
                 <div id="daganganEmpty"
-                    class="hidden mt-8 rounded-3xl bg-slate-50 border border-slate-200 p-5 md:p-6 text-slate-700 shadow-soft">
-                    Belum ada dagangan yang tampil. Coba ubah filter atau posting dagangan baru.
+                    class="hidden rounded-3xl bg-slate-50 border border-slate-200 p-8 text-center shadow-soft">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-primary-100 flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-primary-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-900 mb-2">Belum ada dagangan</h3>
+                    <p class="text-slate-600 mb-6">Coba ubah filter atau posting dagangan baru.</p>
+                    <a href="dagangan-tambah.html"
+                        class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 transition">
+                        + Post Dagangan Baru
+                    </a>
                 </div>
 
-                <section id="daganganList" class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></section>
+                <!-- Dagangan Grid -->
+                <div id="daganganList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
         </section>
 
-        <!-- KONTAK (DISAMAKAN DENGAN INDEX) -->
+        <!-- Kontak Section -->
         <section id="kontak" class="py-16 md:py-24 bg-slate-50 border-t border-slate-100">
             <div class="container-page px-4 grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
@@ -506,8 +547,7 @@
                     </h2>
                     <p class="text-lg text-dark-800 max-w-xl">
                         Informasi penting tentang PPDB, kesempatan kerjasama industri, atau pertanyaan umum dapat
-                        disampaikan
-                        melalui saluran resmi berikut.
+                        disampaikan melalui saluran resmi berikut.
                     </p>
 
                     <div class="mt-8 rounded-3xl bg-white border border-slate-200 p-6 space-y-4 shadow-soft">
@@ -546,29 +586,17 @@
                     </div>
                 </div>
 
-                <div class="relative rounded-4xl overflow-hidden shadow-soft border border-slate-200 bg-white">
-                    <div class="relative aspect-[16/9] bg-slate-100">
-                        <iframe title="Peta Lokasi SMK Negeri 2 Mojokerto"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.8466962905754!2d112.42188529695389!3d-7.464618024699994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78120b57f1e203%3A0x65ef2d4ecdeb1643!2sSMK%20Negeri%202%20Kota%20Mojokerto!5e1!3m2!1sid!2sid!4v1759473143039!5m2!1sid!2sid"
-                            class="absolute inset-0 w-full h-full" style="border:0;" loading="lazy" allowfullscreen
-                            referrerpolicy="no-referrer-when-downgrade" aria-label="Peta lokasi SMK Negeri 2 Mojokerto">
-                        </iframe>
-                    </div>
+                <div class="relative rounded-4xl overflow-hidden shadow-soft border border-slate-200">
+                    <iframe title="Peta Lokasi SMK Negeri 2 Mojokerto"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.8466962905754!2d112.42188529695389!3d-7.464618024699994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78120b57f1e203%3A0x65ef2d4ecdeb1643!2sSMK%20Negeri%202%20Kota%20Mojokerto!5e1!3m2!1sid!2sid!4v1759473143039!5m2!1sid!2sid"
+                        class="w-full h-80 md:h-96" style="border:0;" loading="lazy" allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade" aria-label="Peta lokasi SMK Negeri 2 Mojokerto">
+                    </iframe>
 
-                    <div class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <div class="min-w-0">
-                            <p class="text-[18px] sm:text-[20px] font-extrabold text-slate-900 leading-tight">
-                                SMK Negeri 2 Mojokerto
-                            </p>
-                            <p class="mt-1 text-[14.5px] sm:text-[15.5px] text-slate-700 leading-7">
-                                Jl. Raya Pulorejo, Mergelo, Pulorejo — Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur
-                                61325
-                            </p>
-                        </div>
-
+                    <div class="absolute bottom-4 left-4">
                         <a href="https://www.google.com/maps/dir/?api=1&destination=-7.464472,112.423297"
                             target="_blank" rel="noopener"
-                            class="shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 active:scale-[0.98] transition">
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 transition">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -578,12 +606,11 @@
                         </a>
                     </div>
                 </div>
-
             </div>
         </section>
     </main>
 
-    <!-- Footer (samakan index) -->
+    <!-- Footer -->
     <footer class="bg-dark-900 text-slate-200 text-sm pt-16">
         <div class="container-page px-4 pb-10 grid gap-10 md:grid-cols-4">
             <div class="space-y-4 md:col-span-2">
@@ -603,7 +630,7 @@
                     <a href="berita.html" class="hover:text-accent-300 transition">Berita Sekolah</a>
                     <a href="prestasi.html" class="hover:text-accent-300 transition">Prestasi Siswa</a>
                     <a href="fasilitas.html" class="hover:text-accent-300 transition">Fasilitas</a>
-                    <a href="dagangan.html" class="hover:text-accent-300 transition">Dagangan Siswa</a>
+                    <a href="dagangan.html" class="hover:text-accent-300 transition">Si Shop</a>
                 </div>
             </div>
 
@@ -632,7 +659,7 @@
         </div>
     </footer>
 
-    <!-- Forum + Chatbot Floating Widget (SAMA PERSIS DARI INDEX) -->
+    <!-- Forum + Chatbot Floating Widget -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
         <div id="forum-panel"
             class="hidden w-88 max-w-[90vw] bg-white rounded-3xl shadow-soft border border-slate-200 overflow-hidden">
@@ -652,8 +679,7 @@
                     placeholder="Tulis saran/pendapat dengan sopan..."></textarea>
                 <div class="flex items-center justify-between gap-2">
                     <p id="forum-warning" class="text-[12px] text-red-500 hidden font-medium">Teks mengandung kata yang
-                        tidak
-                        pantas.</p>
+                        tidak pantas.</p>
                     <button type="submit"
                         class="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-600 text-dark-900 text-sm font-semibold hover:bg-accent-700 transition">
                         Kirim
@@ -685,7 +711,7 @@
         </div>
     </div>
 
-    <!-- Scripts (URUTAN SAMA DENGAN INDEX) -->
+    <!-- Scripts -->
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="js/config.js"></script>
     <script src="js/layout.js"></script>
@@ -699,7 +725,7 @@
     <script src="js/forum.js"></script>
 
     <script>
-        // init forum + floating buttons (samakan dengan profile.html)
+        // init forum + floating buttons
         if (typeof initForumWidget === "function") initForumWidget();
 
         const forumBtn = document.getElementById("forum-toggle");
@@ -712,7 +738,6 @@
             }
         });
     </script>
-
 
     <!-- Dagangan -->
     <script src="js/api-dagangan.js"></script>

@@ -33,6 +33,11 @@ function makeContactLink(kontakRaw) {
   return "#";
 }
 
+function capitalizeFirstLetter(string) {
+  if (!string) return "";
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function badge(text) {
   const t = escapeHtml(text || "");
   return `<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-50 text-primary-700 border border-primary-100">${t}</span>`;
@@ -97,6 +102,15 @@ function renderCard(p) {
   // spacer supaya tombol sejajar
   const poSpacer = `<div class="text-xs text-slate-600 min-h-[20px]">${infoPOText}</div>`;
 
+  let tipeText = p.tipe.replace('_', ' '); 
+
+  if (tipeText.toLowerCase() === 'preorder') {
+    tipeText = 'Pre Order'; 
+  } else {
+    tipeText = capitalizeFirstLetter(tipeText); 
+  }
+  const kategoriText = capitalizeFirstLetter(p.kategori.replace('_', ' '));
+
   return `
     <div class="group bg-white rounded-3xl shadow-soft border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
       ${foto}
@@ -113,8 +127,8 @@ function renderCard(p) {
         }
 
         <div class="flex flex-wrap gap-2">
-          ${badge(p.tipe)}
-          ${badge(p.kategori)}
+          ${badge(tipeText)}
+          ${badge(kategoriText)}
         </div>
 
         <div class="text-sm text-dark-800">
