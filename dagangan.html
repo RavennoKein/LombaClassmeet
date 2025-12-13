@@ -117,7 +117,7 @@
                     </div>
                 </div>
 
-                <nav class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-700">
+                <nav class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-700 ml-12">
                     <a href="index.html"
                         class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Beranda</a>
                     <a href="profile.html"
@@ -404,8 +404,7 @@
                 <a href="fasilitas.html"
                     class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Fasilitas</a>
                 <a href="dagangan.html"
-                    class="nav-link-mobile py-2 px-3 rounded-lg bg-primary-50 text-primary-700 font-bold transition">Dagangan
-                    Siswa</a>
+                    class="nav-link-mobile py-2 px-3 rounded-lg bg-primary-50 text-primary-700 font-bold transition">Si Shop</a>
             </div>
         </div>
     </header>
@@ -567,16 +566,15 @@
         <section id="kontak" class="py-16 md:py-24 bg-slate-50 border-t border-slate-100">
             <div class="container-page px-4 grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
-                    <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">HUBUNGI
-                        KAMI</p>
+                    <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">HUBUNGI KAMI</p>
                     <h2 class="text-4xl md:text-5xl font-extrabold mt-1 leading-tight text-dark-900">
                         Saluran Kontak Resmi dan Lokasi Sekolah.
                     </h2>
                     <p class="text-lg text-dark-800 max-w-xl">
-                        Informasi penting tentang PPDB, kesempatan kerjasama industri, atau pertanyaan umum dapat
-                        disampaikan melalui saluran resmi berikut.
+                        Informasi penting tentang PPDB, kesempatan kerjasama industri, atau pertanyaan umum dapat disampaikan
+                        melalui saluran resmi berikut.
                     </p>
-
+        
                     <div class="mt-8 rounded-3xl bg-white border border-slate-200 p-6 space-y-4 shadow-soft">
                         <div class="flex items-start gap-4">
                             <div
@@ -589,12 +587,11 @@
                             </div>
                             <div>
                                 <p class="text-sm font-bold text-dark-800">Alamat Fisik</p>
-                                <p class="text-base text-slate-600">Jl. Raya Pulorejo, Prajuritkulon Mojokerto 61325
-                                    Jawa Timur,
+                                <p class="text-base text-slate-600">Jl. Raya Pulorejo, Prajuritkulon Mojokerto 61325 Jawa Timur,
                                     Indonesia</p>
                             </div>
                         </div>
-
+        
                         <div class="flex items-start gap-4">
                             <div
                                 class="flex-shrink-0 w-10 h-10 rounded-xl bg-primary-100 text-primary-600 flex items-center justify-center">
@@ -612,27 +609,44 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="relative rounded-4xl overflow-hidden shadow-soft border border-slate-200">
-                    <iframe title="Peta Lokasi SMK Negeri 2 Mojokerto"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.8466962905754!2d112.42188529695389!3d-7.464618024699994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78120b57f1e203%3A0x65ef2d4ecdeb1643!2sSMK%20Negeri%202%20Kota%20Mojokerto!5e1!3m2!1sid!2sid!4v1759473143039!5m2!1sid!2sid"
-                        class="w-full h-80 md:h-96" style="border:0;" loading="lazy" allowfullscreen
-                        referrerpolicy="no-referrer-when-downgrade" aria-label="Peta lokasi SMK Negeri 2 Mojokerto">
-                    </iframe>
-
-                    <div class="absolute bottom-4 left-4">
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=-7.464472,112.423297"
-                            target="_blank" rel="noopener"
-                            class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 transition">
+        
+                <div class="relative rounded-4xl overflow-hidden shadow-soft border border-slate-200 bg-white">
+                    <!-- Map 16:9 -->
+                    <div class="relative aspect-[16/9] bg-slate-100">
+                        <iframe title="Peta Lokasi SMK Negeri 2 Mojokerto"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.8466962905754!2d112.42188529695389!3d-7.464618024699994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78120b57f1e203%3A0x65ef2d4ecdeb1643!2sSMK%20Negeri%202%20Kota%20Mojokerto!5e1!3m2!1sid!2sid!4v1759473143039!5m2!1sid!2sid"
+                            class="absolute inset-0 w-full h-full" style="border:0;" loading="lazy" allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade" aria-label="Peta lokasi SMK Negeri 2 Mojokerto">
+                        </iframe>
+                    </div>
+        
+                    <!-- Info + CTA -->
+                    <div class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div class="min-w-0">
+                            <p class="text-[18px] sm:text-[20px] font-extrabold text-slate-900 leading-tight">
+                                SMK Negeri 2 Mojokerto
+                            </p>
+                            <p class="mt-1 text-[14.5px] sm:text-[15.5px] text-slate-700 leading-7">
+                                Jl. Raya Pulorejo, Mergelo, Pulorejo — Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325
+                            </p>
+                        </div>
+        
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=-7.464472,112.423297" target="_blank"
+                            rel="noopener"
+                            class="shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 active:scale-[0.98] transition">
+        
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
+        
                             Petunjuk Arah
                         </a>
+        
                     </div>
                 </div>
+        
             </div>
         </section>
     </main>
@@ -764,6 +778,52 @@
                 window.open(DIFY_CHATBOT_URL, "_blank", "noopener");
             }
         });
+
+        // Toggle menu mobile
+            document.addEventListener('DOMContentLoaded', function () {
+                const navToggle = document.getElementById('nav-toggle');
+                const navMenu = document.getElementById('nav-menu-mobile');
+
+                if (navToggle && navMenu) {
+                    navToggle.addEventListener('click', function () {
+                        if (navMenu.classList.contains('hidden')) {
+                            navMenu.classList.remove('hidden');
+                            navMenu.classList.add('block');
+                            // Tambahkan animasi jika perlu
+                        } else {
+                            navMenu.classList.add('hidden');
+                            navMenu.classList.remove('block');
+                        }
+                    });
+
+                    // Tutup menu mobile ketika klik link (opsional)
+                    const mobileLinks = navMenu.querySelectorAll('.nav-link-mobile, .dept-item');
+                    mobileLinks.forEach(link => {
+                        link.addEventListener('click', function () {
+                            navMenu.classList.add('hidden');
+                            navMenu.classList.remove('block');
+                        });
+                    });
+                }
+
+                // Penanganan khusus untuk dropdown Program Keahlian di mobile
+                const mobileDeptTriggers = document.querySelectorAll('#nav-menu-mobile .nav-prodi-trigger');
+                mobileDeptTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const dropdown = this.nextElementSibling;
+                        if (dropdown) {
+                            dropdown.classList.toggle('hidden');
+                            dropdown.classList.toggle('block');
+                            // Atur posisi untuk mobile
+                            dropdown.classList.remove('absolute');
+                            dropdown.classList.add('relative');
+                            dropdown.classList.remove('top-full', 'pt-2', 'z-50');
+                            dropdown.classList.add('mt-2', 'ml-4');
+                        }
+                    });
+                });
+            });
     </script>
 
     <!-- Dagangan -->
