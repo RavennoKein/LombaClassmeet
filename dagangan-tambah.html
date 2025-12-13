@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Dagangan - SMK Negeri 2 Mojokerto</title>
+    <link rel="icon" type="image/x-icon"
+        href="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/public/logo.webp" />
+    <meta name="description"
+        content="Form pengajuan posting dagangan siswa SMK Negeri 2 Mojokerto. Posting akan diverifikasi admin." />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f4f7',
+                            100: '#e1eaf0',
+                            300: '#8ca6bd',
+                            500: '#0b2e66',
+                            600: '#09295a',
+                            700: '#07214c'
+                        },
+                        accent: {
+                            100: '#fbf4e2',
+                            300: '#f6dc9c',
+                            500: '#f1c848',
+                            600: '#e0b53c',
+                            700: '#c29c2d'
+                        },
+                        dark: {
+                            800: '#1f2937',
+                            900: '#111827'
+                        }
+                    },
+                    borderRadius: {
+                        'xl-2': '18px',
+                        '3xl': '24px',
+                        '4xl': '32px'
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                        '30': '7.5rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .container-page {
+            max-width: 1120px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .shadow-soft {
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+        }
+
+        .glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.45));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .heading-tracked {
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-white text-dark-900 antialiased">
+    <!-- Topbar -->
+    <div class="bg-dark-900 text-slate-100 text-xs">
+        <div
+            class="container-page px-4 flex flex-col sm:flex-row gap-2 sm:gap-4 py-2 sm:items-center sm:justify-between">
+            <p class="font-semibold tracking-wider uppercase text-accent-300">SMK NEGERI 2 MOJOKERTO</p>
+            <div class="flex flex-wrap gap-4 text-[13px] text-slate-400">
+                <span class="flex items-center gap-2">📍 <span class="hover:text-white transition">Jl. Raya Pulorejo,
+                        Prajuritkulon Mojokerto 61325 Jawa Timur, Indonesia</span></span>
+                <span class="flex items-center gap-2">☎ <span class="hover:text-white transition">0321
+                        387356</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40">
+        <div class="glass border-b border-white/20">
+            <div class="container-page px-4 flex items-center justify-between py-3">
+                <div class="flex items-center gap-3">
+                    <img src="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/public/logo.webp"
+                        alt="Logo" class="w-10 h-10 rounded-xl shadow-lg object-cover" />
+                    <div>
+                        <p class="text-base font-bold leading-tight text-dark-900">SMK Negeri 2 Mojokerto</p>
+                        <p class="text-[12px] text-slate-500 leading-tight">Portal Informasi Sekolah</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <a href="dagangan.html"
+                        class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 font-bold hover:bg-primary-50 hover:text-primary-700 transition">
+                        Kembali
+                    </a>
+
+                    <button id="nav-toggle"
+                        class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 bg-white shadow-sm hover:border-primary-300 transition">
+                        <span class="sr-only">Toggle menu</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-700" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="nav-menu-mobile" class="md:hidden hidden border-t border-slate-200 bg-white/95 backdrop-blur-sm">
+            <div class="container-page px-4 py-3 flex flex-col gap-2 text-sm text-slate-700 font-medium">
+                <a href="dagangan.html"
+                    class="nav-link-mobile py-2 px-3 rounded-lg bg-primary-50 text-primary-700 font-bold transition">
+                    Kembali ke Dagangan
+                </a>
+                <a href="index.html"
+                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Beranda</a>
+                <a href="profile.html"
+                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Profil</a>
+
+                <a href="berita.html"
+                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Berita</a>
+                <a href="prestasi.html"
+                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Prestasi</a>
+                <a href="fasilitas.html"
+                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Fasilitas</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1">
+        <section class="bg-slate-50 border-b border-slate-100">
+            <div class="container-page px-4 py-12 md:py-16">
+                <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">POST
+                    DAGANGAN</p>
+                <h1 class="text-3xl md:text-4xl font-extrabold mt-2 leading-tight text-dark-900">
+                    Ajukan posting dagangan siswa.
+                </h1>
+                <p class="mt-4 text-base md:text-lg text-slate-600 max-w-2xl">
+                    Posting kamu akan masuk <span class="font-bold text-dark-900">antrian verifikasi</span>. Hubungi
+                    admin agar
+                    cepat di-ACC.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-16 bg-white">
+            <div class="container-page px-4">
+                <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-5 md:p-8">
+                    <div id="formMessage" class="hidden mb-6"></div>
+
+                    <form id="formDagangan" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-sm font-bold text-slate-700">Nama Penjual</label>
+                                <input name="nama_penjual" type="text" placeholder="Contoh: Reza" required
+                                    class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition" />
+                            </div>
+                            <div>
+                                <label class="text-sm font-bold text-slate-700">Kelas Penjual</label>
+                                <input name="kelas_penjual" type="text" placeholder="Contoh: XII RPL 3" required
+                                    class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-sm font-bold text-slate-700">Nama Produk / Jasa</label>
+                            <input name="nama_produk" type="text"
+                                placeholder="Contoh: Es Teh Jumbo / Jasa Desain Poster" required
+                                class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition" />
+                        </div>
+
+                        <div>
+                            <label class="text-sm font-bold text-slate-700">Deskripsi</label>
+                            <textarea name="deskripsi" rows="4" placeholder="Tulis detail singkat yang jelas..."
+                                required
+                                class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition"></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="text-sm font-bold text-slate-700">Kategori</label>
+                                <select name="kategori" required
+                                    class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition">
+                                    <option value="makanan">Makanan</option>
+                                    <option value="minuman">Minuman</option>
+                                    <option value="jasa">Jasa</option>
+                                    <option value="handmade">Handmade</option>
+                                    <option value="lainnya">Lainnya</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="text-sm font-bold text-slate-700">Tipe</label>
+                                <select id="tipe" name="tipe" required
+                                    class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition">
+                                    <option value="hari_ini">Jual Hari Ini</option>
+                                    <option value="preorder">Pre-Order</option>
+                                    <option value="etalase">Etalase</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="text-sm font-bold text-slate-700">Harga (opsional)</label>
+                                <input name="harga" type="number" min="0" placeholder="Contoh: 3000"
+                                    class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition" />
+                            </div>
+                        </div>
+
+                        <div id="wrapDeadlinePO" class="hidden">
+                            <label class="text-sm font-bold text-slate-700">Deadline PO</label>
+                            <input name="deadline_po" type="date"
+                                class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition" />
+                            <p class="mt-2 text-xs text-slate-500">Wajib diisi jika tipe Pre-Order.</p>
+                        </div>
+
+                        <div>
+                            <label class="text-sm font-bold text-slate-700">Kontak (WA/IG/Link)</label>
+                            <input name="kontak" type="text"
+                                placeholder="Contoh: 0812xxxx / @igkamu / https://wa.me/62xxx" required
+                                class="mt-2 w-full rounded-2xl bg-white border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-primary-600 transition" />
+                            <p class="mt-2 text-xs text-slate-500">Disarankan WA agar cepat dibalas.</p>
+                        </div>
+
+                        <div>
+                            <label class="text-sm font-bold text-slate-700">Foto (opsional)</label>
+                            <input id="foto" name="foto" type="file" accept="image/*"
+                                class="mt-2 block w-full text-sm text-slate-600 file:mr-4 file:rounded-xl file:border-0 file:bg-primary-600 file:px-4 file:py-2 file:text-white hover:file:bg-primary-700 transition" />
+                        </div>
+
+                        <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                            <button id="btnSubmitDagangan" type="submit"
+                                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-accent-600 text-dark-900 text-sm font-bold shadow-lg shadow-accent-600/30 hover:bg-accent-700 active:scale-[0.98] transition">
+                                Kirim untuk Verifikasi
+                            </button>
+
+                            <a href="dagangan.html"
+                                class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-slate-200 bg-white text-slate-700 text-sm font-bold hover:bg-primary-50 hover:text-primary-700 transition">
+                                Batal
+                            </a>
+                        </div>
+
+                        <div class="pt-3">
+                            <p class="text-xs text-slate-500">
+                                Setelah kirim, status otomatis <span class="font-bold text-slate-700">pending</span>.
+                                Admin akan mengubah ke <span class="font-bold text-slate-700">approved</span> agar
+                                tampil di daftar dagangan.
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 text-slate-200 text-sm pt-16">
+        <div class="container-page px-4 pb-10 grid gap-10 md:grid-cols-4">
+            <div class="space-y-4 md:col-span-2">
+                <p class="text-xl font-extrabold text-white">SMK Negeri 2 Mojokerto</p>
+                <p class="text-slate-400 max-w-lg">
+                    Sekolah menengah kejuruan yang berkomitmen pada pembelajaran berbasis keahlian,
+                    karakter, dan penguatan budaya industri serta lingkungan.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <p class="text-base font-bold text-white">Tautan Cepat</p>
+                <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-slate-400">
+                    <a href="index.html" class="hover:text-accent-300 transition">Beranda</a>
+                    <a href="profile.html" class="hover:text-accent-300 transition">Profil Sekolah</a>
+                    <a href="kalender.html" class="hover:text-accent-300 transition">Kalender Akademik</a>
+                    <a href="berita.html" class="hover:text-accent-300 transition">Berita Sekolah</a>
+                    <a href="prestasi.html" class="hover:text-accent-300 transition">Prestasi Siswa</a>
+                    <a href="fasilitas.html" class="hover:text-accent-300 transition">Fasilitas</a>
+                    <a href="dagangan.html" class="hover:text-accent-300 transition">Dagangan Siswa</a>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <p class="text-base font-bold text-white">Hubungi Kami</p>
+                <p class="text-slate-400">
+                    Jl. Raya Pulorejo, Prajuritkulon<br />
+                    Kota Mojokerto 61325 Jawa Timur, Indonesia
+                </p>
+                <p class="text-slate-400">
+                    Telp. 0321 387356<br />
+                    Email: humas@smkn2mojokerto.sch.id
+                </p>
+                <p class="text-xs text-slate-500">
+                    Jam layanan: Senin–Jumat 07.00–15.30 WIB
+                </p>
+            </div>
+        </div>
+
+        <div class="border-t border-dark-800 mt-6">
+            <div class="container-page px-4 py-4 flex flex-col md:flex-row items-center justify-center gap-3">
+                <p class="text-sm text-slate-400">
+                    © <span id="footer-year"></span> SMK Negeri 2 Mojokerto. Semua hak dilindungi.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
+
+    <!-- Dagangan -->
+    <script src="js/api-dagangan.js"></script>
+    <script src="js/dagangan-form.js"></script>
+
+    <script>
+            // mobile nav toggle (tanpa layout.js)
+            (function () {
+                const btn = document.getElementById('nav-toggle');
+                const menu = document.getElementById('nav-menu-mobile');
+                if (!btn || !menu) return;
+                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+            })();
+
+        document.getElementById('footer-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

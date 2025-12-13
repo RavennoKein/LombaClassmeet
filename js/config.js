@@ -4,6 +4,8 @@ const SUPABASE_ANON_KEY =
 
 const SUPABASE_BUCKET = "website-sekolah";
 
+const DAGANGAN_BUCKET = "dagangan";
+
 const DIFY_CHATBOT_URL = "https://udify.app/chatbot/vZOqc4H987xMYq3o";
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
