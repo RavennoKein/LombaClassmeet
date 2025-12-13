@@ -810,12 +810,14 @@
             const AUTO_MS = 3500;
             let autoTimer = null;
             let isAnimating = false;
+
             function getPerView() {
               const w = window.innerWidth;
               if (w <= 640) return 1;
               if (w <= 1024) return 2;
               return 3;
             }
+
             let perView = getPerView();
             let index = perView;
             let originals = [];
@@ -917,11 +919,9 @@
               const max = perView + originalCount - 1;
 
               if (index > max) {
-
                 index = perView;
                 updateTransform(false);
               } else if (index < min) {
-
                 index = perView + originalCount - 1;
                 updateTransform(false);
               }
@@ -936,11 +936,20 @@
             viewport.addEventListener('mouseenter', stopAuto);
             viewport.addEventListener('mouseleave', startAuto);
 
-            // swipe
+            // =========================
+            // swipe (FIX: jangan ganggu klik link)
+            // =========================
             let startX = 0;
             let isDown = false;
 
+            function isInteractiveTarget(e) {
+              return !!e.target.closest('a, button, input, textarea, select, label');
+            }
+
             viewport.addEventListener('pointerdown', (e) => {
+              // kalau klik link/button, biarin normal (href jalan)
+              if (isInteractiveTarget(e)) return;
+
               isDown = true;
               startX = e.clientX;
               viewport.setPointerCapture(e.pointerId);
@@ -949,11 +958,14 @@
             });
 
             viewport.addEventListener('pointerup', (e) => {
+              // kalau yang dilepas link/button, biarin normal
+              if (isInteractiveTarget(e)) return;
+
               if (!isDown) return;
               isDown = false;
               document.documentElement.classList.remove('dragging');
-              const dx = e.clientX - startX;
 
+              const dx = e.clientX - startX;
               if (Math.abs(dx) > 60) {
                 if (dx < 0) next();
                 else prev();
