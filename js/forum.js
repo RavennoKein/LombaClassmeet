@@ -1,73 +1,10 @@
-// js/forum.js
-// Forum anonim global sebagai widget mengambang di semua halaman
+/* =========================================================
+   SUPER STRONG FRONTEND FILTER (CDN: he + leo-profanity)
+   ========================================================= */
 
-/**
- * 1) Normalisasi teks untuk deteksi kata kasar:
- *    - lower-case
- *    - ubah leetspeak umum (4->a, 1->i, 0->o, 3->e, 5->s, 7->t, @->a, $->s)
- *    - hapus diakritik (kalau ada)
- *    - simpan versi "compact" tanpa spasi/simbol untuk mendeteksi "b a n g s a t"
- */
-function normalizeForFilter(input) {
-  let s = (input || "").toString().toLowerCase();
-
-  // leetspeak & simbol umum
-  const map = {
-    4: "a",
-    "@": "a",
-    1: "i",
-    "!": "i",
-    "|": "i",
-    0: "o",
-    3: "e",
-    5: "s",
-    $: "s",
-    7: "t",
-  };
-
-  s = s.replace(/[4@1!\|03\$57]/g, (ch) => map[ch] || ch);
-
-  // hilangkan diakritik (aman untuk id-ID)
-  try {
-    s = s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
-  } catch (_) {}
-
-  // versi asli (spasi tetap) + compact (hapus non-huruf/angka)
-  const compact = s.replace(/[^a-z0-9]+/g, "");
-  return { raw: s, compact };
-}
-
-/**
- * 2) Buat regex yang tahan "huruf dipanjangin":
- *    contoh: goblok -> goooobloook
- */
-function stretchy(word) {
-  // goblok -> g+o+b+l+o+k+
-  return word
-    .split("")
-    .map((ch) => ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "+")
-    .join("");
-}
-
-/**
- * 3) Daftar kata/akar kata kasar & tidak pantas (Indonesia).
- *    Ini sengaja pakai "akar" agar lebih tahan variasi, tapi tetap hati-hati.
- *
- *    Kamu boleh tambah lagi sesuai kebutuhan sekolah.
- */
-const FORUM_BANNED_BASE = [
-  // hinaan umum
-  "bodoh",
-  "bdh",
-  "Bdh",
-  "BDh",
-  "bDH",
-  "bdH",
+const INDO_EXTRA_BANNED = [
   "bodoh",
   "goblok",
-  "goooblk",
-  "goblooook",
-  "g0bl0k",
   "tolol",
   "idiot",
   "dongo",
@@ -79,60 +16,205 @@ const FORUM_BANNED_BASE = [
   "brengsek",
   "kampret",
   "keparat",
-  "sialan",
   "kurangajar",
-  "kurangajar", // (double aman)
   "bacot",
-  "bawelbanget", // opsional
-
-  // kata umpatan yang sering muncul
   "kontol",
   "memek",
   "ngentot",
-  "anjrit",
   "jancuk",
   "asu",
   "tai",
-  "tolol",
-  "gila", // catatan: bisa false positive, kalau keberatan hapus
 ];
 
-/**
- * 4) Kompilasi regex:
- *    - deteksi di raw (pakai boundary sederhana)
- *    - deteksi di compact (untuk yang diselingi spasi/titik/simbol)
- *
- *    NB: kita tidak pakai word boundary ketat karena bahasa Indo sering gabung kata,
- *    tapi tetap kasih pembatas "non-letter" di raw agar lebih aman.
- */
-const FORUM_BANNED_REGEX = (() => {
-  const parts = FORUM_BANNED_BASE.map((w) => stretchy(w));
-  // raw: cari pola dengan pembatas non-huruf di kiri/kanan (atau awal/akhir)
+// init leo-profanity dictionary (sekali)
+let _leoReady = false;
+async function initLeoProfanityOnce() {
+  if (_leoReady || typeof LeoProfanity === "undefined") return;
+
+  try {
+    const res = await fetch(
+      "https://unpkg.com/leo-profanity@1.8.0/dictionary/default.json",
+      { cache: "force-cache" }
+    );
+    const words = await res.json();
+
+    LeoProfanity.clearList();
+    LeoProfanity.add(words);
+    LeoProfanity.add(INDO_EXTRA_BANNED);
+
+    _leoReady = true;
+  } catch (e) {
+    console.warn("leo-profanity init failed, fallback to regex only", e);
+  }
+}
+
+function normalizeForFilterStrong(input) {
+  let s = (input || "").toString();
+
+  // decode HTML entities: "b&#97;ngsat" -> "bangsat"
+  try {
+    if (window.he && typeof he.decode === "function") s = he.decode(s);
+  } catch (_) {}
+
+  // buang zero-width / directional marks
+  s = s.replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u206F\uFEFF]/g, "");
+
+  // NFKC
+  try {
+    s = s.normalize("NFKC");
+  } catch (_) {}
+  s = s.toLowerCase();
+
+  // buang diakritik
+  try {
+    s = s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+  } catch (_) {}
+
+  // leetspeak & simbol umum
+  const leetMap = {
+    4: "a",
+    "@": "a",
+    1: "i",
+    "!": "i",
+    "|": "i",
+    "¡": "i",
+    0: "o",
+    3: "e",
+    "€": "e",
+    5: "s",
+    $: "s",
+    7: "t",
+    "+": "t",
+  };
+
+  // ✅ FIX: hapus spasi di regex char class
+  s = s.replace(/[4@1!\|03€5\$7\+¡]/g, (ch) => leetMap[ch] || ch);
+
+  // homoglyph Cyrillic
+  const cyrMap = {
+    а: "a",
+    е: "e",
+    о: "o",
+    р: "p",
+    с: "c",
+    х: "x",
+    у: "y",
+    і: "i",
+    ј: "j",
+    ӏ: "l",
+    ь: "b",
+    Ь: "b",
+  };
+  s = s.replace(/[аерсхуіјӏьЬ]/g, (ch) => cyrMap[ch] || ch);
+
+  const raw = s;
+  const compact = s.replace(/[^a-z0-9]+/g, "");
+  const collapsed = compact.replace(/([a-z])\1{2,}/g, "$1$1");
+
+  return { raw, compact, collapsed };
+}
+
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function buildSeparatedStretchyPattern(word) {
+  const sep = "[^a-z0-9]{0,2}";
+  return word
+    .split("")
+    .map((ch) => `${escapeRegex(ch)}+`)
+    .join(sep);
+}
+
+const FORUM_BANNED_BASE2 = [...new Set([...INDO_EXTRA_BANNED])];
+
+const FORUM_BANNED_REGEX_RAW2 = (() => {
+  const parts = FORUM_BANNED_BASE2.map(buildSeparatedStretchyPattern);
   const rawPattern = `(?:^|[^a-z0-9])(?:${parts.join("|")})(?:$|[^a-z0-9])`;
   return new RegExp(rawPattern, "i");
 })();
 
-const FORUM_BANNED_COMPACT_REGEX = (() => {
-  const parts = FORUM_BANNED_BASE.map((w) => stretchy(w));
-  // compact: karena sudah hanya [a-z0-9], cukup cari substring
-  const compactPattern = `(?:${parts.join("|")})`;
-  return new RegExp(compactPattern, "i");
+const FORUM_BANNED_REGEX_COMPACT2 = (() => {
+  const parts = FORUM_BANNED_BASE2.map((w) =>
+    w
+      .split("")
+      .map((ch) => `${escapeRegex(ch)}+`)
+      .join("")
+  );
+  return new RegExp(parts.join("|"), "i");
 })();
 
-/**
- * 5) Fungsi utama deteksi kata kasar
- */
-function forumContainsBannedWord(text) {
-  const { raw, compact } = normalizeForFilter(text);
+async function forumContainsBannedWordStrong(text) {
+  await initLeoProfanityOnce();
 
-  // cek raw (lebih aman untuk boundary)
-  if (FORUM_BANNED_REGEX.test(` ${raw} `)) return true;
+  const { raw, compact, collapsed } = normalizeForFilterStrong(text);
 
-  // cek compact (untuk "b a n g s a t" / "b@ngs@t" / dll)
-  if (FORUM_BANNED_COMPACT_REGEX.test(compact)) return true;
+  if (FORUM_BANNED_REGEX_RAW2.test(` ${raw} `)) return true;
+  if (FORUM_BANNED_REGEX_COMPACT2.test(compact)) return true;
+  if (FORUM_BANNED_REGEX_COMPACT2.test(collapsed)) return true;
+
+  if (_leoReady) {
+    try {
+      if (LeoProfanity.check(raw)) return true;
+      if (LeoProfanity.check(compact)) return true;
+      if (LeoProfanity.check(collapsed)) return true;
+    } catch (_) {
+      // kalau library berubah / gagal, tetap aman karena regex sudah jalan
+    }
+  }
 
   return false;
 }
+
+/* =========================================================
+   D. Anti-spam ringan (client-side)
+   ========================================================= */
+
+const FORUM_MIN_LEN = 3;
+const FORUM_MAX_LEN = 220;
+const FORUM_COOLDOWN_MS = 15_000;
+const FORUM_DUP_WINDOW_MS = 60_000;
+const LS_LAST_POST_AT = "forum_last_post_at";
+const LS_LAST_POST_HASH = "forum_last_post_hash";
+const LS_LAST_POST_HASH_AT = "forum_last_post_hash_at";
+
+function simpleHash(str) {
+  let h = 0;
+  for (let i = 0; i < str.length; i++) {
+    h = (h << 5) - h + str.charCodeAt(i);
+    h |= 0;
+  }
+  return String(h);
+}
+
+function canPostNow(normalizedCompact) {
+  const now = Date.now();
+
+  const lastAt = Number(localStorage.getItem(LS_LAST_POST_AT) || 0);
+  if (now - lastAt < FORUM_COOLDOWN_MS)
+    return { ok: false, reason: "cooldown" };
+
+  const lastHash = localStorage.getItem(LS_LAST_POST_HASH) || "";
+  const lastHashAt = Number(localStorage.getItem(LS_LAST_POST_HASH_AT) || 0);
+
+  const h = simpleHash(normalizedCompact);
+  if (h === lastHash && now - lastHashAt < FORUM_DUP_WINDOW_MS) {
+    return { ok: false, reason: "duplicate" };
+  }
+
+  return { ok: true, hash: h };
+}
+
+function markPosted(hash) {
+  const now = Date.now();
+  localStorage.setItem(LS_LAST_POST_AT, String(now));
+  localStorage.setItem(LS_LAST_POST_HASH, hash);
+  localStorage.setItem(LS_LAST_POST_HASH_AT, String(now));
+}
+
+/* =========================================================
+   E. Supabase CRUD + Render
+   ========================================================= */
 
 async function fetchForumPosts(limit = 20) {
   const { data, error } = await supabaseClient
@@ -173,7 +255,8 @@ async function renderForumWidget() {
       "border border-slate-200 rounded-lg bg-slate-50 px-2 py-1.5";
 
     const teks = document.createElement("p");
-    teks.className = "text-slate-800 text-[11px]";
+    teks.className =
+      "text-slate-800 text-[11px] whitespace-pre-wrap break-words";
     teks.textContent = post.content;
 
     const meta = document.createElement("p");
@@ -192,6 +275,7 @@ async function renderForumWidget() {
 function toggleForumPanel(forceOpen) {
   const panel = document.getElementById("forum-panel");
   if (!panel) return;
+
   const isHidden = panel.classList.contains("hidden");
   const shouldOpen = typeof forceOpen === "boolean" ? forceOpen : isHidden;
 
@@ -215,15 +299,39 @@ function initForumWidget() {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const teks = input.value.trim();
+    const teks = (input.value || "").trim();
     if (!teks) return;
 
-    if (forumContainsBannedWord(teks)) {
+    if (teks.length < FORUM_MIN_LEN) {
+      warning.textContent = "Teks terlalu pendek.";
+      warning.classList.remove("hidden");
+      return;
+    }
+    if (teks.length > FORUM_MAX_LEN) {
+      warning.textContent = `Maksimal ${FORUM_MAX_LEN} karakter.`;
+      warning.classList.remove("hidden");
+      return;
+    }
+
+    if (await forumContainsBannedWordStrong(teks)) {
       warning.textContent =
         "Teks mengandung kata yang tidak pantas. Mohon gunakan bahasa yang lebih sopan.";
       warning.classList.remove("hidden");
       return;
     }
+
+    // ✅ FIX: pakai normalisasi strong yang sama
+    const { compact } = normalizeForFilterStrong(teks);
+    const check = canPostNow(compact);
+    if (!check.ok) {
+      warning.textContent =
+        check.reason === "cooldown"
+          ? "Tunggu sebentar sebelum mengirim lagi."
+          : "Pesan yang sama baru saja dikirim. Coba ubah isinya.";
+      warning.classList.remove("hidden");
+      return;
+    }
+
     warning.classList.add("hidden");
 
     const { error } = await supabaseClient
@@ -237,6 +345,7 @@ function initForumWidget() {
       return;
     }
 
+    markPosted(check.hash);
     input.value = "";
     await renderForumWidget();
   });
@@ -245,3 +354,6 @@ function initForumWidget() {
     warning.classList.add("hidden");
   });
 }
+
+// pastikan ini dipanggil setelah layout widget ter-render
+// initForumWidget();

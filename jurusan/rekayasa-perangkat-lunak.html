@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profil Sekolah - SMK Negeri 2 Mojokerto</title>
+    <title>Jurusan RPL - SMK Negeri 2 Mojokerto</title>
     <link rel="icon" type="image/x-icon"
         href="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/public/logo.webp" />
-    <meta name="description" content="Profil SMK Negeri 2 Mojokerto: sejarah, visi misi, sambutan, dan kontak resmi." />
+    <meta name="description"
+        content="Profil Jurusan Rekayasa Perangkat Lunak (RPL) SMK Negeri 2 Mojokerto: deskripsi, visi, misi, dan tujuan." />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -84,11 +85,15 @@
         }
 
         .hero-overlay {
-            background: linear-gradient(135deg, rgba(11, 46, 102, 0.85) 0%, rgba(11, 46, 102, 0.25) 100%);
+            background: linear-gradient(135deg, rgba(11, 46, 102, 0.88) 0%, rgba(11, 46, 102, 0.25) 100%);
         }
 
-        /* Scrollspy nav */
-        .profile-nav-arrow {
+        .card-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        /* Scrollspy nav (desktop only) */
+        .dept-nav-arrow {
             width: 18px;
             height: 18px;
             flex-shrink: 0;
@@ -96,29 +101,29 @@
             transition: transform 200ms ease, opacity 200ms ease;
         }
 
-        .profile-nav-link:hover .profile-nav-arrow {
+        .dept-nav-link:hover .dept-nav-arrow {
             opacity: 1;
             transform: translateX(2px);
         }
 
-        .profile-nav-link.is-active {
+        .dept-nav-link.is-active {
             background: #f0f4f7;
             border-color: #e1eaf0;
             color: #07214c;
         }
 
-        .profile-nav-link.is-active .profile-nav-dot {
+        .dept-nav-link.is-active .dept-nav-dot {
             background: #0b2e66;
         }
 
-        .profile-nav-link.is-active .profile-nav-arrow {
+        .dept-nav-link.is-active .dept-nav-arrow {
             opacity: 1;
             transform: translateX(2px);
         }
     </style>
 </head>
 
-<body class="min-h-screen flex flex-col bg-white text-dark-900 antialiased">
+<body data-dept="rpl" class="min-h-screen flex flex-col bg-white text-dark-900 antialiased">
     <!-- Top Bar -->
     <div class="bg-dark-900 text-slate-100 text-xs">
         <div
@@ -147,10 +152,10 @@
                 </div>
 
                 <nav class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-700">
-                    <a href="index.html"
-                        class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Beranda</a>
-                    <a href="profile.html"
-                        class="nav-link px-4 py-2 rounded-lg text-primary-600 bg-primary-50 font-bold transition">Profil</a>
+                    <a href="../index.html"
+                        class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Beranda</a>
+                    <a href="../profile.html"
+                        class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Profil</a>
                     <div class="relative group">
                         <button type="button"
                             class="nav-link nav-prodi-trigger px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition inline-flex items-center gap-2"
@@ -173,7 +178,7 @@
                                 </div>
 
                                 <div class="p-2">
-                                    <a href="jurusan/rekayasa-perangkat-lunak.html"
+                                    <a href="rekayasa-perangkat-lunak.html"
                                         class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                         data-dept="rpl">
                                         <span class="flex items-center gap-3 min-w-0">
@@ -192,7 +197,7 @@
                                         </svg>
                                     </a>
 
-                                    <a href="jurusan/desain-komunikasi-visual.html"
+                                    <a href="desain-komunikasi-visual.html"
                                         class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                         data-dept="dkv">
                                         <span class="flex items-center gap-3 min-w-0">
@@ -211,7 +216,7 @@
                                         </svg>
                                     </a>
 
-                                    <a href="jurusan/agribisnis-pengolahan-hasil-pertanian.html"
+                                    <a href="agribisnis-pengolahan-hasil-pertanian.html"
                                         class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                         data-dept="aphp">
                                         <span class="flex items-center gap-3 min-w-0">
@@ -231,7 +236,7 @@
                                         </svg>
                                     </a>
 
-                                    <a href="jurusan/kuliner.html"
+                                    <a href="kuliner.html"
                                         class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                         data-dept="kuliner">
                                         <span class="flex items-center gap-3 min-w-0">
@@ -250,7 +255,7 @@
                                         </svg>
                                     </a>
 
-                                    <a href="jurusan/layanan-perbankan-syariah.html"
+                                    <a href="layanan-perbankan-syariah.html"
                                         class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                         data-dept="lps">
                                         <span class="flex items-center gap-3 min-w-0">
@@ -272,16 +277,17 @@
                             </div>
                         </div>
                     </div>
-                    <a href="kalender.html"
-                        class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Kalender</a>
-                    <a href="berita.html"
-                        class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Berita</a>
-                    <a href="prestasi.html"
-                        class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Prestasi</a>
-                    <a href="fasilitas.html"
-                        class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Fasilitas</a>
+
+                    <a href="../kalender.html"
+                        class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Kalender</a>
+                    <a href="../berita.html"
+                        class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Berita</a>
+                    <a href="../prestasi.html"
+                        class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Prestasi</a>
+                    <a href="../fasilitas.html"
+                        class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Fasilitas</a>
                     <a href="#kontak"
-                        class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Kontak</a>
+                        class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Kontak</a>
                 </nav>
 
                 <div class="flex items-center gap-3">
@@ -299,10 +305,9 @@
 
         <div id="nav-menu-mobile" class="md:hidden hidden border-t border-slate-200 bg-white/95 backdrop-blur-sm">
             <div class="container-page px-4 py-3 flex flex-col gap-2 text-sm text-slate-700 font-medium">
-                <a href="index.html"
-                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Beranda</a>
-                <a href="profile.html"
-                    class="nav-link-mobile py-2 px-3 rounded-lg bg-primary-50 text-primary-700 font-bold">Profil</a>
+                <a href="../index.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Beranda</a>
+                <a href="../profile.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Profil</a>
+
                 <div class="relative group">
                     <button type="button"
                         class="nav-link nav-prodi-trigger px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition inline-flex items-center gap-2"
@@ -319,13 +324,13 @@
                         class="absolute left-0 top-full pt-2 opacity-0 translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition duration-150 z-50">
                         <div class="w-72 rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
                             <div class="px-5 py-4 border-b border-slate-100">
-                                <p class="text-[11px] font-semibold uppercase tracking-widest text-primary-600">Program
-                                    Keahlian</p>
+                                <p class="text-[11px] font-semibold uppercase tracking-widest text-primary-600">
+                                    Program Keahlian</p>
                                 <p class="mt-1 text-sm font-extrabold text-dark-900">Daftar Jurusan</p>
                             </div>
 
                             <div class="p-2">
-                                <a href="jurusan/rekayasa-perangkat-lunak.html"
+                                <a href="rekayasa-perangkat-lunak.html"
                                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                     data-dept="rpl">
                                     <span class="flex items-center gap-3 min-w-0">
@@ -344,7 +349,7 @@
                                     </svg>
                                 </a>
 
-                                <a href="jurusan/desain-komunikasi-visual.html"
+                                <a href="desain-komunikasi-visual.html"
                                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                     data-dept="dkv">
                                     <span class="flex items-center gap-3 min-w-0">
@@ -363,7 +368,7 @@
                                     </svg>
                                 </a>
 
-                                <a href="jurusan/agribisnis-pengolahan-hasil-pertanian.html"
+                                <a href="agribisnis-pengolahan-hasil-pertanian.html"
                                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                     data-dept="aphp">
                                     <span class="flex items-center gap-3 min-w-0">
@@ -383,7 +388,7 @@
                                     </svg>
                                 </a>
 
-                                <a href="jurusan/kuliner.html"
+                                <a href="kuliner.html"
                                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                     data-dept="kuliner">
                                     <span class="flex items-center gap-3 min-w-0">
@@ -401,7 +406,7 @@
                                     </svg>
                                 </a>
 
-                                <a href="jurusan/layanan-perbankan-syariah.html"
+                                <a href="layanan-perbankan-syariah.html"
                                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                                     data-dept="lps">
                                     <span class="flex items-center gap-3 min-w-0">
@@ -423,134 +428,179 @@
                         </div>
                     </div>
                 </div>
-                <a href="kalender.html"
-                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Kalender</a>
-                <a href="berita.html"
-                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Berita</a>
-                <a href="prestasi.html"
-                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Prestasi</a>
-                <a href="fasilitas.html"
-                    class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Fasilitas</a>
-                <a href="#kontak" class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition">Kontak</a>
+
+                <a href="../kalender.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Kalender</a>
+                <a href="../berita.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Berita</a>
+                <a href="../prestasi.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Prestasi</a>
+                <a href="../fasilitas.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Fasilitas</a>
+                <a href="#kontak" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Kontak</a>
             </div>
         </div>
     </header>
 
     <main class="flex-1">
-        <!-- Page Hero -->
-        <section class="relative overflow-hidden">
-            <div class="relative page-hero">
-                <div class="absolute inset-0 hero-overlay"></div>
+        <!-- ===================== HERO JURUSAN (VERSI PUTIH + TANPA BOX KANAN) ===================== -->
+        <section class="relative overflow-hidden bg-white border-b border-slate-100">
+            <!-- decorative background -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- soft blobs -->
+                <div
+                    class="absolute -top-24 -left-24 w-[520px] h-[520px] rounded-full bg-primary-50 blur-3xl opacity-80">
+                </div>
+                <div
+                    class="absolute -bottom-32 -right-28 w-[620px] h-[620px] rounded-full bg-accent-100 blur-3xl opacity-80">
+                </div>
 
-                <img src="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/umum/hero2.jpg"
-                    alt="Profil SMK Negeri 2 Mojokerto"
-                    class="absolute inset-0 w-full h-full object-cover opacity-40" />
+                <!-- subtle grid -->
+                <div class="absolute inset-0 opacity-[0.06]"
+                    style="background-image: linear-gradient(to right, #0b2e66 1px, transparent 1px), linear-gradient(to bottom, #0b2e66 1px, transparent 1px); background-size: 44px 44px;">
+                </div>
+            </div>
 
-                <div class="relative z-10">
-                    <div class="container-page px-4 py-16 md:py-20">
-                        <div class="max-w-3xl text-white">
-                            <p
-                                class="inline-flex items-center gap-2 text-sm font-semibold bg-white/20 px-4 py-1.5 rounded-full border border-white/20 glass text-white/95">
-                                PROFIL SEKOLAH
-                            </p>
-                            <h1
-                                class="mt-5 text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-lg tracking-tight">
-                                Mengenal <span class="text-accent-300">SMK Negeri 2 Mojokerto</span>
+            <!-- content -->
+            <div class="relative z-10">
+                <div class="container-page px-4 pt-12 md:pt-14 pb-10 md:pb-14">
+                    <div
+                        class="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 bg-primary-50 border border-primary-100 px-4 py-1.5 rounded-full">
+                        <span class="w-2 h-2 rounded-full bg-accent-600"></span>
+                        PROGRAM KEAHLIAN
+                    </div>
+
+                    <div class="mt-6 grid lg:grid-cols-12 gap-8 items-start">
+                        <div class="lg:col-span-7">
+                            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-dark-900">
+                                Rekayasa Perangkat Lunak <span class="text-primary-600">(RPL)</span>
                             </h1>
-                            <p class="mt-4 text-base md:text-xl text-white/90 font-light max-w-2xl">
-                                Sejarah singkat, visi dan misi, serta sambutan sebagai pengantar mengenal sekolah lebih
-                                dekat.
+
+                            <p class="mt-4 text-base md:text-lg text-slate-600 leading-8 max-w-2xl">
+                                Jurusan RPL di SMK Negeri 2 Mojokerto membekali siswa dengan keterampilan di bidang
+                                teknologi informasi, seperti pemrograman, desain aplikasi web dan mobile, pengelolaan
+                                basis data, serta
+                                pengembangan perangkat lunak sesuai kebutuhan industri. Lulusan RPL siap bersaing di
+                                dunia kerja sebagai
+                                programmer, software developer, maupun technopreneur, serta dapat melanjutkan pendidikan
+                                ke perguruan tinggi.
                             </p>
 
-                            <div class="mt-8 flex flex-wrap gap-3">
-                                <a href="#sejarah"
-                                    class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent-600 text-dark-900 font-bold shadow-xl shadow-accent-600/30 hover:bg-accent-700 hover:scale-[1.03] transition-all duration-300">
-                                    Lihat Sejarah
+                            <div class="mt-7 flex flex-wrap gap-3">
+                                <a href="#visi"
+                                    class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-bold shadow-soft hover:bg-primary-700 active:scale-[0.98] transition">
+                                    Lihat Visi & Misi
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
                                 </a>
-                                <a href="#visi-misi"
-                                    class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/40 text-white font-medium hover:bg-white/15 transition-all duration-300">
-                                    Visi & Misi
+
+                                <a href="#tujuan"
+                                    class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 bg-white text-slate-800 font-bold hover:bg-slate-50 active:scale-[0.98] transition">
+                                    Tujuan Jurusan
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                    </svg>
                                 </a>
-                                <a href="#sambutan"
-                                    class="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/40 text-white font-medium hover:bg-white/15 transition-all duration-300">
-                                    Sambutan
+
+                                <a href="#kontak"
+                                    class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 bg-white text-slate-800 font-bold hover:bg-slate-50 active:scale-[0.98] transition">
+                                    Kontak
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
                                 </a>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="absolute bottom-0 w-full z-10">
-                    <svg viewBox="0 0 1440 80" class="w-full" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="#FFFFFF" fill-opacity="0"
-                            d="M0,32L80,37.3C160,43,320,53,480,58.7C640,64,800,64,960,53.3C1120,43,1280,21,1360,10.7L1440,0L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z">
-                        </path>
-                    </svg>
+                        <div class="lg:col-span-5 flex items-start justify-center lg:justify-end">
+                            <div
+                                class="w-full max-w-sm md:max-w-md lg:max-w-lg rounded-4xl bg-white border border-primary-100 shadow-soft overflow-hidden flex items-center justify-center p-6 md:p-8">
+                                <img src="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/umum/rpl.webp"
+                                    alt="Logo Jurusan RPL" class="w-40 h-40 md:w-[290px] md:h-[290px] object-cover" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
                 </div>
             </div>
         </section>
+        <!-- ===================== /HERO JURUSAN ===================== -->
 
-        <!-- Content -->
+        <!-- CONTENT -->
         <section class="py-16 md:py-24 bg-white">
             <div class="container-page px-4 grid lg:grid-cols-12 gap-10">
-                <!-- Sidebar (HANYA DESKTOP) -->
+                <!-- Sidebar (desktop only) -->
                 <aside class="hidden lg:block lg:col-span-4">
                     <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 sticky top-28">
                         <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">
                             NAVIGASI</p>
-                        <p class="mt-2 text-2xl font-extrabold text-dark-900 leading-tight">Profil Sekolah</p>
-                        <p class="mt-3 text-sm text-slate-600 leading-7">
-                            Klik bagian di bawah untuk berpindah cepat.
-                        </p>
+                        <p class="mt-2 text-2xl font-extrabold text-dark-900 leading-tight">Jurusan RPL</p>
+                        <p class="mt-3 text-sm text-slate-600 leading-7">Klik bagian di bawah untuk berpindah cepat.</p>
 
                         <nav class="mt-6 space-y-2 text-sm font-semibold">
-                            <a href="#sejarah"
-                                class="profile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
-                                data-section="sejarah">
+                            <a href="#overview"
+                                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                                data-section="overview">
                                 <span class="flex items-center gap-3">
-                                    <span class="w-2 h-2 rounded-full bg-slate-300 profile-nav-dot transition"></span>
-                                    Sejarah
+                                    <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
+                                    Ringkasan
                                 </span>
-                                <svg class="profile-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </a>
 
-                            <a href="#visi-misi"
-                                class="profile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
-                                data-section="visi-misi">
+                            <a href="#visi"
+                                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                                data-section="visi">
                                 <span class="flex items-center gap-3">
-                                    <span class="w-2 h-2 rounded-full bg-slate-300 profile-nav-dot transition"></span>
-                                    Visi & Misi
+                                    <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
+                                    Visi
                                 </span>
-                                <svg class="profile-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </a>
 
-                            <a href="#sambutan"
-                                class="profile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
-                                data-section="sambutan">
+                            <a href="#misi"
+                                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                                data-section="misi">
                                 <span class="flex items-center gap-3">
-                                    <span class="w-2 h-2 rounded-full bg-slate-300 profile-nav-dot transition"></span>
-                                    Sambutan
+                                    <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
+                                    Misi
                                 </span>
-                                <svg class="profile-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+
+                            <a href="#tujuan"
+                                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                                data-section="tujuan">
+                                <span class="flex items-center gap-3">
+                                    <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
+                                    Tujuan
+                                </span>
+                                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </a>
 
                             <a href="#kontak"
-                                class="profile-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
                                 data-section="kontak">
                                 <span class="flex items-center gap-3">
-                                    <span class="w-2 h-2 rounded-full bg-slate-300 profile-nav-dot transition"></span>
+                                    <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
                                     Kontak
                                 </span>
-                                <svg class="profile-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
@@ -558,206 +608,211 @@
                         </nav>
 
                         <div class="mt-6 rounded-2xl bg-accent-100 border border-accent-300/60 p-5">
-                            <p class="text-sm font-extrabold text-dark-900">Info Singkat</p>
+                            <p class="text-sm font-extrabold text-dark-900">Info Cepat</p>
                             <div class="mt-3 space-y-2 text-sm text-slate-700">
-                                <p><span class="font-bold">Berdiri:</span> 24 Juni 2013</p>
-                                <p><span class="font-bold">Lokasi:</span> Jl. Raya Pulorejo, Prajuritkulon</p>
-                                <p><span class="font-bold">Kompetensi:</span> 5 Program Keahlian</p>
+                                <p><span class="font-bold">Bidang:</span> Teknologi Informasi</p>
+                                <p><span class="font-bold">Konsentrasi:</span> Web, Mobile, Database</p>
+                                <p><span class="font-bold">Prospek:</span> Developer & Technopreneur</p>
                             </div>
                         </div>
                     </div>
                 </aside>
 
-                <!-- Main Content -->
+                <!-- Main -->
                 <div class="lg:col-span-8 space-y-10">
-                    <section id="sejarah"
+                    <!-- Overview -->
+                    <section id="overview"
                         class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
                         <div class="p-6 sm:p-8 border-b border-slate-100">
                             <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">
-                                SEJARAH</p>
+                                RINGKASAN</p>
                             <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-dark-900 leading-tight">
-                                Perjalanan Berdirinya SMK Negeri 2 Mojokerto
+                                Tentang Jurusan RPL
                             </h2>
                             <p class="mt-3 text-base text-slate-600 leading-8">
-                                Ringkasan sejarah pendirian, perpindahan lokasi, serta perkembangan kompetensi keahlian.
+                                Gambaran umum kompetensi, pembelajaran, dan peluang lulusan.
                             </p>
                         </div>
 
-                        <div class="relative aspect-[16/9] bg-slate-100">
-                            <img src="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/umum/hero1.jpg"
-                                alt="Gedung SMK Negeri 2 Mojokerto"
-                                class="absolute inset-0 w-full h-full object-cover" />
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent">
+                        <div class="p-6 sm:p-8">
+                            <div class="rounded-3xl bg-slate-50 border border-slate-200 p-6">
+                                <p class="text-slate-700 leading-8">
+                                    Jurusan RPL di SMK Negeri 2 Mojokerto membekali siswa dengan keterampilan di bidang
+                                    teknologi informasi,
+                                    seperti pemrograman, desain aplikasi web dan mobile, pengelolaan basis data, serta
+                                    pengembangan perangkat
+                                    lunak sesuai kebutuhan industri. Lulusan RPL siap bersaing di dunia kerja sebagai
+                                    programmer, software
+                                    developer, maupun technopreneur, serta dapat melanjutkan pendidikan ke perguruan
+                                    tinggi.
+                                </p>
                             </div>
-                            <div class="absolute bottom-4 left-4 right-4">
-                                <p class="text-white font-extrabold text-lg">SMK Negeri 2 Mojokerto</p>
-                                <p class="text-white/85 text-sm">Gedung sekolah dan lingkungan belajar.</p>
-                            </div>
-                        </div>
 
-                        <div class="p-6 sm:p-8 space-y-4 text-slate-700 leading-8">
-                            <p>
-                                SMK Negeri 2 Mojokerto adalah Sekolah Menengah Kejuruan di Kota Mojokerto yang mulai
-                                berdiri pada tanggal
-                                24 Juni 2013 dengan SK Pendirian Sekolah nomer 188.45/630/417.111/2013 dan SK Ijin
-                                Operasional Sekolah
-                                nomer 188.45/630/417.111/2013. Pada awal berdiri, pelaksanaan layanan pendidikan
-                                bertempat di gedung
-                                SMKN 1 Mojokerto Jl. Kedungsari, Magersari Kota Mojokerto dan dikepalai oleh Bapak Drs.
-                                Harol
-                                Kristiyandoko, MT yang kala itu sekaligus menjabat sebagai Kepala SMKN 1 Mojokerto.
-                            </p>
-                            <p>
-                                Pada tanggal 16 Januari 2014, SMKN 2 Kota Mojokerto menempati gedung baru di Jl.
-                                Pulorejo Kecamatan
-                                Prajuritkulon Kota Mojokerto yang diresmikan oleh Walikota Mojokerto Drs. H. Mas’ud
-                                Yunus.
-                            </p>
-                            <p>
-                                Pada awal berdirinya, SMKN 2 Mojokerto baru membuka dua kompetensi keahlian yaitu: Tata
-                                Boga (TB) dan
-                                Rekayasa Perangkat Lunak (RPL). Tahun berikutnya membuka tiga kompetensi keahlian
-                                lainnya yaitu: Desain
-                                Komunikasi Visual (DKV), Agribisnis Pengolahan Hasil Pertanian (APHP) dan Perbankan
-                                Syari’ah (PS). Hingga
-                                saat ini, SMKN 2 Kota Mojokerto memiliki 5 bidang keahlian yang berbeda, yaitu: bidang
-                                pariwisata, seni
-                                dan industri kreatif, agribisnis dan agroteknologi, teknologi informasi dan komunikasi
-                                serta bisnis
-                                manajemen.
-                            </p>
+                            <div class="mt-6 grid sm:grid-cols-2 gap-6">
+                                <div class="rounded-3xl bg-white border border-slate-200 p-6">
+                                    <p class="text-sm font-extrabold text-dark-900">Kompetensi yang dipelajari</p>
+                                    <ul class="mt-3 space-y-2 text-sm text-slate-700 leading-7">
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                                            Pemrograman (dasar hingga lanjutan)
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                                            Desain aplikasi web & mobile
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                                            Basis data & pengelolaan data
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                                            Pengembangan software sesuai kebutuhan industri
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="rounded-3xl bg-white border border-slate-200 p-6">
+                                    <p class="text-sm font-extrabold text-dark-900">Peluang lulusan</p>
+                                    <ul class="mt-3 space-y-2 text-sm text-slate-700 leading-7">
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-accent-600"></span>
+                                            Programmer / Software Developer
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-accent-600"></span>
+                                            Web & Mobile App Developer
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-accent-600"></span>
+                                            Database / System Support
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-accent-600"></span>
+                                            Technopreneur (wirausaha digital)
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </section>
 
-                    <section id="visi-misi"
-                        class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
+                    <!-- Visi -->
+                    <section id="visi" class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
                         <div class="p-6 sm:p-8 border-b border-slate-100">
                             <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">
-                                VISI & MISI</p>
+                                VISI</p>
                             <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-dark-900 leading-tight">
-                                Arah dan Komitmen Sekolah
+                                Visi Jurusan RPL
                             </h2>
-                            <p class="mt-3 text-base text-slate-600 leading-8">
-                                Menegaskan tujuan utama sekolah dalam membentuk SDM berkarakter, kompeten, dan siap
-                                menghadapi dunia kerja.
-                            </p>
                         </div>
 
-                        <div class="p-6 sm:p-8 grid md:grid-cols-2 gap-6">
+                        <div class="p-6 sm:p-8">
                             <div class="rounded-3xl bg-primary-50 border border-primary-100 p-6">
-                                <div class="flex items-start gap-4">
-                                    <div
-                                        class="flex-shrink-0 w-11 h-11 rounded-xl bg-primary-100 text-primary-600 flex items-center justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M12 6v6l4 2M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm font-extrabold text-dark-900">Visi</p>
-                                        <p class="mt-2 text-base text-slate-700 leading-8">
-                                            SMK Negeri 2 Mojokerto, menghasilkan Sumber Daya Manusia (SDM) yang
-                                            berkarakter, kompeten dan siap
-                                            kerja serta mampu berwirausaha di era globalisasi.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="rounded-3xl bg-white border border-slate-200 p-6">
-                                <div class="flex items-start gap-4">
-                                    <div
-                                        class="flex-shrink-0 w-11 h-11 rounded-xl bg-accent-100 text-dark-900 flex items-center justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    </div>
-                                    <div class="w-full">
-                                        <p class="text-sm font-extrabold text-dark-900">Misi</p>
-                                        <ol class="mt-3 space-y-3 text-base text-slate-700 leading-8 list-decimal pl-5">
-                                            <li>Mengembangkan sistem pendidikan yang berorientasi pada mutu berakar
-                                                norma budaya bangsa indonesia.</li>
-                                            <li>Meningkatkan layanan prima, bersinergi dengan masyarakat Dunia
-                                                Usaha/Industri sebagai bentuk pemenuhan tenaga kerja secara profesional.
-                                            </li>
-                                            <li>Mewujudkan tamatan yang cerdas, kompeten, mempunyai etos kerja dan siap
-                                                bersaing di era globalisasi.</li>
-                                        </ol>
-                                    </div>
-                                </div>
+                                <p class="text-slate-800 leading-8 font-semibold">
+                                    Mengembangkan sumber daya manusia yang mempunyai keunggulan dalam bidang teknologi
+                                    informasi dan
+                                    komunikasi yang dilandasi keimanan dan ketakwaan.
+                                </p>
                             </div>
                         </div>
                     </section>
 
-                    <section id="sambutan"
+                    <!-- Misi -->
+                    <section id="misi" class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
+                        <div class="p-6 sm:p-8 border-b border-slate-100">
+                            <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">
+                                MISI</p>
+                            <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-dark-900 leading-tight">
+                                Misi Jurusan RPL
+                            </h2>
+                        </div>
+
+                        <div class="p-6 sm:p-8">
+                            <ol class="space-y-3 text-base text-slate-700 leading-8 list-decimal pl-5">
+                                <li>Mengembangkan Sistem Pendidikan yang berorientasi pada mutu berakar norma budaya
+                                    bangsa Indonesia.</li>
+                                <li>Meningkatkan layanan prima, bersinergi dengan masyarakat Dunia Usaha/Industri
+                                    sebagai bentuk pemenuhan
+                                    tenaga kerja secara profesional di bidang rekayasa perangkat lunak.</li>
+                            </ol>
+                        </div>
+                    </section>
+
+                    <!-- Tujuan -->
+                    <section id="tujuan"
                         class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
                         <div class="p-6 sm:p-8 border-b border-slate-100">
                             <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">
-                                SAMBUTAN</p>
+                                TUJUAN</p>
                             <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-dark-900 leading-tight">
-                                Sambutan dari Sekolah
+                                Tujuan Jurusan RPL
                             </h2>
                             <p class="mt-3 text-base text-slate-600 leading-8">
-                                Pengantar dan harapan agar website menjadi sarana informasi dan interaksi yang positif.
+                                Target pembelajaran untuk membentuk lulusan siap kerja dan siap bersaing.
                             </p>
                         </div>
 
-                        <div class="p-6 sm:p-8 grid md:grid-cols-12 gap-8 items-start">
-                            <div class="md:col-span-4">
-                                <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-soft bg-white">
-                                    <div class="relative aspect-[4/5] bg-slate-100">
-                                        <img src="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/umum/kepala-sekolah.webp"
-                                            alt="Foto Kepala Sekolah (placeholder)"
-                                            class="absolute inset-0 w-full h-full object-cover" />
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent">
-                                        </div>
-                                        <div class="absolute bottom-3 left-3 right-3">
-                                            <p class="text-white font-extrabold text-sm">Kepala Sekolah</p>
-                                            <p class="text-white/85 text-xs">SMK Negeri 2 Mojokerto</p>
-                                        </div>
-                                    </div>
+                        <div class="p-6 sm:p-8">
+                            <div class="grid gap-6">
+                                <div class="rounded-3xl bg-white border border-slate-200 p-6">
+                                    <p class="text-sm font-extrabold text-dark-900">Tujuan Utama</p>
+                                    <ul class="mt-3 space-y-2 text-sm text-slate-700 leading-7">
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                                            Mengembangkan sikap profesional di bidang pemrograman dan software agar siap
+                                            kerja di dunia industri.
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                                            Mengembangkan diri, khususnya dalam bidang Pemrograman / software (RPL).
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                                            Mengelola usaha dalam bidang Pemrograman / software (RPL).
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                                            Mengelola pemasaran Pemrograman / software (RPL).
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                                            Mewujudkan tamatan yang cerdas, kompeten, mempunyai etos kerja dan siap
+                                            bersaing di era globalisasi.
+                                        </li>
+                                    </ul>
                                 </div>
-                            </div>
 
-                            <div class="md:col-span-8 space-y-4 text-slate-700 leading-8">
-                                <p>Selamat datang di website Sekolah Menengah Kejuruan Negeri (SMKN) 2 Kota Mojokerto.
-                                </p>
-                                <p>
-                                    Saya berharap website ini dapat menjadi sarana penyedia informasi mengenai profil,
-                                    kegiatan, serta
-                                    fasilitas di sekolah kami serta sebagai sarana pembelajaran bagi siswa dan guru.
-                                    Semoga website ini
-                                    dapat menjadi wahana interaksi yang positif, sehingga dapat menjalin silaturahmi
-                                    yang erat di segala
-                                    unsur stake holder sekolah.
-                                </p>
-                                <p>
-                                    Tentunya informasi dan website sekolah kami ini masih terdapat banyak kekurangan,
-                                    oleh karena itu
-                                    kepada seluruh civitas akademika dan masyarakat umum dapat memberikan saran dan
-                                    kritik yang membangun
-                                    demi kemajuan website ini lebih lanjut.
-                                </p>
-
-                                <div class="pt-2">
-                                    <a href="#kontak"
-                                        class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 active:scale-[0.98] transition">
-                                        Hubungi Sekolah
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                        </svg>
-                                    </a>
+                                <div class="rounded-3xl bg-accent-100 border border-accent-300/60 p-6">
+                                    <p class="text-sm font-extrabold text-dark-900">CTA</p>
+                                    <p class="mt-2 text-sm text-slate-700 leading-7">
+                                        Ingin melihat kegiatan dan prestasi jurusan? Cek halaman berita dan prestasi
+                                        sekolah.
+                                    </p>
+                                    <div class="mt-4 flex flex-wrap gap-3">
+                                        <!-- FIX PATH: dari jurusan/ ke root -->
+                                        <a href="../berita.html"
+                                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 active:scale-[0.98] transition">
+                                            Berita Sekolah
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </a>
+                                        <a href="../prestasi.html"
+                                            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm font-bold hover:bg-slate-50 transition">
+                                            Prestasi Siswa
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
-
                 </div>
             </div>
         </section>
@@ -772,8 +827,7 @@
                         Saluran Kontak Resmi dan Lokasi Sekolah.
                     </h2>
                     <p class="text-lg text-dark-800 max-w-xl">
-                        Informasi penting tentang PPDB, kesempatan kerjasama industri, atau pertanyaan umum dapat
-                        disampaikan
+                        Informasi penting tentang PPDB, kerjasama industri, atau pertanyaan umum dapat disampaikan
                         melalui saluran resmi berikut.
                     </p>
 
@@ -790,8 +844,7 @@
                             <div>
                                 <p class="text-sm font-bold text-dark-800">Alamat Fisik</p>
                                 <p class="text-base text-slate-600">Jl. Raya Pulorejo, Prajuritkulon Mojokerto 61325
-                                    Jawa Timur,
-                                    Indonesia</p>
+                                    Jawa Timur, Indonesia</p>
                             </div>
                         </div>
 
@@ -824,9 +877,8 @@
 
                     <div class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div class="min-w-0">
-                            <p class="text-[18px] sm:text-[20px] font-extrabold text-slate-900 leading-tight">
-                                SMK Negeri 2 Mojokerto
-                            </p>
+                            <p class="text-[18px] sm:text-[20px] font-extrabold text-slate-900 leading-tight">SMK Negeri
+                                2 Mojokerto</p>
                             <p class="mt-1 text-[14.5px] sm:text-[15.5px] text-slate-700 leading-7">
                                 Jl. Raya Pulorejo, Mergelo, Pulorejo — Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur
                                 61325
@@ -863,12 +915,12 @@
             <div class="space-y-4">
                 <p class="text-base font-bold text-white">Tautan Cepat</p>
                 <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-slate-400">
-                    <a href="index.html" class="hover:text-accent-300 transition">Beranda</a>
-                    <a href="profile.html" class="hover:text-accent-300 transition">Profil Sekolah</a>
-                    <a href="kalender.html" class="hover:text-accent-300 transition">Kalender Akademik</a>
-                    <a href="berita.html" class="hover:text-accent-300 transition">Berita Sekolah</a>
-                    <a href="prestasi.html" class="hover:text-accent-300 transition">Prestasi Siswa</a>
-                    <a href="fasilitas.html" class="hover:text-accent-300 transition">Fasilitas</a>
+                    <a href="../index.html" class="hover:text-accent-300 transition">Beranda</a>
+                    <a href="../profile.html" class="hover:text-accent-300 transition">Profil Sekolah</a>
+                    <a href="../kalender.html" class="hover:text-accent-300 transition">Kalender Akademik</a>
+                    <a href="../berita.html" class="hover:text-accent-300 transition">Berita Sekolah</a>
+                    <a href="../prestasi.html" class="hover:text-accent-300 transition">Prestasi Siswa</a>
+                    <a href="../fasilitas.html" class="hover:text-accent-300 transition">Fasilitas</a>
                     <a href="#kontak" class="hover:text-accent-300 transition">Kontak</a>
                 </div>
             </div>
@@ -890,29 +942,128 @@
         </div>
 
         <div class="border-t border-dark-800 mt-6">
-            <div class="container-page px-4 py-4 flex flex-col md:flex-row items-center justify-center gap-3">
+            <div class="container-page px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3">
                 <p class="text-sm text-slate-400">
                     © <span id="footer-year"></span> SMK Negeri 2 Mojokerto. Semua hak dilindungi.
+                </p>
+                <p class="text-sm text-slate-500">
+                    Dibangun untuk lomba RPL dengan HTML, Tailwind CSS, JavaScript, dan Supabase.
                 </p>
             </div>
         </div>
     </footer>
 
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        <div id="forum-panel"
+            class="hidden w-88 max-w-[90vw] bg-white rounded-3xl shadow-soft border border-slate-200 overflow-hidden">
+            <div class="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
+                <div>
+                    <p class="text-base font-bold text-dark-800">Forum Anonim</p>
+                    <p class="text-xs text-slate-500">Sampaikan saran dengan sopan.</p>
+                </div>
+                <button id="forum-panel-close"
+                    class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500 text-lg"
+                    type="button">×</button>
+            </div>
+
+            <div id="forum-list" class="max-h-64 overflow-y-auto px-4 py-3 space-y-2 text-sm"></div>
+
+            <form id="forum-form" class="border-t border-slate-200 px-4 py-3 space-y-2">
+                <textarea id="forum-input" rows="2"
+                    class="w-full text-sm border border-slate-300 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-primary-600 transition"
+                    placeholder="Tulis saran/pendapat dengan sopan..."></textarea>
+                <div class="flex items-center justify-between gap-2">
+                    <p id="forum-warning" class="text-[12px] text-red-500 hidden font-medium">Teks mengandung kata yang
+                        tidak pantas.</p>
+                    <button type="submit"
+                        class="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-600 text-dark-900 text-sm font-semibold hover:bg-accent-700 transition">
+                        Kirim
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="flex flex-col gap-3">
+            <button id="forum-toggle"
+                class="w-14 h-14 rounded-full bg-accent-600 text-dark-900 shadow-soft shadow-accent-600/30 flex items-center justify-center hover:bg-accent-700 active:scale-95 transition-all duration-150"
+                type="button" aria-label="Buka forum">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M7 8h7M7 12h4m2 5l-2.5-2H9A4 4 0 015 11V9a4 4 0 014-4h6a4 4 0 014 4v2a4 4 0 01-4 4h-1.5L13 17z" />
+                </svg>
+            </button>
+
+            <button id="chatbot-toggle"
+                class="w-14 h-14 rounded-full bg-primary-600 text-white shadow-soft shadow-primary-600/30 flex items-center justify-center hover:bg-primary-700 active:scale-95 transition-all duration-150"
+                type="button" aria-label="Buka chatbot">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M7 8h10M7 12h6m-1 8l-3-3H9A4 4 0 015 13V9a4 4 0 014-4h6a4 4 0 014 4v4a4 4 0 01-4 4h-1l-3 3z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- DEPENDENCIES (FIXED PATH FOR jurusan/) -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="../js/config.js"></script>
+
+    <script src="https://unpkg.com/he@1.2.0/he.js"></script>
+    <script src="https://unpkg.com/leo-profanity@1.8.0/src/index.js"></script>
+    <script src="../js/forum.js"></script>
+
     <script>
-            // Mobile nav toggle
-            (function () {
-                const btn = document.getElementById('nav-toggle');
-                const menu = document.getElementById('nav-menu-mobile');
-                if (!btn || !menu) return;
-                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-            })();
+        // init forum + floating buttons (pattern profile/index)
+        if (typeof initForumWidget === "function") initForumWidget();
+
+        const forumBtn = document.getElementById("forum-toggle");
+        if (forumBtn) forumBtn.addEventListener("click", () => toggleForumPanel(true));
+
+        const closeBtn = document.getElementById("forum-panel-close");
+        if (closeBtn) closeBtn.addEventListener("click", () => toggleForumPanel(false));
+
+        const chatbotBtn = document.getElementById("chatbot-toggle");
+        if (chatbotBtn) chatbotBtn.addEventListener("click", () => {
+            if (typeof DIFY_CHATBOT_URL === "string" && DIFY_CHATBOT_URL) {
+                window.open(DIFY_CHATBOT_URL, "_blank", "noopener");
+            }
+        });
+    </script>
+    <!-- ===================== /WIDGET ===================== -->
+
+    <script>
+        (function () {
+            const dept = document.body.getAttribute('data-dept');
+            if (!dept) return;
+
+            const parent = document.querySelector('.nav-prodi-trigger');
+            if (parent) parent.classList.add('text-primary-600', 'bg-primary-50', 'font-bold');
+
+            const items = document.querySelectorAll('.dept-item');
+            items.forEach(a => a.classList.remove('bg-primary-50'));
+
+            const activeItem = document.querySelector(`.dept-item[data-dept="${dept}"]`);
+            if (activeItem) activeItem.classList.add('bg-primary-50');
+        })();
+    </script>
+
+    <script>
+        // Mobile nav toggle
+        (function () {
+            const btn = document.getElementById('nav-toggle');
+            const menu = document.getElementById('nav-menu-mobile');
+            if (!btn || !menu) return;
+            btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        })();
 
         // Scrollspy hanya desktop (sidebar only lg)
         (function () {
-            const sidebar = document.querySelector('aside.lg\\:block');
+            const sidebar = document.querySelector('aside.lg\\:col-span-4');
             if (!sidebar) return;
 
-            const links = Array.from(document.querySelectorAll('.profile-nav-link'));
+            const links = Array.from(document.querySelectorAll('.dept-nav-link'));
             if (!links.length) return;
 
             const sections = links.map(a => document.getElementById(a.dataset.section)).filter(Boolean);
@@ -943,80 +1094,6 @@
 
         document.getElementById('footer-year').textContent = new Date().getFullYear();
     </script>
-
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        <div id="forum-panel"
-            class="hidden w-88 max-w-[90vw] bg-white rounded-3xl shadow-soft border border-slate-200 overflow-hidden">
-            <div class="px-4 py-3 border-b border-slate-200 flex items-center justify-between">
-                <div>
-                    <p class="text-base font-bold text-dark-800">Forum Anonim</p>
-                    <p class="text-xs text-slate-500">Sampaikan saran dengan sopan.</p>
-                </div>
-                <button id="forum-panel-close"
-                    class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500 text-lg">×</button>
-            </div>
-            <div id="forum-list" class="max-h-64 overflow-y-auto px-4 py-3 space-y-2 text-sm"></div>
-            <form id="forum-form" class="border-t border-slate-200 px-4 py-3 space-y-2">
-                <textarea id="forum-input" rows="2"
-                    class="w-full text-sm border border-slate-300 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-primary-600 transition"
-                    placeholder="Tulis saran/pendapat dengan sopan..."></textarea>
-                <div class="flex items-center justify-between gap-2">
-                    <p id="forum-warning" class="text-[12px] text-red-500 hidden font-medium">Teks mengandung kata yang
-                        tidak pantas.</p>
-                    <button type="submit"
-                        class="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-600 text-dark-900 text-sm font-semibold hover:bg-accent-700 transition">
-                        Kirim
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <div class="flex flex-col gap-3">
-            <button id="forum-toggle"
-                class="w-14 h-14 rounded-full bg-accent-600 text-dark-900 shadow-soft shadow-accent-600/30 flex items-center justify-center hover:bg-accent-700 active:scale-95 transition-all duration-150"
-                aria-label="Buka forum">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M7 8h7M7 12h4m2 5l-2.5-2H9A4 4 0 015 11V9a4 4 0 014-4h6a4 4 0 014 4v2a4 4 0 01-4 4h-1.5L13 17z" />
-                </svg>
-            </button>
-
-            <button id="chatbot-toggle"
-                class="w-14 h-14 rounded-full bg-primary-600 text-white shadow-soft shadow-primary-600/30 flex items-center justify-center hover:bg-primary-700 active:scale-95 transition-all duration-150"
-                aria-label="Buka chatbot">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M7 8h10M7 12h6m-1 8l-3-3H9A4 4 0 015 13V9a4 4 0 014-4h6a4 4 0 014 4v4a4 4 0 01-4 4h-1l-3 3z" />
-                </svg>
-            </button>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script src="js/config.js"></script>
-    <!-- HTML Entity decoder -->
-    <script src="https://unpkg.com/he@1.2.0/he.js"></script>
-    <!-- leo-profanity (UMD global: LeoProfanity) -->
-    <script src="https://unpkg.com/leo-profanity@1.8.0/src/index.js"></script>
-    <script src="js/forum.js"></script>
-
-    <script>
-        // init forum + floating buttons (profile page belum pakai layout.js)
-        if (typeof initForumWidget === "function") initForumWidget();
-
-        const forumBtn = document.getElementById("forum-toggle");
-        if (forumBtn) forumBtn.addEventListener("click", () => toggleForumPanel(true));
-
-        const chatbotBtn = document.getElementById("chatbot-toggle");
-        if (chatbotBtn) chatbotBtn.addEventListener("click", () => {
-            if (typeof DIFY_CHATBOT_URL === "string" && DIFY_CHATBOT_URL) {
-                window.open(DIFY_CHATBOT_URL, "_blank", "noopener");
-            }
-        });
-    </script>
-
 </body>
 
 </html>

@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kalender Akademik - SMK Negeri 2 Mojokerto</title>
+  <title>Jurusan DKV - SMK Negeri 2 Mojokerto</title>
   <link rel="icon" type="image/x-icon"
     href="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/public/logo.webp" />
   <meta name="description"
-    content="Kalender akademik SMK Negeri 2 Mojokerto yang memuat jadwal kegiatan penting selama tahun pelajaran." />
+    content="Profil Jurusan Desain Komunikasi Visual (DKV) SMK Negeri 2 Mojokerto: deskripsi, visi, misi, dan tujuan." />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -75,36 +75,47 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .hero-gradient {
-      background: linear-gradient(145deg, #0b2e66 0%, #8ca6bd 100%);
-    }
-
     .heading-tracked {
       letter-spacing: 0.05em;
     }
 
-    .kalender-hari-minggu {
-      color: #dc2626 !important;
+    .card-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
     }
 
-    .kalender-hari-inactive {
-      color: #9ca3af !important;
-      background-color: #f9fafb !important;
+    /* Scrollspy nav (desktop only) */
+    .dept-nav-arrow {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      opacity: 0.7;
+      transition: transform 200ms ease, opacity 200ms ease;
     }
 
-    .kalender-event {
-      background-color: #059669;
-      color: white;
+    .dept-nav-link:hover .dept-nav-arrow {
+      opacity: 1;
+      transform: translateX(2px);
     }
 
-    .kalender-event-holiday {
-      background-color: #dc2626;
-      color: white;
+    .dept-nav-link.is-active {
+      background: #f0f4f7;
+      border-color: #e1eaf0;
+      color: #07214c;
+    }
+
+    .dept-nav-link.is-active .dept-nav-dot {
+      background: #0b2e66;
+    }
+
+    .dept-nav-link.is-active .dept-nav-arrow {
+      opacity: 1;
+      transform: translateX(2px);
     }
   </style>
 </head>
 
-<body class="min-h-screen flex flex-col bg-white text-dark-900 antialiased">
+<body data-dept="dkv" class="min-h-screen flex flex-col bg-white text-dark-900 antialiased">
+  <!-- Top Bar -->
   <div class="bg-dark-900 text-slate-100 text-xs">
     <div class="container-page px-4 flex flex-col sm:flex-row gap-2 sm:gap-4 py-2 sm:items-center sm:justify-between">
       <p class="font-semibold tracking-wider uppercase text-accent-300">SMK NEGERI 2 MOJOKERTO</p>
@@ -116,6 +127,7 @@
     </div>
   </div>
 
+  <!-- Header -->
   <header class="sticky top-0 z-40">
     <div class="glass border-b border-white/20">
       <div class="container-page px-4 flex items-center justify-between py-3">
@@ -129,10 +141,10 @@
         </div>
 
         <nav class="hidden md:flex items-center gap-2 text-sm font-medium text-slate-700">
-          <a href="index.html"
-            class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Beranda</a>
-          <a href="profile.html"
-            class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Profil</a>
+          <a href="../index.html"
+            class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Beranda</a>
+          <a href="../profile.html"
+            class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Profil</a>
           <div class="relative group">
             <button type="button"
               class="nav-link nav-prodi-trigger px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition inline-flex items-center gap-2"
@@ -153,7 +165,7 @@
                 </div>
 
                 <div class="p-2">
-                  <a href="jurusan/rekayasa-perangkat-lunak.html"
+                  <a href="rekayasa-perangkat-lunak.html"
                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                     data-dept="rpl">
                     <span class="flex items-center gap-3 min-w-0">
@@ -171,7 +183,7 @@
                     </svg>
                   </a>
 
-                  <a href="jurusan/desain-komunikasi-visual.html"
+                  <a href="desain-komunikasi-visual.html"
                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                     data-dept="dkv">
                     <span class="flex items-center gap-3 min-w-0">
@@ -189,7 +201,7 @@
                     </svg>
                   </a>
 
-                  <a href="jurusan/agribisnis-pengolahan-hasil-pertanian.html"
+                  <a href="agribisnis-pengolahan-hasil-pertanian.html"
                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                     data-dept="aphp">
                     <span class="flex items-center gap-3 min-w-0">
@@ -208,7 +220,7 @@
                     </svg>
                   </a>
 
-                  <a href="jurusan/kuliner.html"
+                  <a href="kuliner.html"
                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                     data-dept="kuliner">
                     <span class="flex items-center gap-3 min-w-0">
@@ -226,7 +238,7 @@
                     </svg>
                   </a>
 
-                  <a href="jurusan/layanan-perbankan-syariah.html"
+                  <a href="layanan-perbankan-syariah.html"
                     class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                     data-dept="lps">
                     <span class="flex items-center gap-3 min-w-0">
@@ -247,16 +259,16 @@
               </div>
             </div>
           </div>
-          <a href="kalender.html"
-            class="nav-link px-4 py-2 rounded-lg text-primary-600 bg-primary-50 font-bold transition">Kalender</a>
-          <a href="berita.html"
-            class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Berita</a>
-          <a href="prestasi.html"
-            class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Prestasi</a>
-          <a href="fasilitas.html"
-            class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Fasilitas</a>
+          <a href="../kalender.html"
+            class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Kalender</a>
+          <a href="../berita.html"
+            class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Berita</a>
+          <a href="../prestasi.html"
+            class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Prestasi</a>
+          <a href="../fasilitas.html"
+            class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Fasilitas</a>
           <a href="#kontak"
-            class="nav-link px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Kontak</a>
+            class="px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition">Kontak</a>
         </nav>
 
         <div class="flex items-center gap-3">
@@ -274,10 +286,8 @@
 
     <div id="nav-menu-mobile" class="md:hidden hidden border-t border-slate-200 bg-white/95 backdrop-blur-sm">
       <div class="container-page px-4 py-3 flex flex-col gap-2 text-sm text-slate-700 font-medium">
-        <a href="index.html" class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition"
-          data-route="home">Beranda</a>
-        <a href="profile.html"
-          class="nav-link px-4 py-2 rounded-lg text-primary-600 hover:bg-primary-50  transition">Profil</a>
+        <a href="../index.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Beranda</a>
+        <a href="../profile.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Profil</a>
         <div class="relative group">
           <button type="button"
             class="nav-link nav-prodi-trigger px-4 py-2 rounded-lg hover:text-primary-600 hover:bg-primary-50 transition inline-flex items-center gap-2"
@@ -293,13 +303,12 @@
             class="absolute left-0 top-full pt-2 opacity-0 translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition duration-150 z-50">
             <div class="w-72 rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
               <div class="px-5 py-4 border-b border-slate-100">
-                <p class="text-[11px] font-semibold uppercase tracking-widest text-primary-600">
-                  Program Keahlian</p>
+                <p class="text-[11px] font-semibold uppercase tracking-widest text-primary-600">Program Keahlian</p>
                 <p class="mt-1 text-sm font-extrabold text-dark-900">Daftar Jurusan</p>
               </div>
 
               <div class="p-2">
-                <a href="jurusan/rekayasa-perangkat-lunak.html"
+                <a href="rekayasa-perangkat-lunak.html"
                   class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                   data-dept="rpl">
                   <span class="flex items-center gap-3 min-w-0">
@@ -308,8 +317,7 @@
                       alt="RPL">
                     <span class="min-w-0">
                       <span class="block text-sm font-bold text-dark-900 truncate">RPL</span>
-                      <span class="block text-[12px] text-slate-500 truncate">Rekayasa
-                        Perangkat Lunak</span>
+                      <span class="block text-[12px] text-slate-500 truncate">Rekayasa Perangkat Lunak</span>
                     </span>
                   </span>
                   <svg class="w-4 h-4 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -318,7 +326,7 @@
                   </svg>
                 </a>
 
-                <a href="jurusan/desain-komunikasi-visual.html"
+                <a href="desain-komunikasi-visual.html"
                   class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                   data-dept="dkv">
                   <span class="flex items-center gap-3 min-w-0">
@@ -327,8 +335,7 @@
                       alt="DKV">
                     <span class="min-w-0">
                       <span class="block text-sm font-bold text-dark-900 truncate">DKV</span>
-                      <span class="block text-[12px] text-slate-500 truncate">Desain
-                        Komunikasi Visual</span>
+                      <span class="block text-[12px] text-slate-500 truncate">Desain Komunikasi Visual</span>
                     </span>
                   </span>
                   <svg class="w-4 h-4 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -337,7 +344,7 @@
                   </svg>
                 </a>
 
-                <a href="jurusan/agribisnis-pengolahan-hasil-pertanian.html"
+                <a href="agribisnis-pengolahan-hasil-pertanian.html"
                   class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                   data-dept="aphp">
                   <span class="flex items-center gap-3 min-w-0">
@@ -346,8 +353,7 @@
                       alt="APHP">
                     <span class="min-w-0">
                       <span class="block text-sm font-bold text-dark-900 truncate">APHP</span>
-                      <span class="block text-[12px] text-slate-500 truncate">Agribisnis
-                        Pengolahan Hasil
+                      <span class="block text-[12px] text-slate-500 truncate">Agribisnis Pengolahan Hasil
                         Pertanian</span>
                     </span>
                   </span>
@@ -357,7 +363,7 @@
                   </svg>
                 </a>
 
-                <a href="jurusan/kuliner.html"
+                <a href="kuliner.html"
                   class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                   data-dept="kuliner">
                   <span class="flex items-center gap-3 min-w-0">
@@ -375,7 +381,7 @@
                   </svg>
                 </a>
 
-                <a href="jurusan/layanan-perbankan-syariah.html"
+                <a href="layanan-perbankan-syariah.html"
                   class="dept-item flex items-center justify-between gap-3 px-4 py-3 rounded-2xl hover:bg-primary-50 transition"
                   data-dept="lps">
                   <span class="flex items-center gap-3 min-w-0">
@@ -384,8 +390,7 @@
                       alt="LPS">
                     <span class="min-w-0">
                       <span class="block text-sm font-bold text-dark-900 truncate">LPS</span>
-                      <span class="block text-[12px] text-slate-500 truncate">Perbankan
-                        Syariah</span>
+                      <span class="block text-[12px] text-slate-500 truncate">Perbankan Syariah</span>
                     </span>
                   </span>
                   <svg class="w-4 h-4 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -397,154 +402,328 @@
             </div>
           </div>
         </div>
-        <a href="kalender.html" class="nav-link-mobile py-2 px-3 rounded-lg bg-primary-50 text-primary-700"
-          data-route="kalender">Kalender</a>
-        <a href="berita.html" class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition"
-          data-route="berita">Berita</a>
-        <a href="prestasi.html" class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition"
-          data-route="prestasi">Prestasi</a>
-        <a href="fasilitas.html" class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition"
-          data-route="fasilitas">Fasilitas</a>
-        <a href="#kontak" class="nav-link-mobile py-2 px-3 rounded-lg hover:bg-primary-50 transition"
-          data-route="kontak">Kontak</a>
+        <a href="../kalender.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Kalender</a>
+        <a href="../berita.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Berita</a>
+        <a href="../prestasi.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Prestasi</a>
+        <a href="../fasilitas.html" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Fasilitas</a>
+        <a href="#kontak" class="py-2 px-3 rounded-lg hover:bg-primary-50 transition">Kontak</a>
       </div>
     </div>
   </header>
 
   <main class="flex-1">
-    <!-- Hero Section dengan gradient seperti index.html -->
-    <section class="relative overflow-hidden pt-12 md:pt-18 bg-primary-50">
-      <div class="absolute inset-0 hero-gradient"></div>
-      <div class="container-page px-4 pb-16 relative z-10">
-        <div class="max-w-3xl">
-          <p
-            class="inline-flex items-center gap-2 text-sm font-semibold bg-white/20 px-4 py-1.5 rounded-full border border-white/20 glass text-white/95 mb-4">
-            Informasi Akademik
-          </p>
-          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg tracking-tight text-white">
-            Kalender <span class="text-accent-100/90">Akademik</span> Sekolah
-          </h1>
-          <p class="text-lg md:text-xl text-white/90 mt-4 font-light max-w-2xl">
-            Jadwal kegiatan akademik, libur, dan event penting selama tahun pelajaran. Semua tersaji dalam kalender
-            interaktif dan daftar lengkap.
-          </p>
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-white border-b border-slate-100">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -top-24 -left-24 w-[520px] h-[520px] rounded-full bg-primary-50 blur-3xl opacity-80"></div>
+        <div class="absolute -bottom-32 -right-28 w-[620px] h-[620px] rounded-full bg-accent-100 blur-3xl opacity-80">
+        </div>
+        <div class="absolute inset-0 opacity-[0.06]"
+          style="background-image: linear-gradient(to right, #0b2e66 1px, transparent 1px), linear-gradient(to bottom, #0b2e66 1px, transparent 1px); background-size: 44px 44px;">
         </div>
       </div>
-      <div class="pointer-events-none">
-        <svg viewBox="0 0 1440 80" class="w-full" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#FFFFFF"
-            d="M0,32L80,37.3C160,43,320,53,480,58.7C640,64,800,64,960,53.3C1120,43,1280,21,1360,10.7L1440,0L1440,80L1360,80C1280,80,1120,80,960,80C800,80,640,80,480,80C320,80,160,80,80,80L0,80Z">
-          </path>
-        </svg>
-      </div>
-    </section>
 
-    <section class="py-16 md:py-24 bg-white">
-      <div class="container-page px-4 space-y-10">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div class="flex items-center gap-6">
-            <div class="space-y-1">
-              <p class="text-sm text-slate-600 font-medium mb-1">Bulan:</p>
-              <div class="inline-flex items-center gap-3">
-                <button id="kalender-prev-bulan"
-                  class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-primary-100 transition"
-                  aria-label="Bulan sebelumnya">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+      <div class="relative z-10">
+        <div class="container-page px-4 pt-12 md:pt-14 pb-10 md:pb-14">
+          <div
+            class="inline-flex items-center gap-2 text-sm font-semibold text-primary-700 bg-primary-50 border border-primary-100 px-4 py-1.5 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-accent-600"></span>
+            PROGRAM KEAHLIAN
+          </div>
+
+          <div class="mt-6 grid lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-7">
+              <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-dark-900">
+                Desain Komunikasi Visual <span class="text-primary-600">(DKV)</span>
+              </h1>
+
+              <p class="mt-4 text-base md:text-lg text-slate-600 leading-8 max-w-2xl">
+                Desain Komunikasi Visual (DKV) SMK Negeri 2 Mojokerto membekali siswa dengan keterampilan menyampaikan
+                pesan melalui desain grafis, ilustrasi, tipografi, fotografi, dan digital imaging secara kreatif,
+                komunikatif, dan efektif. Lulusan DKV memiliki peluang kerja dan wirausaha yang luas di industri
+                kreatif, serta dapat melanjutkan pendidikan ke perguruan tinggi sesuai bidangnya.
+              </p>
+
+              <div class="mt-7 flex flex-wrap gap-3">
+                <a href="#visi"
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary-600 text-white font-bold shadow-soft hover:bg-primary-700 active:scale-[0.98] transition">
+                  Lihat Visi & Misi
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
-                </button>
+                </a>
 
-                <p id="kalender-label-bulan" class="text-lg font-extrabold text-primary-700 min-w-[150px] text-center">
-                </p>
-
-                <button id="kalender-next-bulan"
-                  class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-primary-100 transition"
-                  aria-label="Bulan berikutnya">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                <a href="#tujuan"
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 bg-white text-slate-800 font-bold hover:bg-slate-50 active:scale-[0.98] transition">
+                  Tujuan Jurusan
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
-                </button>
+                </a>
 
+                <a href="#kontak"
+                  class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 bg-white text-slate-800 font-bold hover:bg-slate-50 active:scale-[0.98] transition">
+                  Kontak
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- right: logo only -->
+            <div class="lg:col-span-5 flex items-start justify-center lg:justify-end">
+              <div
+                class="w-full max-w-sm md:max-w-md lg:max-w-lg rounded-4xl bg-white border border-primary-100 shadow-soft overflow-hidden flex items-center justify-center p-6 md:p-8">
+                <img
+                  src="https://jtmgruxjzfibmbwewzcz.supabase.co/storage/v1/object/public/website-sekolah/umum/dkv.webp"
+                  alt="Logo Jurusan DKV" class="w-40 h-40 md:w-[290px] md:h-[290px] object-cover" />
               </div>
             </div>
           </div>
 
-          <div class="text-sm text-slate-500 max-w-lg space-y-1">
-            <p>
-              Gunakan tombol panah untuk melihat bulan lain. Arahkan kursor ke blok kegiatan berwarna hijau
-              pada kalender untuk melihat detail singkat.
-            </p>
-            <p class="font-medium text-xs">
-              <span class="text-red-600">*</span> Catatan: Tanggal merah (Minggu) dan kegiatan saling
-              tumpang tindih akan ditandai di kalender.
-            </p>
-          </div>
-        </div>
-
-        <div class="space-y-4">
-          <div class="flex items-center justify-between">
-            <h3 class="text-xl font-extrabold text-dark-900 tracking-wide heading-tracked">Tampilan Bulan</h3>
-            <div class="flex items-center gap-4 text-sm">
-              <div class="flex items-center gap-2">
-                <div class="w-3 h-3 rounded bg-emerald-500"></div>
-                <span class="text-slate-600">Kegiatan</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <div class="w-3 h-3 rounded bg-red-500"></div>
-                <span class="text-slate-600">Libur</span>
-              </div>
-            </div>
-          </div>
-          <div class="rounded-3xl border border-slate-200 bg-slate-50 p-4 md:p-6 space-y-4 shadow-soft overflow-x-auto">
-            <div class="grid grid-cols-7 text-sm md:text-base font-bold text-slate-500">
-              <div class="text-center pb-1 text-red-600">Minggu</div>
-              <div class="text-center pb-1">Senin</div>
-              <div class="text-center pb-1">Selasa</div>
-              <div class="text-center pb-1">Rabu</div>
-              <div class="text-center pb-1">Kamis</div>
-              <div class="text-center pb-1">Jumat</div>
-              <div class="text-center pb-1">Sabtu</div>
-            </div>
-            <div id="kalender-grid" class="grid grid-cols-7 gap-2 text-sm">
-              <!-- Kalender akan diisi oleh JavaScript -->
-            </div>
-          </div>
-        </div>
-
-        <div class="space-y-6 pt-4">
-          <div class="flex items-center justify-between gap-2">
-            <h3 class="text-xl font-extrabold text-dark-900 tracking-wide heading-tracked">
-              Daftar Kegiatan Tahun Pelajaran
-            </h3>
-            <p id="kalender-count" class="text-base text-slate-500 font-medium">
-              <!-- Jumlah kegiatan akan diisi -->
-            </p>
-          </div>
-          <div id="kalender-event-list" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          </div>
-          <div id="kalender-no-event"
-            class="hidden text-center py-10 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 font-medium">
-            Tidak ada kegiatan terdaftar pada tahun pelajaran ini.
-          </div>
+          <div class="mt-10 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
         </div>
       </div>
     </section>
 
-    <section id="kontak" class="py-16 md:py-24 bg-white border-t border-slate-100">
+    <!-- CONTENT -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container-page px-4 grid lg:grid-cols-12 gap-10">
+        <!-- Sidebar (desktop only) -->
+        <aside class="hidden lg:block lg:col-span-4">
+          <div class="rounded-3xl bg-white border border-slate-200 shadow-soft p-6 sticky top-28">
+            <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">NAVIGASI</p>
+            <p class="mt-2 text-2xl font-extrabold text-dark-900 leading-tight">Jurusan DKV</p>
+            <p class="mt-3 text-sm text-slate-600 leading-7">Klik bagian di bawah untuk berpindah cepat.</p>
+
+            <nav class="mt-6 space-y-2 text-sm font-semibold">
+              <a href="#overview"
+                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                data-section="overview">
+                <span class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
+                  Ringkasan
+                </span>
+                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="#visi"
+                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                data-section="visi">
+                <span class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
+                  Visi
+                </span>
+                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="#misi"
+                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                data-section="misi">
+                <span class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
+                  Misi
+                </span>
+                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="#tujuan"
+                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                data-section="tujuan">
+                <span class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
+                  Tujuan
+                </span>
+                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+              <a href="#kontak"
+                class="dept-nav-link flex items-center justify-between px-4 py-3 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:bg-primary-50 hover:text-primary-700 transition"
+                data-section="kontak">
+                <span class="flex items-center gap-3">
+                  <span class="w-2 h-2 rounded-full bg-slate-300 dept-nav-dot transition"></span>
+                  Kontak
+                </span>
+                <svg class="dept-nav-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </nav>
+
+            <div class="mt-6 rounded-2xl bg-accent-100 border border-accent-300/60 p-5">
+              <p class="text-sm font-extrabold text-dark-900">Info Cepat</p>
+              <div class="mt-3 space-y-2 text-sm text-slate-700">
+                <p><span class="font-bold">Bidang:</span> Seni & Industri Kreatif</p>
+                <p><span class="font-bold">Konsentrasi:</span> Desain, Ilustrasi, Fotografi</p>
+                <p><span class="font-bold">Prospek:</span> Industri kreatif & wirausaha</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main -->
+        <div class="lg:col-span-8 space-y-10">
+          <!-- Overview -->
+          <section id="overview" class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
+            <div class="p-6 sm:p-8 border-b border-slate-100">
+              <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">RINGKASAN</p>
+              <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-dark-900 leading-tight">Tentang Jurusan DKV</h2>
+              <p class="mt-3 text-base text-slate-600 leading-8">Gambaran umum kompetensi, pembelajaran, dan peluang
+                lulusan.</p>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <div class="rounded-3xl bg-slate-50 border border-slate-200 p-6">
+                <p class="text-slate-700 leading-8">Desain Komunikasi Visual (DKV) membekali siswa untuk merancang
+                  komunikasi visual yang tepat sasaran melalui desain grafis, ilustrasi, tipografi, fotografi, dan
+                  digital imaging. Pembelajaran menekankan kreativitas, ketepatan pesan, serta penerapan prinsip desain
+                  agar karya efektif dan relevan untuk kebutuhan industri kreatif. Lulusan DKV berpeluang bekerja maupun
+                  berwirausaha, serta dapat melanjutkan pendidikan sesuai bidangnya.</p>
+              </div>
+
+              <div class="mt-6 grid sm:grid-cols-2 gap-6">
+                <div class="rounded-3xl bg-white border border-slate-200 p-6">
+                  <p class="text-sm font-extrabold text-dark-900">Kompetensi yang dipelajari</p>
+                  <ul class="mt-3 space-y-2 text-sm text-slate-700 leading-7">
+                    <li class="flex items-start gap-2">
+                      <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                      Desain grafis & layout
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                      Ilustrasi & tipografi
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                      Fotografi & digital imaging
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                      Produksi konten kreatif
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="rounded-3xl bg-white border border-slate-200 p-6">
+                  <p class="text-sm font-extrabold text-dark-900">Peluang lulusan</p>
+                  <ul class="mt-3 space-y-2 text-sm text-slate-700 leading-7">
+                    <li class="flex items-start gap-2">
+                      <span class="mt-2 w-2 h-2 rounded-full bg-accent-600"></span>
+                      Desainer grafis / illustrator
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="mt-2 w-2 h-2 rounded-full bg-accent-600"></span>
+                      Content creator / creative staff
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="mt-2 w-2 h-2 rounded-full bg-accent-600"></span>
+                      Fotografi & editor visual
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="mt-2 w-2 h-2 rounded-full bg-accent-600"></span>
+                      Wirausaha jasa desain
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Visi -->
+          <section id="visi" class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
+            <div class="p-6 sm:p-8 border-b border-slate-100">
+              <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">VISI</p>
+              <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-dark-900 leading-tight">Visi Jurusan DKV</h2>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <div class="rounded-3xl bg-primary-50 border border-primary-100 p-6">
+                <p class="text-slate-800 leading-8 font-semibold">Menghasilkan lulusan yang professional, kompeten dan
+                  siap kerja serta mampu berwirausaha di era globalisasi.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Misi -->
+          <section id="misi" class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
+            <div class="p-6 sm:p-8 border-b border-slate-100">
+              <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">MISI</p>
+              <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-dark-900 leading-tight">Misi Jurusan DKV</h2>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <ol class="space-y-3 text-base text-slate-700 leading-8 list-decimal pl-5">
+                <li>Menciptakan lulusan DKV yang professional di tingkat SMK.</li>
+                <li>Mengembangkan Sistem Pendidikan yang berorientasi pada mutu berakar norma budaya bangsa Indonesia.
+                </li>
+                <li>Meningkatkan layanan prima, bersinergi dengan masyarakat Dunia Usaha/Industri sebagai bentuk
+                  pemenuhan tenaga kerja secara profesional.</li>
+              </ol>
+            </div>
+          </section>
+
+          <!-- Tujuan -->
+          <section id="tujuan" class="rounded-3xl bg-white border border-slate-200 shadow-soft overflow-hidden">
+            <div class="p-6 sm:p-8 border-b border-slate-100">
+              <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">TUJUAN</p>
+              <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold text-dark-900 leading-tight">Tujuan Jurusan DKV</h2>
+              <p class="mt-3 text-base text-slate-600 leading-8">Target pembelajaran untuk membentuk lulusan siap kerja
+                dan siap bersaing.</p>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <div class="rounded-3xl bg-white border border-slate-200 p-6">
+                <p class="text-sm font-extrabold text-dark-900">Tujuan Utama</p>
+                <ul class="mt-3 space-y-2 text-sm text-slate-700 leading-7">
+                  <li class="flex items-start gap-2">
+                    <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                    Membentuk sikap profesional di bidang Desain Grafis (DKV) agar siap kerja di dunia industri.
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                    Mengembangkan diri, khususnya dalam bidang Desain Grafis (DKV).
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                    Mengelola usaha dalam bidang Desain Grafis (DKV).
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="mt-2 w-2 h-2 rounded-full bg-primary-500"></span>
+                    Mengelola pemasaran Desain Grafis (DKV).
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="py-16 md:py-24 bg-slate-50 border-t border-slate-100">
       <div class="container-page px-4 grid lg:grid-cols-2 gap-12 items-center">
         <div class="space-y-6">
           <p class="text-sm font-semibold tracking-widest uppercase text-primary-600 heading-tracked">HUBUNGI KAMI</p>
-          <h2 class="text-4xl md:text-5xl font-extrabold mt-1 leading-tight text-dark-900">
-            Saluran Kontak Resmi dan Lokasi Sekolah.
-          </h2>
-          <p class="text-lg text-dark-800 max-w-xl">
-            Informasi penting tentang PPDB, kesempatan kerjasama industri, atau pertanyaan umum dapat disampaikan
-            melalui saluran resmi berikut.
-          </p>
+          <h2 class="text-4xl md:text-5xl font-extrabold mt-1 leading-tight text-dark-900">Saluran Kontak Resmi dan
+            Lokasi Sekolah.</h2>
+          <p class="text-lg text-dark-800 max-w-xl">Informasi penting tentang PPDB, kerjasama industri, atau pertanyaan
+            umum dapat disampaikan melalui saluran resmi berikut.</p>
 
-          <div class="mt-8 rounded-3xl bg-slate-50 border border-slate-200 p-6 space-y-4 shadow-soft">
+          <div class="mt-8 rounded-3xl bg-white border border-slate-200 p-6 space-y-4 shadow-soft">
             <div class="flex items-start gap-4">
               <div
                 class="flex-shrink-0 w-10 h-10 rounded-xl bg-primary-100 text-primary-600 flex items-center justify-center">
@@ -557,8 +736,7 @@
               <div>
                 <p class="text-sm font-bold text-dark-800">Alamat Fisik</p>
                 <p class="text-base text-slate-600">Jl. Raya Pulorejo, Prajuritkulon Mojokerto 61325 Jawa Timur,
-                  Indonesia
-                </p>
+                  Indonesia</p>
               </div>
             </div>
 
@@ -581,20 +759,16 @@
         </div>
 
         <div class="relative rounded-4xl overflow-hidden shadow-soft border border-slate-200 bg-white">
-          <!-- Map 16:9 -->
           <div class="relative aspect-[16/9] bg-slate-100">
             <iframe title="Peta Lokasi SMK Negeri 2 Mojokerto"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.8466962905754!2d112.42188529695389!3d-7.464618024699994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78120b57f1e203%3A0x65ef2d4ecdeb1643!2sSMK%20Negeri%202%20Kota%20Mojokerto!5e1!3m2!1sid!2sid!4v1759473143039!5m2!1sid!2sid"
               class="absolute inset-0 w-full h-full" style="border:0;" loading="lazy" allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade" aria-label="Peta lokasi SMK Negeri 2 Mojokerto">
-            </iframe>
+              referrerpolicy="no-referrer-when-downgrade" aria-label="Peta lokasi SMK Negeri 2 Mojokerto"></iframe>
           </div>
 
-          <!-- Info + CTA -->
           <div class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div class="min-w-0">
-              <p class="text-[18px] sm:text-[20px] font-extrabold text-slate-900 leading-tight">
-                SMK Negeri 2 Mojokerto
+              <p class="text-[18px] sm:text-[20px] font-extrabold text-slate-900 leading-tight">SMK Negeri 2 Mojokerto
               </p>
               <p class="mt-1 text-[14.5px] sm:text-[15.5px] text-slate-700 leading-7">
                 Jl. Raya Pulorejo, Mergelo, Pulorejo — Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61325
@@ -604,42 +778,39 @@
             <a href="https://www.google.com/maps/dir/?api=1&destination=-7.464472,112.423297" target="_blank"
               rel="noopener"
               class="shrink-0 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-600 text-white text-sm font-bold shadow-lg hover:bg-primary-700 active:scale-[0.98] transition">
-
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
-
               Petunjuk Arah
             </a>
-
           </div>
         </div>
-
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="bg-dark-900 text-slate-200 text-sm pt-16">
     <div class="container-page px-4 pb-10 grid gap-10 md:grid-cols-4">
       <div class="space-y-4 md:col-span-2">
         <p class="text-xl font-extrabold text-white">SMK Negeri 2 Mojokerto</p>
         <p class="text-slate-400 max-w-lg">
-          Sekolah menengah kejuruan yang berkomitmen pada pembelajaran berbasis keahlian,
-          karakter, dan penguatan budaya industri serta lingkungan.
+          Sekolah menengah kejuruan yang berkomitmen pada pembelajaran berbasis keahlian, karakter, dan penguatan budaya
+          industri serta lingkungan.
         </p>
       </div>
 
       <div class="space-y-4">
         <p class="text-base font-bold text-white">Tautan Cepat</p>
         <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-slate-400">
-          <a href="index.html" class="hover:text-accent-300 transition">Beranda</a>
-          <a href="profile.html" class="hover:text-accent-300 transition">Profil Sekolah</a>
-          <a href="kalender.html" class="hover:text-accent-300 transition">Kalender Akademik</a>
-          <a href="berita.html" class="hover:text-accent-300 transition">Berita Sekolah</a>
-          <a href="prestasi.html" class="hover:text-accent-300 transition">Prestasi Siswa</a>
-          <a href="fasilitas.html" class="hover:text-accent-300 transition">Fasilitas</a>
+          <a href="../index.html" class="hover:text-accent-300 transition">Beranda</a>
+          <a href="../profile.html" class="hover:text-accent-300 transition">Profil Sekolah</a>
+          <a href="../kalender.html" class="hover:text-accent-300 transition">Kalender Akademik</a>
+          <a href="../berita.html" class="hover:text-accent-300 transition">Berita Sekolah</a>
+          <a href="../prestasi.html" class="hover:text-accent-300 transition">Prestasi Siswa</a>
+          <a href="../fasilitas.html" class="hover:text-accent-300 transition">Fasilitas</a>
           <a href="#kontak" class="hover:text-accent-300 transition">Kontak</a>
         </div>
       </div>
@@ -661,16 +832,16 @@
     </div>
 
     <div class="border-t border-dark-800 mt-6">
-      <div class="container-page px-4 py-4 flex flex-col md:flex-row items-center justify-center gap-3">
-        <p class="text-sm text-slate-400">
-          © <span id="footer-year"></span> SMK Negeri 2 Mojokerto. Semua hak dilindungi.
+      <div class="container-page px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-3">
+        <p class="text-sm text-slate-400">© <span id="footer-year"></span> SMK Negeri 2 Mojokerto. Semua hak dilindungi.
         </p>
-
+        <p class="text-sm text-slate-500">Dibangun untuk lomba RPL dengan HTML, Tailwind CSS, JavaScript, dan Supabase.
+        </p>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Components (sama seperti index.html) -->
+  <!-- ===== Forum + Chatbot Floating Widget (paste before </body>) ===== -->
   <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
     <div id="forum-panel"
       class="hidden w-88 max-w-[90vw] bg-white rounded-3xl shadow-soft border border-slate-200 overflow-hidden">
@@ -680,17 +851,19 @@
           <p class="text-xs text-slate-500">Sampaikan saran dengan sopan.</p>
         </div>
         <button id="forum-panel-close"
-          class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500 text-lg">×</button>
+          class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 text-slate-500 text-lg"
+          type="button">×</button>
       </div>
-      <div id="forum-list" class="max-h-64 overflow-y-auto px-4 py-3 space-y-2 text-sm">
-      </div>
+
+      <div id="forum-list" class="max-h-64 overflow-y-auto px-4 py-3 space-y-2 text-sm"></div>
+
       <form id="forum-form" class="border-t border-slate-200 px-4 py-3 space-y-2">
         <textarea id="forum-input" rows="2"
           class="w-full text-sm border border-slate-300 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-primary-600 transition"
           placeholder="Tulis saran/pendapat dengan sopan..."></textarea>
         <div class="flex items-center justify-between gap-2">
-          <p id="forum-warning" class="text-[12px] text-red-500 hidden font-medium">Teks mengandung kata yang tidak
-            pantas.</p>
+          <p id="forum-warning" class="text-[12px] text-red-500 hidden font-medium">Teks mengandung kata yang
+            tidak pantas.</p>
           <button type="submit"
             class="ml-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-accent-600 text-dark-900 text-sm font-semibold hover:bg-accent-700 transition">
             Kirim
@@ -702,7 +875,7 @@
     <div class="flex flex-col gap-3">
       <button id="forum-toggle"
         class="w-14 h-14 rounded-full bg-accent-600 text-dark-900 shadow-soft shadow-accent-600/30 flex items-center justify-center hover:bg-accent-700 active:scale-95 transition-all duration-150"
-        aria-label="Buka forum">
+        type="button" aria-label="Buka forum">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
           stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -712,7 +885,7 @@
 
       <button id="chatbot-toggle"
         class="w-14 h-14 rounded-full bg-primary-600 text-white shadow-soft shadow-primary-600/30 flex items-center justify-center hover:bg-primary-700 active:scale-95 transition-all duration-150"
-        aria-label="Buka chatbot">
+        type="button" aria-label="Buka chatbot">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
           stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -722,19 +895,98 @@
     </div>
   </div>
 
+  <!-- DEPENDENCIES -->
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <script src="js/config.js"></script>
-  <script src="js/layout.js"></script> <!-- HTML Entity decoder -->
-  <script src="https://unpkg.com/he@1.2.0/he.js"></script>
+  <script src="../js/config.js"></script>
 
-  <!-- leo-profanity (UMD global: LeoProfanity) -->
+  <!-- Profanity 강화 (CDN) -->
+  <script src="https://unpkg.com/he@1.2.0/he.js"></script>
   <script src="https://unpkg.com/leo-profanity@1.8.0/src/index.js"></script>
 
+  <script src="../js/forum.js"></script>
 
-  <script src="js/forum.js"></script>
-  <script src="js/api-kalender.js"></script>
-  <script src="js/kalender-page.js"></script>
   <script>
+    // Init forum widget
+    if (typeof initForumWidget === "function") initForumWidget();
+
+    // Toggle forum panel
+    const forumBtn = document.getElementById("forum-toggle");
+    if (forumBtn) forumBtn.addEventListener("click", () => toggleForumPanel(true));
+
+    const closeBtn = document.getElementById("forum-panel-close");
+    if (closeBtn) closeBtn.addEventListener("click", () => toggleForumPanel(false));
+
+    // Chatbot
+    const chatbotBtn = document.getElementById("chatbot-toggle");
+    if (chatbotBtn) chatbotBtn.addEventListener("click", () => {
+      if (typeof DIFY_CHATBOT_URL === "string" && DIFY_CHATBOT_URL) {
+        window.open(DIFY_CHATBOT_URL, "_blank", "noopener");
+      }
+    });
+  </script>
+  <!-- ===== End Widget ===== -->
+
+  <script>
+    (function () {
+      const dept = document.body.getAttribute('data-dept');
+      if (!dept) return;
+
+      // aktifkan parent "Program Keahlian"
+      const parent = document.querySelector('.nav-prodi-trigger');
+      if (parent) parent.classList.add('text-primary-600', 'bg-primary-50', 'font-bold');
+
+      // aktifkan item dropdown sesuai jurusan
+      const items = document.querySelectorAll('.dept-item');
+      items.forEach(a => a.classList.remove('bg-primary-50'));
+
+      const activeItem = document.querySelector(`.dept-item[data-dept="${dept}"]`);
+      if (activeItem) activeItem.classList.add('bg-primary-50');
+    })();
+  </script>
+
+  <script>
+    // Mobile nav toggle
+    (function () {
+      const btn = document.getElementById('nav-toggle');
+      const menu = document.getElementById('nav-menu-mobile');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    })();
+
+    // Scrollspy desktop (sidebar only lg)
+    (function () {
+      const sidebar = document.querySelector('aside.lg\\:col-span-4');
+      if (!sidebar) return;
+
+      const links = Array.from(document.querySelectorAll('.dept-nav-link'));
+      if (!links.length) return;
+
+      const sections = links.map(a => document.getElementById(a.dataset.section)).filter(Boolean);
+
+      function setActive(id) {
+        links.forEach(a => a.classList.toggle('is-active', a.dataset.section === id));
+      }
+
+      setActive(links[0].dataset.section);
+
+      const io = new IntersectionObserver((entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio - a.intersectionRatio))[0];
+
+        if (visible && visible.target && visible.target.id) setActive(visible.target.id);
+      }, {
+        root: null,
+        rootMargin: '-25% 0px -60% 0px',
+        threshold: [0.1, 0.2, 0.35, 0.5, 0.65, 0.8]
+      });
+
+      sections.forEach(sec => io.observe(sec));
+
+      document.documentElement.style.scrollBehavior = 'smooth';
+      links.forEach(a => a.addEventListener('click', () => setActive(a.dataset.section)));
+    })();
+
     document.getElementById('footer-year').textContent = new Date().getFullYear();
   </script>
 </body>
